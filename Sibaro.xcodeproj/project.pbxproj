@@ -1,0 +1,549 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB012A892FDA00B18E0E /* SibaroApp.swift */; };
+		C604EB062A892FDD00B18E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C604EB052A892FDD00B18E0E /* Assets.xcassets */; };
+		C604EB162A8930C400B18E0E /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB122A8930C400B18E0E /* Panel.swift */; };
+		C604EB172A8930C400B18E0E /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB132A8930C400B18E0E /* Sidebar.swift */; };
+		C604EB182A8930C400B18E0E /* TabNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB142A8930C400B18E0E /* TabNavigation.swift */; };
+		C604EB192A8930C400B18E0E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB152A8930C400B18E0E /* MainView.swift */; };
+		C604EB1C2A89316C00B18E0E /* ProductsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB1B2A89316C00B18E0E /* ProductsListView.swift */; };
+		C604EB222A8932FB00B18E0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB212A8932FB00B18E0E /* ProfileView.swift */; };
+		C604EB242A89333800B18E0E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB232A89333800B18E0E /* LoginView.swift */; };
+		C604EB272A89337400B18E0E /* VisualEffectBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB262A89337400B18E0E /* VisualEffectBlur.swift */; };
+		C604EB2D2A89399700B18E0E /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB2C2A89399700B18E0E /* AuthEndpoint.swift */; };
+		C604EB342A8939BB00B18E0E /* HTTPContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB2F2A8939BB00B18E0E /* HTTPContentType.swift */; };
+		C604EB352A8939BB00B18E0E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB302A8939BB00B18E0E /* HTTPMethod.swift */; };
+		C604EB362A8939BB00B18E0E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB312A8939BB00B18E0E /* HTTPClient.swift */; };
+		C604EB372A8939BB00B18E0E /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB322A8939BB00B18E0E /* RequestError.swift */; };
+		C604EB382A8939BB00B18E0E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB332A8939BB00B18E0E /* Endpoint.swift */; };
+		C604EB3D2A893A9E00B18E0E /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB3C2A893A9E00B18E0E /* Login.swift */; };
+		C604EB3F2A893ADB00B18E0E /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB3E2A893ADB00B18E0E /* Product.swift */; };
+		C604EB422A893B6600B18E0E /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB412A893B6600B18E0E /* Errors.swift */; };
+		C604EB442A893D3500B18E0E /* ProductsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB432A893D3500B18E0E /* ProductsEndpoint.swift */; };
+		C604EB472A89406D00B18E0E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB462A89406D00B18E0E /* AuthService.swift */; };
+		C604EB492A89407D00B18E0E /* ProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB482A89407D00B18E0E /* ProductsService.swift */; };
+		C604EB4B2A894AAF00B18E0E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB4A2A894AAF00B18E0E /* Account.swift */; };
+		C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */ = {isa = PBXBuildFile; productRef = C604EB4D2A894AE400B18E0E /* SimpleKeychain */; };
+		C604EB502A89546F00B18E0E /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB4F2A89546F00B18E0E /* EmptyStateView.swift */; };
+		C604EB522A895EC000B18E0E /* ProductItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB512A895EC000B18E0E /* ProductItemView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C604EAFE2A892FDA00B18E0E /* Sibaro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sibaro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C604EB012A892FDA00B18E0E /* SibaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibaroApp.swift; sourceTree = "<group>"; };
+		C604EB052A892FDD00B18E0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C604EB072A892FDD00B18E0E /* Sibaro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sibaro.entitlements; sourceTree = "<group>"; };
+		C604EB122A8930C400B18E0E /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
+		C604EB132A8930C400B18E0E /* Sidebar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		C604EB142A8930C400B18E0E /* TabNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabNavigation.swift; sourceTree = "<group>"; };
+		C604EB152A8930C400B18E0E /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C604EB1B2A89316C00B18E0E /* ProductsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListView.swift; sourceTree = "<group>"; };
+		C604EB212A8932FB00B18E0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		C604EB232A89333800B18E0E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C604EB262A89337400B18E0E /* VisualEffectBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectBlur.swift; sourceTree = "<group>"; };
+		C604EB2C2A89399700B18E0E /* AuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
+		C604EB2F2A8939BB00B18E0E /* HTTPContentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPContentType.swift; sourceTree = "<group>"; };
+		C604EB302A8939BB00B18E0E /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		C604EB312A8939BB00B18E0E /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		C604EB322A8939BB00B18E0E /* RequestError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		C604EB332A8939BB00B18E0E /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		C604EB3C2A893A9E00B18E0E /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		C604EB3E2A893ADB00B18E0E /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		C604EB412A893B6600B18E0E /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		C604EB432A893D3500B18E0E /* ProductsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsEndpoint.swift; sourceTree = "<group>"; };
+		C604EB462A89406D00B18E0E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		C604EB482A89407D00B18E0E /* ProductsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsService.swift; sourceTree = "<group>"; };
+		C604EB4A2A894AAF00B18E0E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		C604EB4F2A89546F00B18E0E /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		C604EB512A895EC000B18E0E /* ProductItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C604EAFB2A892FDA00B18E0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C604EAF52A892FDA00B18E0E = {
+			isa = PBXGroup;
+			children = (
+				C604EB2A2A89396A00B18E0E /* Core */,
+				C604EB002A892FDA00B18E0E /* App */,
+				C604EAFF2A892FDA00B18E0E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C604EAFF2A892FDA00B18E0E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C604EAFE2A892FDA00B18E0E /* Sibaro.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C604EB002A892FDA00B18E0E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C604EB252A89336E00B18E0E /* General */,
+				C604EB112A8930A900B18E0E /* Navigation */,
+				C604EB202A8932E900B18E0E /* Profile */,
+				C604EB1A2A89314900B18E0E /* Products */,
+				C604EB102A89309700B18E0E /* Resources */,
+				C604EB012A892FDA00B18E0E /* SibaroApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C604EB102A89309700B18E0E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C604EB052A892FDD00B18E0E /* Assets.xcassets */,
+				C604EB072A892FDD00B18E0E /* Sibaro.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C604EB112A8930A900B18E0E /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				C604EB152A8930C400B18E0E /* MainView.swift */,
+				C604EB122A8930C400B18E0E /* Panel.swift */,
+				C604EB132A8930C400B18E0E /* Sidebar.swift */,
+				C604EB142A8930C400B18E0E /* TabNavigation.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		C604EB1A2A89314900B18E0E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C604EB1B2A89316C00B18E0E /* ProductsListView.swift */,
+				C604EB512A895EC000B18E0E /* ProductItemView.swift */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
+		C604EB202A8932E900B18E0E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C604EB4A2A894AAF00B18E0E /* Account.swift */,
+				C604EB212A8932FB00B18E0E /* ProfileView.swift */,
+				C604EB232A89333800B18E0E /* LoginView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C604EB252A89336E00B18E0E /* General */ = {
+			isa = PBXGroup;
+			children = (
+				C604EB4F2A89546F00B18E0E /* EmptyStateView.swift */,
+				C604EB262A89337400B18E0E /* VisualEffectBlur.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		C604EB2A2A89396A00B18E0E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C604EB2B2A89398900B18E0E /* Endpoints */,
+				C604EB3B2A893A9300B18E0E /* Models */,
+				C604EB2E2A8939BB00B18E0E /* Networking */,
+				C604EB452A89403800B18E0E /* Services */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C604EB2B2A89398900B18E0E /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				C604EB2C2A89399700B18E0E /* AuthEndpoint.swift */,
+				C604EB432A893D3500B18E0E /* ProductsEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		C604EB2E2A8939BB00B18E0E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C604EB2F2A8939BB00B18E0E /* HTTPContentType.swift */,
+				C604EB302A8939BB00B18E0E /* HTTPMethod.swift */,
+				C604EB312A8939BB00B18E0E /* HTTPClient.swift */,
+				C604EB322A8939BB00B18E0E /* RequestError.swift */,
+				C604EB332A8939BB00B18E0E /* Endpoint.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		C604EB3B2A893A9300B18E0E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C604EB3E2A893ADB00B18E0E /* Product.swift */,
+				C604EB3C2A893A9E00B18E0E /* Login.swift */,
+				C604EB412A893B6600B18E0E /* Errors.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C604EB452A89403800B18E0E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C604EB462A89406D00B18E0E /* AuthService.swift */,
+				C604EB482A89407D00B18E0E /* ProductsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C604EAFD2A892FDA00B18E0E /* Sibaro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C604EB0D2A892FDD00B18E0E /* Build configuration list for PBXNativeTarget "Sibaro" */;
+			buildPhases = (
+				C604EAFA2A892FDA00B18E0E /* Sources */,
+				C604EAFB2A892FDA00B18E0E /* Frameworks */,
+				C604EAFC2A892FDA00B18E0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sibaro;
+			packageProductDependencies = (
+				C604EB4D2A894AE400B18E0E /* SimpleKeychain */,
+			);
+			productName = Sibaro;
+			productReference = C604EAFE2A892FDA00B18E0E /* Sibaro.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C604EAF62A892FDA00B18E0E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					C604EAFD2A892FDA00B18E0E = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = C604EAF92A892FDA00B18E0E /* Build configuration list for PBXProject "Sibaro" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C604EAF52A892FDA00B18E0E;
+			packageReferences = (
+				C604EB4C2A894AE400B18E0E /* XCRemoteSwiftPackageReference "SimpleKeychain" */,
+			);
+			productRefGroup = C604EAFF2A892FDA00B18E0E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C604EAFD2A892FDA00B18E0E /* Sibaro */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C604EAFC2A892FDA00B18E0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C604EB062A892FDD00B18E0E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C604EAFA2A892FDA00B18E0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C604EB372A8939BB00B18E0E /* RequestError.swift in Sources */,
+				C604EB4B2A894AAF00B18E0E /* Account.swift in Sources */,
+				C604EB502A89546F00B18E0E /* EmptyStateView.swift in Sources */,
+				C604EB522A895EC000B18E0E /* ProductItemView.swift in Sources */,
+				C604EB222A8932FB00B18E0E /* ProfileView.swift in Sources */,
+				C604EB492A89407D00B18E0E /* ProductsService.swift in Sources */,
+				C604EB442A893D3500B18E0E /* ProductsEndpoint.swift in Sources */,
+				C604EB3F2A893ADB00B18E0E /* Product.swift in Sources */,
+				C604EB192A8930C400B18E0E /* MainView.swift in Sources */,
+				C604EB362A8939BB00B18E0E /* HTTPClient.swift in Sources */,
+				C604EB382A8939BB00B18E0E /* Endpoint.swift in Sources */,
+				C604EB472A89406D00B18E0E /* AuthService.swift in Sources */,
+				C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */,
+				C604EB422A893B6600B18E0E /* Errors.swift in Sources */,
+				C604EB1C2A89316C00B18E0E /* ProductsListView.swift in Sources */,
+				C604EB182A8930C400B18E0E /* TabNavigation.swift in Sources */,
+				C604EB342A8939BB00B18E0E /* HTTPContentType.swift in Sources */,
+				C604EB172A8930C400B18E0E /* Sidebar.swift in Sources */,
+				C604EB272A89337400B18E0E /* VisualEffectBlur.swift in Sources */,
+				C604EB352A8939BB00B18E0E /* HTTPMethod.swift in Sources */,
+				C604EB242A89333800B18E0E /* LoginView.swift in Sources */,
+				C604EB2D2A89399700B18E0E /* AuthEndpoint.swift in Sources */,
+				C604EB162A8930C400B18E0E /* Panel.swift in Sources */,
+				C604EB3D2A893A9E00B18E0E /* Login.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C604EB0B2A892FDD00B18E0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C604EB0C2A892FDD00B18E0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		C604EB0E2A892FDD00B18E0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = App/Resources/Sibaro.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 4LBD36HY9T;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.mahsa.sibaro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C604EB0F2A892FDD00B18E0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = App/Resources/Sibaro.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 4LBD36HY9T;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.mahsa.sibaro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C604EAF92A892FDA00B18E0E /* Build configuration list for PBXProject "Sibaro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C604EB0B2A892FDD00B18E0E /* Debug */,
+				C604EB0C2A892FDD00B18E0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C604EB0D2A892FDD00B18E0E /* Build configuration list for PBXNativeTarget "Sibaro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C604EB0E2A892FDD00B18E0E /* Debug */,
+				C604EB0F2A892FDD00B18E0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C604EB4C2A894AE400B18E0E /* XCRemoteSwiftPackageReference "SimpleKeychain" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/SimpleKeychain";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C604EB4D2A894AE400B18E0E /* SimpleKeychain */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C604EB4C2A894AE400B18E0E /* XCRemoteSwiftPackageReference "SimpleKeychain" */;
+			productName = SimpleKeychain;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C604EAF62A892FDA00B18E0E /* Project object */;
+}
