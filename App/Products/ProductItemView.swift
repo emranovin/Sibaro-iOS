@@ -14,6 +14,7 @@ struct ProductItemView: View {
     private let service = ProductsService()
     
     @State var loading: Bool = false
+    @State var showDetails: Bool = false
     
     @EnvironmentObject var account: Account
     @Environment(\.openURL) var openURL
@@ -60,6 +61,15 @@ struct ProductItemView: View {
                 .opacity(loading ? 0 : 1)
             }
         }
+        .onTapGesture {
+            showDetails.toggle()
+        }
+        .sheet(isPresented: $showDetails) {
+            ProductDetailsView(product: product)
+                #if os(macOS)
+                .frame(minWidth: 350, idealWidth: 600, minHeight: 500, idealHeight: 650)
+                #endif
+        }
     }
     
     func install() {
@@ -85,24 +95,8 @@ struct ProductItemView: View {
     }
 }
 
-//#Preview {
-//    @StateObject var account = Account()
-//    
-//    return ProductItemView(
-//        product: Product(
-//            id: <#T##Int#>,
-//            type: <#T##AppType#>,
-//            title: <#T##String#>,
-//            subtitle: <#T##String#>,
-//            version: <#T##String#>,
-//            description: <#T##String#>,
-//            ipaSize: <#T##String#>,
-//            icon: <#T##String#>,
-//            bundleIdentifier: <#T##String#>,
-//            createdAt: <#T##String#>,
-//            updatedAt: <#T##String#>,
-//            screenshots: <#T##[Screenshot]#>
-//        )
-//    )
-//    .environmentObject(account)
-//}
+struct ProductItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProductItemView(product: .mock)
+    }
+}
