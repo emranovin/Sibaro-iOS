@@ -13,12 +13,7 @@ struct ProductsListView: View {
     private let service = ProductsService()
     
     @State private var rawProducts: [Product] = []
-    
-    var products: [Product] {
-        return rawProducts.filter { product in
-            product.type == type
-        }
-    }
+    @State private var search: String = ""
     
     /// Status
     @State private var loading: Bool = false
@@ -26,12 +21,27 @@ struct ProductsListView: View {
     
     @EnvironmentObject var account: Account
     
+    var products: [Product] {
+        let typeFilter = rawProducts.filter { product in
+            product.type == type
+        }
+        
+        if search.isEmpty {
+            return typeFilter
+        } else {
+            return typeFilter.filter { product in
+                product.title.contains(search)
+            }
+        }
+    }
+    
     var body: some View {
         List(products, id: \.id) { product in
             ProductItemView(product: product)
         }
         .listStyle(.plain)
         .overlay(emptyState)
+        .searchable(text: $search)
         .task {
             loading = true
             await getList()
