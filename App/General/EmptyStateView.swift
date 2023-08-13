@@ -26,7 +26,7 @@ struct EmptyStateView: View {
                 Image(systemName: icon)
                     .font(.largeTitle)
                     .dynamicTypeSize(.accessibility5)
-                    .foregroundStyle(.indigo)
+                    .foregroundStyle(Color.accentColor)
                     .symbolRenderingMode(.hierarchical)
             }
             
