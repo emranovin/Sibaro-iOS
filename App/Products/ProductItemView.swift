@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct ProductItemView: View {
     
@@ -20,10 +21,14 @@ struct ProductItemView: View {
     
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: product.icon)) { image in
-                image.resizable()
-            } placeholder: {
-                Rectangle()
+            LazyImage(url: URL(string: product.icon)) { state in
+                if let image = state.image {
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                } else {
+                    Rectangle()
+                }
             }
             .frame(width: 50, height: 50)
             .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -62,6 +67,9 @@ struct ProductItemView: View {
                 .opacity(loading ? 0 : 1)
             }
         }
+        #if os(macOS)
+        .padding(.vertical, 4)
+        #endif
     }
     
     func install() {

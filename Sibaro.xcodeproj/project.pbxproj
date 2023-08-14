@@ -39,6 +39,8 @@
 		C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D22A897F1300B2427D /* ProductDetailsView.swift */; };
 		C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D52A89873400B2427D /* String+Extensions.swift */; };
 		C67979722A8A99180091BE25 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C67979712A8A99180091BE25 /* Config.xcconfig */; };
+		C67979752A8AA6E00091BE25 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C67979742A8AA6E00091BE25 /* Nuke */; };
+		C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C67979782A8AA6E00091BE25 /* NukeUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */,
+				C67979752A8AA6E00091BE25 /* Nuke in Frameworks */,
 				C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */,
 				C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */,
 			);
@@ -266,6 +270,8 @@
 			packageProductDependencies = (
 				C604EB4D2A894AE400B18E0E /* SimpleKeychain */,
 				C62BF8002A8A3059002CFFF9 /* MarkdownUI */,
+				C67979742A8AA6E00091BE25 /* Nuke */,
+				C67979782A8AA6E00091BE25 /* NukeUI */,
 			);
 			productName = Sibaro;
 			productReference = C604EAFE2A892FDA00B18E0E /* Sibaro.app */;
@@ -298,6 +304,7 @@
 			packageReferences = (
 				C604EB4C2A894AE400B18E0E /* XCRemoteSwiftPackageReference "SimpleKeychain" */,
 				C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+				C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = C604EAFF2A892FDA00B18E0E /* Products */;
 			projectDirPath = "";
@@ -595,6 +602,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.1.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -607,6 +622,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
 			productName = MarkdownUI;
+		};
+		C67979742A8AA6E00091BE25 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		C67979782A8AA6E00091BE25 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
