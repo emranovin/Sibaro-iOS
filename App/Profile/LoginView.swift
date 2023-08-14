@@ -46,17 +46,23 @@ struct LoginView: View {
     
     var content: some View {
         VStack {
-            Spacer()
-            
-            // MARK: - App name
-            Text("Sibaro")
-                .font(.largeTitle)
-                .dynamicTypeSize(.accessibility1)
-                .fontWeight(.bold)
-                .frame(maxWidth: .infinity)
-                .foregroundStyle(.blue.gradient)
-                .shadow(color: .indigo.opacity(0.5), radius: 1)
-                
+            // MARK: - App Logo
+            Color.clear
+                .overlay {
+                    Image("iTroyPure")
+                        .resizable()
+                        .renderingMode(.template)
+                        .scaledToFit()
+                        .frame(
+                            minWidth: 100,
+                            idealWidth: 150,
+                            maxWidth: 150,
+                            minHeight: 100,
+                            idealHeight: 150,
+                            maxHeight: 150
+                        )
+                        .shadow(radius: 2)
+                }
             
             // MARK: - Fields
             VStack(alignment: .leading) {
@@ -92,10 +98,10 @@ struct LoginView: View {
                 }
             }
             .textFieldStyle(.plain)
-            .padding()
+            .padding(.horizontal)
             .background(
                 .regularMaterial,
-                in: RoundedRectangle(cornerRadius: 16)
+                in: RoundedRectangle(cornerRadius: 10)
             )
             
             // MARK: - Login button
@@ -107,14 +113,12 @@ struct LoginView: View {
                     Text("Login")
                         .font(.body)
                         .fontWeight(.semibold)
-                        .frame(maxWidth: 150)
+                        .frame(maxWidth: .infinity)
                 }
+                .cornerRadius(10)
                 .controlSize(.large)
-                #if os(iOS)
-                .buttonBorderShape(.capsule)
-                #endif
                 .buttonStyle(.borderedProminent)
-                .padding()
+                .padding(.vertical)
                 .opacity(loading ? 0 : 1)
             }
             
@@ -123,7 +127,7 @@ struct LoginView: View {
                 .font(.callout)
                 .foregroundColor(.red)
             
-            Spacer()
+            Color.clear
         }
         .padding()
     }
