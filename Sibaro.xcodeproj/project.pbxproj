@@ -44,6 +44,9 @@
 		C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = C62BF8002A8A3059002CFFF9 /* MarkdownUI */; };
 		C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D22A897F1300B2427D /* ProductDetailsView.swift */; };
 		C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D52A89873400B2427D /* String+Extensions.swift */; };
+		C67979722A8A99180091BE25 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C67979712A8A99180091BE25 /* Config.xcconfig */; };
+		C67979752A8AA6E00091BE25 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C67979742A8AA6E00091BE25 /* Nuke */; };
+		C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C67979782A8AA6E00091BE25 /* NukeUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +87,7 @@
 		C604EB512A895EC000B18E0E /* ProductItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemView.swift; sourceTree = "<group>"; };
 		C667B4D22A897F1300B2427D /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 		C667B4D52A89873400B2427D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		C67979712A8A99180091BE25 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */,
+				C67979752A8AA6E00091BE25 /* Nuke in Frameworks */,
 				C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */,
 				C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */,
 			);
@@ -172,6 +178,7 @@
 			children = (
 				03E248DE2A8A9C6E00DDE525 /* Storage */,
 				03E248D72A8A9C0300DDE525 /* Localization */,
+				C67979712A8A99180091BE25 /* Config.xcconfig */,
 				C604EB2A2A89396A00B18E0E /* Core */,
 				C604EB002A892FDA00B18E0E /* App */,
 				C604EAFF2A892FDA00B18E0E /* Products */,
@@ -329,6 +336,8 @@
 			packageProductDependencies = (
 				C604EB4D2A894AE400B18E0E /* SimpleKeychain */,
 				C62BF8002A8A3059002CFFF9 /* MarkdownUI */,
+				C67979742A8AA6E00091BE25 /* Nuke */,
+				C67979782A8AA6E00091BE25 /* NukeUI */,
 			);
 			productName = Sibaro;
 			productReference = C604EAFE2A892FDA00B18E0E /* Sibaro.app */;
@@ -361,6 +370,7 @@
 			packageReferences = (
 				C604EB4C2A894AE400B18E0E /* XCRemoteSwiftPackageReference "SimpleKeychain" */,
 				C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+				C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = C604EAFF2A892FDA00B18E0E /* Products */;
 			projectDirPath = "";
@@ -376,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C67979722A8A99180091BE25 /* Config.xcconfig in Resources */,
 				C604EB062A892FDD00B18E0E /* Assets.xcassets in Resources */,
 				03E248DA2A8A9C2600DDE525 /* en.strings in Resources */,
 			);
@@ -429,6 +440,7 @@
 /* Begin XCBuildConfiguration section */
 		C604EB0B2A892FDD00B18E0E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C67979712A8A99180091BE25 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -490,6 +502,7 @@
 		};
 		C604EB0C2A892FDD00B18E0E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C67979712A8A99180091BE25 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -543,15 +556,16 @@
 		};
 		C604EB0E2A892FDD00B18E0E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C67979712A8A99180091BE25 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = App/Resources/Sibaro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(CONFIG_APP_BUNDLE_VERSION)";
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 35A6B2S222;
+				DEVELOPMENT_TEAM = "$(CONFIG_DEV_TEAM)";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -568,9 +582,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.mahsa.sibaro;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = "$(CONFIG_APP_VERSION)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CONFIG_BUNDLE_ID)";
+				PRODUCT_NAME = "$(CONFIG_APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -582,15 +596,16 @@
 		};
 		C604EB0F2A892FDD00B18E0E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C67979712A8A99180091BE25 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = App/Resources/Sibaro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(CONFIG_APP_BUNDLE_VERSION)";
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 35A6B2S222;
+				DEVELOPMENT_TEAM = "$(CONFIG_DEV_TEAM)";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -607,9 +622,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.mahsa.sibaro;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = "$(CONFIG_APP_VERSION)";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CONFIG_BUNDLE_ID)";
+				PRODUCT_NAME = "$(CONFIG_APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -659,6 +674,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.1.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -671,6 +694,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
 			productName = MarkdownUI;
+		};
+		C67979742A8AA6E00091BE25 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		C67979782A8AA6E00091BE25 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

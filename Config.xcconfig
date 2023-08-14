@@ -1,0 +1,20 @@
+//
+//  Config.xcconfig
+//  Sibaro
+//
+//  Created by Armin on 8/14/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// MARK: - App versions
+CONFIG_APP_VERSION = 1.0.0
+CONFIG_APP_BUNDLE_VERSION = 1
+
+// MARK: - App display name
+CONFIG_APP_NAME = Sibaro
+
+// MARK: - App Bundle Identifier
+CONFIG_BUNDLE_ID = com.app.sibaro
+CONFIG_DEV_TEAM = YOUR_TEAM_ID
