@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SibaroApp: App {
+    @ObservedObject var language = LanguageService()
+    
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(language)
         }
     }
 }
