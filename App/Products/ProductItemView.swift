@@ -51,12 +51,14 @@ struct ProductItemView: View {
                     Text("Install")
                         .font(.body)
                         .fontWeight(.semibold)
+                        .padding(.horizontal, 5)
                 }
                 #if os(iOS)
                 .buttonBorderShape(.capsule)
+                #elseif os(macOS)
+                .controlSize(.large)
                 #endif
                 .buttonStyle(.borderedProminent)
-                .padding()
                 .opacity(loading ? 0 : 1)
             }
         }

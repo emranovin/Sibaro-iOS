@@ -84,6 +84,7 @@ struct ProductDetailsView: View {
                         Text("Install")
                             .font(.body)
                             .fontWeight(.semibold)
+                            .padding(.horizontal, 5)
                     }
                     #if os(iOS)
                     .buttonBorderShape(.capsule)
