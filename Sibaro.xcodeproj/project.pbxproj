@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03E248D22A8A75BD00DDE525 /* SibaroJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248D12A8A75BD00DDE525 /* SibaroJSONDecoder.swift */; };
+		03E248D52A8A75FE00DDE525 /* Date+DecodeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248D42A8A75FE00DDE525 /* Date+DecodeString.swift */; };
 		C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB012A892FDA00B18E0E /* SibaroApp.swift */; };
 		C604EB062A892FDD00B18E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C604EB052A892FDD00B18E0E /* Assets.xcassets */; };
 		C604EB162A8930C400B18E0E /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB122A8930C400B18E0E /* Panel.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03E248D12A8A75BD00DDE525 /* SibaroJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibaroJSONDecoder.swift; sourceTree = "<group>"; };
+		03E248D42A8A75FE00DDE525 /* Date+DecodeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DecodeString.swift"; sourceTree = "<group>"; };
 		C604EAFE2A892FDA00B18E0E /* Sibaro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sibaro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C604EB012A892FDA00B18E0E /* SibaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibaroApp.swift; sourceTree = "<group>"; };
 		C604EB052A892FDD00B18E0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,6 +87,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03E248D02A8A75A300DDE525 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				03E248D12A8A75BD00DDE525 /* SibaroJSONDecoder.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		03E248D32A8A75DE00DDE525 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				03E248D42A8A75FE00DDE525 /* Date+DecodeString.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C604EAF52A892FDA00B18E0E = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +186,8 @@
 		C604EB2A2A89396A00B18E0E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				03E248D32A8A75DE00DDE525 /* Extensions */,
+				03E248D02A8A75A300DDE525 /* Utilities */,
 				C604EB2B2A89398900B18E0E /* Endpoints */,
 				C604EB3B2A893A9300B18E0E /* Models */,
 				C604EB2E2A8939BB00B18E0E /* Networking */,
@@ -305,11 +327,13 @@
 				C604EB522A895EC000B18E0E /* ProductItemView.swift in Sources */,
 				C604EB222A8932FB00B18E0E /* ProfileView.swift in Sources */,
 				C604EB492A89407D00B18E0E /* ProductsService.swift in Sources */,
+				03E248D22A8A75BD00DDE525 /* SibaroJSONDecoder.swift in Sources */,
 				C604EB442A893D3500B18E0E /* ProductsEndpoint.swift in Sources */,
 				C604EB3F2A893ADB00B18E0E /* Product.swift in Sources */,
 				C604EB192A8930C400B18E0E /* MainView.swift in Sources */,
 				C604EB362A8939BB00B18E0E /* HTTPClient.swift in Sources */,
 				C604EB382A8939BB00B18E0E /* Endpoint.swift in Sources */,
+				03E248D52A8A75FE00DDE525 /* Date+DecodeString.swift in Sources */,
 				C604EB472A89406D00B18E0E /* AuthService.swift in Sources */,
 				C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */,
 				C604EB422A893B6600B18E0E /* Errors.swift in Sources */,
@@ -455,7 +479,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 4LBD36HY9T;
+				DEVELOPMENT_TEAM = 35A6B2S222;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -494,7 +518,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 4LBD36HY9T;
+				DEVELOPMENT_TEAM = 35A6B2S222;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

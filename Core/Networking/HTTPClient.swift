@@ -47,7 +47,7 @@ extension HTTPClient {
         switch response.statusCode {
         case 200...299:
             do {
-                let decodedResponse = try JSONDecoder().decode(responseModel, from: data)
+                let decodedResponse = try SibaroJSONDecoder().decode(responseModel, from: data)
                 return decodedResponse
             } catch {
                 #if DEBUG

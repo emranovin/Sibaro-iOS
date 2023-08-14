@@ -18,10 +18,4 @@ struct ProductError: Codable {
 
 struct Message: Codable {
     let tokenClass, tokenType, message: String
-
-    enum CodingKeys: String, CodingKey {
-        case tokenClass = "token_class"
-        case tokenType = "token_type"
-        case message
-    }
 }
