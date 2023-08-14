@@ -64,24 +64,23 @@ struct LoginView: View {
                         .shadow(radius: 2)
                 }
             
-            // MARK: - Fields
-            VStack(alignment: .leading) {
-                Label {
-                    // MARK: - Username Field
-                    TextField("Username", text: $username)
-                        .submitLabel(.next)
-                        .focused($focusedField, equals: .username)
-                        .disabled(loading)
-                        .frame(maxWidth: 300)
-                        .padding()
-                        .onSubmit {
-                            focusedField = .password
-                        }
-                } icon: {
-                    Image(systemName: "at")
-                }
-                
-                HStack {
+            VStack {
+                // MARK: - Fields
+                VStack(alignment: .leading) {
+                    Label {
+                        // MARK: - Username Field
+                        TextField("Username", text: $username)
+                            .submitLabel(.next)
+                            .focused($focusedField, equals: .username)
+                            .disabled(loading)
+                            .padding()
+                            .onSubmit {
+                                focusedField = .password
+                            }
+                    } icon: {
+                        Image(systemName: "at")
+                    }
+                    
                     Label {
                         // MARK: - Password Field
                         SecureField("Password", text: $password)
@@ -89,43 +88,44 @@ struct LoginView: View {
                             .privacySensitive(true)
                             .submitLabel(.done)
                             .disabled(loading)
-                            .frame(maxWidth: 300)
                             .padding()
                             .onSubmit(login)
                     } icon: {
                         Image(systemName: "lock")
                     }
                 }
-            }
-            .textFieldStyle(.plain)
-            .padding(.horizontal)
-            .background(
-                .regularMaterial,
-                in: RoundedRectangle(cornerRadius: 10)
-            )
-            
-            // MARK: - Login button
-            ZStack {
-                ProgressView()
-                    .opacity(loading ? 1 : 0)
+                .textFieldStyle(.plain)
+                .padding(.horizontal)
+                .background(
+                    .regularMaterial,
+                    in: RoundedRectangle(cornerRadius: 10)
+                )
                 
-                Button(action: login) {
-                    Text("Login")
-                        .font(.body)
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity)
+                // MARK: - Login button
+                ZStack {
+                    ProgressView()
+                        .opacity(loading ? 1 : 0)
+                    
+                    Button(action: login) {
+                        Text("Login")
+                            .font(.body)
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .cornerRadius(10)
+                    .controlSize(.large)
+                    .buttonStyle(.borderedProminent)
+                    .padding(.vertical)
+                    .opacity(loading ? 0 : 1)
                 }
-                .cornerRadius(10)
-                .controlSize(.large)
-                .buttonStyle(.borderedProminent)
-                .padding(.vertical)
-                .opacity(loading ? 0 : 1)
+                
+                // MARK: - Response message
+                Text(message)
+                    .font(.callout)
+                    .foregroundColor(.red)
             }
-            
-            // MARK: - Response message
-            Text(message)
-                .font(.callout)
-                .foregroundColor(.red)
+            .frame(maxWidth: 300)
             
             Color.clear
         }
