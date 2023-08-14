@@ -5,6 +5,7 @@
 //  Created by Armin on 8/14/23.
 //
 
+import NukeUI
 import SwiftUI
 import MarkdownUI
 
@@ -53,10 +54,14 @@ struct ProductDetailsView: View {
     
     var appPromotion: some View {
         HStack {
-            AsyncImage(url: URL(string: product.icon)) { image in
-                image.resizable()
-            } placeholder: {
-                Rectangle()
+            LazyImage(url: URL(string: product.icon)) { state in
+                if let image = state.image {
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                } else {
+                    Rectangle()
+                }
             }
             .frame(width: 96, height: 96)
             .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -127,10 +132,13 @@ struct ProductDetailsView: View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(product.screenshots, id: \.id) { screenshot in
-                    AsyncImage(url: screenshot.url) { image in
-                        image.resizable()
-                    } placeholder: {
-                        Rectangle()
+                    LazyImage(url: screenshot.url) { state in
+                        if let image = state.image {
+                            image
+                                .resizable()
+                        } else {
+                            Rectangle()
+                        }
                     }
                     .aspectRatio(screenshot.aspectRatio, contentMode: .fill)
                     .frame(height: 250)
