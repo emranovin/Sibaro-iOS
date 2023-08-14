@@ -30,19 +30,21 @@ struct ProductItemView: View {
                     Rectangle()
                 }
             }
-            .frame(width: 50, height: 50)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .frame(width: 60, height: 60)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
             .shadow(radius: 1)
             
             VStack {
                 Text(product.title)
                     .font(.title3)
+                    .fontWeight(.regular)
                     .foregroundStyle(.primary)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Text(product.subtitle)
-                    .font(.callout)
+                    .font(.footnote)
                     .foregroundStyle(.secondary)
+                    .lineLimit(1)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             
@@ -56,7 +58,7 @@ struct ProductItemView: View {
                 Button(action: install) {
                     Text("Install")
                         .font(.body)
-                        .fontWeight(.semibold)
+                        .fontWeight(.bold)
                         .padding(.horizontal, 5)
                 }
                 #if os(iOS)
@@ -64,7 +66,7 @@ struct ProductItemView: View {
                 #elseif os(macOS)
                 .controlSize(.large)
                 #endif
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.bordered)
                 .opacity(loading ? 0 : 1)
             }
         }
@@ -98,6 +100,11 @@ struct ProductItemView: View {
 
 struct ProductItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItemView(product: .mock)
+        List {
+            ProductItemView(product: .mock)
+            ProductItemView(product: .mock)
+            ProductItemView(product: .mock)
+        }
+        .listStyle(.plain)
     }
 }
