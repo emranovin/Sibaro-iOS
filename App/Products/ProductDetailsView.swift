@@ -26,6 +26,7 @@ struct ProductDetailsView: View {
             ScrollView {
                 VStack {
                     appPromotion
+                        .padding(.bottom, 12)
                     
                     Divider()
                         .padding(.horizontal)
@@ -63,20 +64,28 @@ struct ProductDetailsView: View {
                     Rectangle()
                 }
             }
-            .frame(width: 96, height: 96)
-            .clipShape(RoundedRectangle(cornerRadius: 24))
+            .frame(maxWidth: 120)
+            .clipShape(RoundedRectangle(cornerRadius: 27))
+            .shadow(radius: 1)
             .padding()
             
             VStack(alignment: .leading) {
                 Text(product.title)
                     .font(.title3)
+                    .fontWeight(.semibold)
                     .foregroundStyle(.primary)
+                    .multilineTextAlignment(.leading)
+                    .minimumScaleFactor(0.8)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Text(product.subtitle)
                     .font(.callout)
                     .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.leading)
+                    .minimumScaleFactor(0.8)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Spacer()
                 
                 // MARK: - Install button
                 ZStack(alignment: .leading) {
@@ -98,7 +107,10 @@ struct ProductDetailsView: View {
                     .opacity(loading ? 0 : 1)
                 }
             }
+            .padding(.trailing, 12)
+            .frame(maxWidth: .infinity)
         }
+        .frame(maxHeight: 120)
     }
     
     var appDetails: some View {
