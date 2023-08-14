@@ -7,11 +7,19 @@
 
 import SwiftUI
 
+enum SortType: String, CaseIterable {
+    case newest = "Newest"
+    case oldest = "Oldest"
+    case updated = "Updated"
+    case alphabetical = "Alphabetical"
+}
+
 struct ProductsListView: View {
     
     var type: AppType
     private let service = ProductsService()
     
+    @State private var sortType: SortType = .updated
     @State private var rawProducts: [Product] = []
     @State private var search: String = ""
     
@@ -29,7 +37,16 @@ struct ProductsListView: View {
         }
         
         if search.isEmpty {
-            return typeFilter
+            switch sortType {
+            case .newest:
+                return typeFilter.sorted(by: { $0.createdAt > $1.createdAt })
+            case .oldest:
+                return typeFilter.sorted(by: { $0.createdAt < $1.createdAt })
+            case .updated:
+                return typeFilter.sorted(by: { $0.updatedAt > $1.updatedAt })
+            case .alphabetical:
+                return typeFilter.sorted(by: { $0.title < $1.title })
+            }
         } else {
             return typeFilter.filter { product in
                 product.title.contains(search)
@@ -54,11 +71,32 @@ struct ProductsListView: View {
         .refreshable {
             await getList()
         }
+        .toolbar {
+            ToolbarItem {
+                #if os(macOS)
+                sortPicker
+                #elseif os(iOS)
+                Menu {
+                    sortPicker
+                } label: {
+                    Label("Sort by", systemImage: "slider.horizontal.3")
+                }
+                #endif
+            }
+        }
         .sheet(item: $selectedProduct) { product in
             ProductDetailsView(product: product)
                 #if os(macOS)
                 .frame(minWidth: 350, idealWidth: 600, minHeight: 500, idealHeight: 650)
                 #endif
+        }
+    }
+    
+    var sortPicker: some View {
+        Picker("Sort by", selection: $sortType) {
+            ForEach(SortType.allCases, id: \.self) { type in
+                Text(type.rawValue)
+            }
         }
     }
     

@@ -49,10 +49,11 @@ struct ProfileView: View {
                     .buttonStyle(.borderless)
                     #endif
                 }
+                .fontWeight(.medium)
             }
         }
     }
-
+    
     func logout() {
         Task {
             try await account.logout()
