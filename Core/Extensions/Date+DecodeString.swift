@@ -19,13 +19,13 @@ extension DateFormatter: AnyDateFormatter {}
 extension Date {
     
     init?(from string: String) {
-        var dateFormatter: AnyDateFormatter = {
+        let dateFormatter: AnyDateFormatter = {
             if string.count == 10 {
-                var dateFormatter = DateFormatter()
+                let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 return dateFormatter
             }
-            var dateFormatter = ISO8601DateFormatter()
+            let dateFormatter = ISO8601DateFormatter()
             dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
             return dateFormatter
         }()
