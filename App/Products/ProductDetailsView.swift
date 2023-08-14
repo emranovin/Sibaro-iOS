@@ -117,27 +117,32 @@ struct ProductDetailsView: View {
         HStack(spacing: 15) {
             VStack {
                 Text("Size")
-                    .font(.caption)
-                    .fontWeight(.light)
+                    .font(.caption2)
+                    .fontWeight(.medium)
+                    .textCase(.uppercase)
+                    .foregroundStyle(.tertiary)
                     
                 Text(product.ipaSize)
                     .font(.title3)
                     .fontWeight(.medium)
+                    .foregroundStyle(.secondary)
             }
             
             Divider()
             
             VStack {
                 Text("Version")
-                    .font(.caption)
-                    .fontWeight(.light)
+                    .font(.caption2)
+                    .fontWeight(.medium)
+                    .textCase(.uppercase)
+                    .foregroundStyle(.tertiary)
                 
                 Text(product.version)
                     .font(.title3)
                     .fontWeight(.medium)
+                    .foregroundStyle(.secondary)
             }
         }
-        .foregroundStyle(.secondary)
     }
     
     var screenshots: some View {
