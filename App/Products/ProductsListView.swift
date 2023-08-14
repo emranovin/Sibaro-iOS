@@ -15,6 +15,8 @@ struct ProductsListView: View {
     @State private var rawProducts: [Product] = []
     @State private var search: String = ""
     
+    @State var selectedProduct: Product? = nil
+    
     /// Status
     @State private var loading: Bool = false
     @State private var message: String = ""
@@ -38,6 +40,9 @@ struct ProductsListView: View {
     var body: some View {
         List(products, id: \.id) { product in
             ProductItemView(product: product)
+                .onTapGesture {
+                    selectedProduct = product
+                }
         }
         .listStyle(.plain)
         .overlay(emptyState)
@@ -48,6 +53,12 @@ struct ProductsListView: View {
         }
         .refreshable {
             await getList()
+        }
+        .sheet(item: $selectedProduct) { product in
+            ProductDetailsView(product: product)
+                #if os(macOS)
+                .frame(minWidth: 350, idealWidth: 600, minHeight: 500, idealHeight: 650)
+                #endif
         }
     }
     

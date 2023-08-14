@@ -14,7 +14,6 @@ struct ProductItemView: View {
     private let service = ProductsService()
     
     @State var loading: Bool = false
-    @State var showDetails: Bool = false
     
     @EnvironmentObject var account: Account
     @Environment(\.openURL) var openURL
@@ -60,15 +59,6 @@ struct ProductItemView: View {
                 .padding()
                 .opacity(loading ? 0 : 1)
             }
-        }
-        .onTapGesture {
-            showDetails.toggle()
-        }
-        .sheet(isPresented: $showDetails) {
-            ProductDetailsView(product: product)
-                #if os(macOS)
-                .frame(minWidth: 350, idealWidth: 600, minHeight: 500, idealHeight: 650)
-                #endif
         }
     }
     

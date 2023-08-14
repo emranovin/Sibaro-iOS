@@ -15,46 +15,40 @@ struct ProductDetailsView: View {
     
     @State var loading: Bool = false
     
+    @State var descriptionLines: Int? = 5
+    let descriptionLimit: Int = 5
+    
     @EnvironmentObject var account: Account
     @Environment(\.openURL) var openURL
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationStack {
-            content
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button {
-                            presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            Label("Close", systemImage: "xmark.circle.fill")
-                                .symbolRenderingMode(.hierarchical)
-                        }
-                    }
+            ScrollView {
+                VStack {
+                    appPromotion
+                    
+                    Divider()
+                        .padding(.horizontal)
+                    
+                    appDetails
+                        .padding()
+                    
+                    screenshots
+                    
+                    description
                 }
-        }
-    }
-    
-    var content: some View {
-        ScrollView {
-            VStack {
-                appPromotion
-                
-                Divider()
-                    .padding(.horizontal)
-                
-                appDetails
-                    .padding()
-                
-                screenshots
-                
-                Text(product.description)
-                    .multilineTextAlignment(product.description.isRTL ? .trailing : .leading)
-                    .frame(
-                        maxWidth: .infinity,
-                        alignment: product.description.isRTL ? .trailing : .leading
-                    )
-                    .padding()
+            }
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Label("Close", systemImage: "xmark.circle.fill")
+                            .symbolRenderingMode(.hierarchical)
+                    }
+                    .tint(.secondary)
+                }
             }
         }
     }
@@ -145,6 +139,32 @@ struct ProductDetailsView: View {
                 }
             }
             .padding(.horizontal)
+        }
+    }
+    
+    var description: some View {
+        VStack {
+            Text(product.description)
+                .lineLimit(descriptionLines)
+                .fixedSize(horizontal: false, vertical: true)
+                .multilineTextAlignment(product.description.isRTL ? .trailing : .leading)
+                .frame(
+                    maxWidth: .infinity,
+                    alignment: product.description.isRTL ? .trailing : .leading
+                )
+                .padding()
+            
+            Button {
+                withAnimation {
+                    if descriptionLines == descriptionLimit {
+                        descriptionLines = nil
+                    } else {
+                        descriptionLines = descriptionLimit
+                    }
+                }
+            } label: {
+                Image(systemName: descriptionLines == descriptionLimit ? "chevron.down" : "chevron.up")
+            }
         }
     }
     
