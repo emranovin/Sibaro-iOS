@@ -32,6 +32,7 @@ struct ProductItemView: View {
             }
             .frame(width: 50, height: 50)
             .clipShape(RoundedRectangle(cornerRadius: 12))
+            .shadow(radius: 1)
             
             VStack {
                 Text(product.title)
