@@ -33,6 +33,7 @@
 		C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */ = {isa = PBXBuildFile; productRef = C604EB4D2A894AE400B18E0E /* SimpleKeychain */; };
 		C604EB502A89546F00B18E0E /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB4F2A89546F00B18E0E /* EmptyStateView.swift */; };
 		C604EB522A895EC000B18E0E /* ProductItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB512A895EC000B18E0E /* ProductItemView.swift */; };
+		C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = C62BF8002A8A3059002CFFF9 /* MarkdownUI */; };
 		C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D22A897F1300B2427D /* ProductDetailsView.swift */; };
 		C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D52A89873400B2427D /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */,
+				C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +240,7 @@
 			name = Sibaro;
 			packageProductDependencies = (
 				C604EB4D2A894AE400B18E0E /* SimpleKeychain */,
+				C62BF8002A8A3059002CFFF9 /* MarkdownUI */,
 			);
 			productName = Sibaro;
 			productReference = C604EAFE2A892FDA00B18E0E /* Sibaro.app */;
@@ -269,6 +272,7 @@
 			mainGroup = C604EAF52A892FDA00B18E0E;
 			packageReferences = (
 				C604EB4C2A894AE400B18E0E /* XCRemoteSwiftPackageReference "SimpleKeychain" */,
+				C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 			);
 			productRefGroup = C604EAFF2A892FDA00B18E0E /* Products */;
 			projectDirPath = "";
@@ -551,6 +555,14 @@
 				minimumVersion = 1.1.0;
 			};
 		};
+		C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -558,6 +570,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C604EB4C2A894AE400B18E0E /* XCRemoteSwiftPackageReference "SimpleKeychain" */;
 			productName = SimpleKeychain;
+		};
+		C62BF8002A8A3059002CFFF9 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
