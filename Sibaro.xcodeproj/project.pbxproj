@@ -124,8 +124,8 @@
 		03E248D72A8A9C0300DDE525 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				03E248DB2A8A9C3600DDE525 /* Services */,
 				03E248D82A8A9C0B00DDE525 /* Resources */,
+				03E248DB2A8A9C3600DDE525 /* Services */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -150,8 +150,8 @@
 		03E248DE2A8A9C6E00DDE525 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				03E248E52A8AA41C00DDE525 /* Services */,
 				03E248E02A8A9CC900DDE525 /* Extensions */,
+				03E248E52A8AA41C00DDE525 /* Services */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -176,11 +176,11 @@
 		C604EAF52A892FDA00B18E0E = {
 			isa = PBXGroup;
 			children = (
-				03E248DE2A8A9C6E00DDE525 /* Storage */,
-				03E248D72A8A9C0300DDE525 /* Localization */,
 				C67979712A8A99180091BE25 /* Config.xcconfig */,
-				C604EB2A2A89396A00B18E0E /* Core */,
 				C604EB002A892FDA00B18E0E /* App */,
+				C604EB2A2A89396A00B18E0E /* Core */,
+				03E248D72A8A9C0300DDE525 /* Localization */,
+				03E248DE2A8A9C6E00DDE525 /* Storage */,
 				C604EAFF2A892FDA00B18E0E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -259,12 +259,12 @@
 		C604EB2A2A89396A00B18E0E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				03E248D32A8A75DE00DDE525 /* Extensions */,
-				03E248D02A8A75A300DDE525 /* Utilities */,
 				C604EB2B2A89398900B18E0E /* Endpoints */,
+				03E248D32A8A75DE00DDE525 /* Extensions */,
 				C604EB3B2A893A9300B18E0E /* Models */,
 				C604EB2E2A8939BB00B18E0E /* Networking */,
 				C604EB452A89403800B18E0E /* Services */,
+				03E248D02A8A75A300DDE525 /* Utilities */,
 			);
 			path = Core;
 			sourceTree = "<group>";

@@ -27,6 +27,9 @@ struct ProductDetailsView: View {
                 VStack {
                     appPromotion
                         .padding(.bottom, 12)
+                        #if os(macOS)
+                        .padding(.top, 24)
+                        #endif
                     
                     Divider()
                         .padding(.horizontal)
@@ -40,7 +43,7 @@ struct ProductDetailsView: View {
                 }
             }
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem {
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {

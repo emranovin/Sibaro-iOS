@@ -22,7 +22,7 @@ struct ProfileView: View {
                     Text(account.storageUsername)
                         .font(.title)
                 }
-                .fontWeight(.bold)
+                .fontWeight(.medium)
             }
             
             Section {
