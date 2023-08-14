@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		03E248D22A8A75BD00DDE525 /* SibaroJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248D12A8A75BD00DDE525 /* SibaroJSONDecoder.swift */; };
 		03E248D52A8A75FE00DDE525 /* Date+DecodeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248D42A8A75FE00DDE525 /* Date+DecodeString.swift */; };
+		34FFBB962A8A30EC00D09FA0 /* DesiredAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FFBB942A8A30EC00D09FA0 /* DesiredAppView.swift */; };
+		34FFBB972A8A30EC00D09FA0 /* DesiredAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FFBB952A8A30EC00D09FA0 /* DesiredAppViewModel.swift */; };
+		34FFBB992A8A33C900D09FA0 /* DesiredAppEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FFBB982A8A33C900D09FA0 /* DesiredAppEndpoint.swift */; };
+		34FFBB9B2A8A34CC00D09FA0 /* DesiredAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FFBB9A2A8A34CC00D09FA0 /* DesiredAppService.swift */; };
+		34FFBB9D2A8A352E00D09FA0 /* DesiredApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FFBB9C2A8A352E00D09FA0 /* DesiredApp.swift */; };
+		34FFBB9F2A8AAAC500D09FA0 /* FormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FFBB9E2A8AAAC500D09FA0 /* FormTextFieldView.swift */; };
 		C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB012A892FDA00B18E0E /* SibaroApp.swift */; };
 		C604EB062A892FDD00B18E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C604EB052A892FDD00B18E0E /* Assets.xcassets */; };
 		C604EB162A8930C400B18E0E /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB122A8930C400B18E0E /* Panel.swift */; };
@@ -44,6 +50,12 @@
 /* Begin PBXFileReference section */
 		03E248D12A8A75BD00DDE525 /* SibaroJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibaroJSONDecoder.swift; sourceTree = "<group>"; };
 		03E248D42A8A75FE00DDE525 /* Date+DecodeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DecodeString.swift"; sourceTree = "<group>"; };
+		34FFBB942A8A30EC00D09FA0 /* DesiredAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesiredAppView.swift; sourceTree = "<group>"; };
+		34FFBB952A8A30EC00D09FA0 /* DesiredAppViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesiredAppViewModel.swift; sourceTree = "<group>"; };
+		34FFBB982A8A33C900D09FA0 /* DesiredAppEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesiredAppEndpoint.swift; sourceTree = "<group>"; };
+		34FFBB9A2A8A34CC00D09FA0 /* DesiredAppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesiredAppService.swift; sourceTree = "<group>"; };
+		34FFBB9C2A8A352E00D09FA0 /* DesiredApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesiredApp.swift; sourceTree = "<group>"; };
+		34FFBB9E2A8AAAC500D09FA0 /* FormTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldView.swift; sourceTree = "<group>"; };
 		C604EAFE2A892FDA00B18E0E /* Sibaro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sibaro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C604EB012A892FDA00B18E0E /* SibaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibaroApp.swift; sourceTree = "<group>"; };
 		C604EB052A892FDD00B18E0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,6 +115,16 @@
 				03E248D42A8A75FE00DDE525 /* Date+DecodeString.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		34FFBB932A8A30EC00D09FA0 /* Desired Application */ = {
+			isa = PBXGroup;
+			children = (
+				34FFBB942A8A30EC00D09FA0 /* DesiredAppView.swift */,
+				34FFBB952A8A30EC00D09FA0 /* DesiredAppViewModel.swift */,
+				34FFBB9E2A8AAAC500D09FA0 /* FormTextFieldView.swift */,
+			);
+			path = "Desired Application";
 			sourceTree = "<group>";
 		};
 		C604EAF52A892FDA00B18E0E = {
@@ -170,6 +192,7 @@
 		C604EB202A8932E900B18E0E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				34FFBB932A8A30EC00D09FA0 /* Desired Application */,
 				C604EB4A2A894AAF00B18E0E /* Account.swift */,
 				C604EB212A8932FB00B18E0E /* ProfileView.swift */,
 				C604EB232A89333800B18E0E /* LoginView.swift */,
@@ -204,6 +227,7 @@
 			children = (
 				C604EB2C2A89399700B18E0E /* AuthEndpoint.swift */,
 				C604EB432A893D3500B18E0E /* ProductsEndpoint.swift */,
+				34FFBB982A8A33C900D09FA0 /* DesiredAppEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -226,6 +250,7 @@
 				C604EB3E2A893ADB00B18E0E /* Product.swift */,
 				C604EB3C2A893A9E00B18E0E /* Login.swift */,
 				C604EB412A893B6600B18E0E /* Errors.swift */,
+				34FFBB9C2A8A352E00D09FA0 /* DesiredApp.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -235,6 +260,7 @@
 			children = (
 				C604EB462A89406D00B18E0E /* AuthService.swift */,
 				C604EB482A89407D00B18E0E /* ProductsService.swift */,
+				34FFBB9A2A8A34CC00D09FA0 /* DesiredAppService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -326,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C604EB372A8939BB00B18E0E /* RequestError.swift in Sources */,
+				34FFBB992A8A33C900D09FA0 /* DesiredAppEndpoint.swift in Sources */,
 				C604EB4B2A894AAF00B18E0E /* Account.swift in Sources */,
 				C604EB502A89546F00B18E0E /* EmptyStateView.swift in Sources */,
 				C604EB522A895EC000B18E0E /* ProductItemView.swift in Sources */,
@@ -335,15 +362,20 @@
 				C604EB442A893D3500B18E0E /* ProductsEndpoint.swift in Sources */,
 				C604EB3F2A893ADB00B18E0E /* Product.swift in Sources */,
 				C604EB192A8930C400B18E0E /* MainView.swift in Sources */,
+				34FFBB9B2A8A34CC00D09FA0 /* DesiredAppService.swift in Sources */,
+				34FFBB962A8A30EC00D09FA0 /* DesiredAppView.swift in Sources */,
 				C604EB362A8939BB00B18E0E /* HTTPClient.swift in Sources */,
 				C604EB382A8939BB00B18E0E /* Endpoint.swift in Sources */,
 				03E248D52A8A75FE00DDE525 /* Date+DecodeString.swift in Sources */,
 				C604EB472A89406D00B18E0E /* AuthService.swift in Sources */,
 				C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */,
 				C604EB422A893B6600B18E0E /* Errors.swift in Sources */,
+				34FFBB9D2A8A352E00D09FA0 /* DesiredApp.swift in Sources */,
 				C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */,
 				C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */,
+				34FFBB972A8A30EC00D09FA0 /* DesiredAppViewModel.swift in Sources */,
 				C604EB1C2A89316C00B18E0E /* ProductsListView.swift in Sources */,
+				34FFBB9F2A8AAAC500D09FA0 /* FormTextFieldView.swift in Sources */,
 				C604EB182A8930C400B18E0E /* TabNavigation.swift in Sources */,
 				C604EB342A8939BB00B18E0E /* HTTPContentType.swift in Sources */,
 				C604EB172A8930C400B18E0E /* Sidebar.swift in Sources */,

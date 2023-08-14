@@ -12,30 +12,43 @@ struct ProfileView: View {
     @EnvironmentObject var account: Account
     
     var body: some View {
-        List {
-            Section {
-                HStack {
-                    Image(systemName: "person.crop.circle.fill")
-                        .foregroundStyle(Color.accentColor.gradient)
-                        .font(.largeTitle)
+        NavigationStack {
+            List {
+                Section {
+                    HStack {
+                        Image(systemName: "person.crop.circle.fill")
+                            .foregroundStyle(Color.accentColor.gradient)
+                            .font(.largeTitle)
+                        
+                        Text(account.storageUsername)
+                            .font(.title)
+                    }
+                    .fontWeight(.bold)
+                }
+                
+                Section {
+                    NavigationLink {
+                        DesiredAppView()
+                    } label: {
+                        SettingsItemView(
+                            icon: "list.bullet.clipboard.fill",
+                            color: .blue,
+                            title: "Request New App"
+                        )
+                    }
                     
-                    Text(account.storageUsername)
-                        .font(.title)
+                    Button(action: logout) {
+                        SettingsItemView(
+                            icon: "rectangle.portrait.and.arrow.forward",
+                            color: .red,
+                            title: "Logout"
+                        )
+                    }
+                    
+                    #if os(macOS)
+                    .buttonStyle(.borderless)
+                    #endif
                 }
-                .fontWeight(.bold)
-            }
-            
-            Section {
-                Button(action: logout) {
-                    SettingsItemView(
-                        icon: "rectangle.portrait.and.arrow.forward",
-                        color: .red,
-                        title: "Logout"
-                    )
-                }
-                #if os(macOS)
-                .buttonStyle(.borderless)
-                #endif
             }
         }
     }
