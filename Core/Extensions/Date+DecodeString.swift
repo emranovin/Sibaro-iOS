@@ -18,11 +18,7 @@ extension DateFormatter: AnyDateFormatter {}
 
 extension Date {
     
-    enum DecodeError: Error {
-        case dateFormatMismatch
-    }
-    
-    init(decode string: String) throws {
+    init?(from string: String) {
         var dateFormatter: AnyDateFormatter = {
             if string.count == 10 {
                 var dateFormatter = DateFormatter()
@@ -34,10 +30,9 @@ extension Date {
             return dateFormatter
         }()
         guard let date = dateFormatter.date(from: string) else {
-            throw DecodeError.dateFormatMismatch
+            return nil
         }
         self = date
-        return
     }
     
 }

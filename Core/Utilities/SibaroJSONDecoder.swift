@@ -17,7 +17,10 @@ class SibaroJSONDecoder: JSONDecoder {
     
     func dateDecoder(_ decoder: Decoder) throws -> Date {
         let container = try decoder.singleValueContainer()
-        let date = try container.decode(String.self)
-        return try Date(decode: date)
+        let dateString = try container.decode(String.self)
+        guard let date = Date(from: dateString) else {
+            throw DecodingError.dataCorruptedError(in: container, debugDescription: "Cannot decode date string \(dateString)")
+        }
+        return date
     }
 }
