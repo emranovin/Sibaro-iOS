@@ -28,8 +28,8 @@ struct Product: Codable, Identifiable {
         ipaSize: "24.4 MB",
         icon: "https://api.sibaro.mahsa.me/media/icons/5dca6e32-ec68-4b39-a953-a884f3eb32e8.png",
         bundleIdentifier: "com.rathasou.The-Spy-Camera",
-        createdAt: try! Date(decode: "2023-08-13T13:04:58.442039Z"),
-        updatedAt: try! Date(decode: "2023-08-13T13:04:58.447161Z"),
+        createdAt: Date(from: "2023-08-13T13:04:58.442039Z")!,
+        updatedAt: Date(from: "2023-08-13T13:04:58.447161Z")!,
         screenshots: [
             .init(
                 image: "https://api.sibaro.mahsa.me/media/screenshots/7e598724-2a5f-4a90-989f-68de3466b59b.jpg",
