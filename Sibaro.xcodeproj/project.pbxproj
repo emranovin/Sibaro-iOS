@@ -15,6 +15,12 @@
 		34FFBB9B2A8A34CC00D09FA0 /* DesiredAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FFBB9A2A8A34CC00D09FA0 /* DesiredAppService.swift */; };
 		34FFBB9D2A8A352E00D09FA0 /* DesiredApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FFBB9C2A8A352E00D09FA0 /* DesiredApp.swift */; };
 		34FFBB9F2A8AAAC500D09FA0 /* FormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FFBB9E2A8AAAC500D09FA0 /* FormTextFieldView.swift */; };
+		03E248DA2A8A9C2600DDE525 /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03E248D92A8A9C2600DDE525 /* en.strings */; };
+		03E248DD2A8A9C4F00DDE525 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248DC2A8A9C4F00DDE525 /* LanguageService.swift */; };
+		03E248E22A8A9D4100DDE525 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248E12A8A9D4100DDE525 /* Languages.swift */; };
+		03E248E42A8AA2C700DDE525 /* Published+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248E32A8AA2C700DDE525 /* Published+UserDefaults.swift */; };
+		03E248E72A8AA42D00DDE525 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248E62A8AA42D00DDE525 /* StorageService.swift */; };
+		03E248E92A8AA4D100DDE525 /* Published+SimpleKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248E82A8AA4D100DDE525 /* Published+SimpleKeychain.swift */; };
 		C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB012A892FDA00B18E0E /* SibaroApp.swift */; };
 		C604EB062A892FDD00B18E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C604EB052A892FDD00B18E0E /* Assets.xcassets */; };
 		C604EB162A8930C400B18E0E /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB122A8930C400B18E0E /* Panel.swift */; };
@@ -45,6 +51,8 @@
 		C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D22A897F1300B2427D /* ProductDetailsView.swift */; };
 		C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D52A89873400B2427D /* String+Extensions.swift */; };
 		C67979722A8A99180091BE25 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C67979712A8A99180091BE25 /* Config.xcconfig */; };
+		C67979752A8AA6E00091BE25 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C67979742A8AA6E00091BE25 /* Nuke */; };
+		C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C67979782A8AA6E00091BE25 /* NukeUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +64,12 @@
 		34FFBB9A2A8A34CC00D09FA0 /* DesiredAppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesiredAppService.swift; sourceTree = "<group>"; };
 		34FFBB9C2A8A352E00D09FA0 /* DesiredApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesiredApp.swift; sourceTree = "<group>"; };
 		34FFBB9E2A8AAAC500D09FA0 /* FormTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldView.swift; sourceTree = "<group>"; };
+		03E248D92A8A9C2600DDE525 /* en.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = en.strings; sourceTree = "<group>"; };
+		03E248DC2A8A9C4F00DDE525 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
+		03E248E12A8A9D4100DDE525 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
+		03E248E32A8AA2C700DDE525 /* Published+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Published+UserDefaults.swift"; sourceTree = "<group>"; };
+		03E248E62A8AA42D00DDE525 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		03E248E82A8AA4D100DDE525 /* Published+SimpleKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Published+SimpleKeychain.swift"; sourceTree = "<group>"; };
 		C604EAFE2A892FDA00B18E0E /* Sibaro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sibaro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C604EB012A892FDA00B18E0E /* SibaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibaroApp.swift; sourceTree = "<group>"; };
 		C604EB052A892FDD00B18E0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,6 +107,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */,
+				C67979752A8AA6E00091BE25 /* Nuke in Frameworks */,
 				C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */,
 				C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */,
 			);
@@ -125,11 +141,65 @@
 				34FFBB9E2A8AAAC500D09FA0 /* FormTextFieldView.swift */,
 			);
 			path = "Desired Application";
+            sourceTree = "<group>";
+        };
+		03E248D72A8A9C0300DDE525 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				03E248DB2A8A9C3600DDE525 /* Services */,
+				03E248D82A8A9C0B00DDE525 /* Resources */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		03E248D82A8A9C0B00DDE525 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				03E248D92A8A9C2600DDE525 /* en.strings */,
+				03E248E12A8A9D4100DDE525 /* Languages.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		03E248DB2A8A9C3600DDE525 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				03E248DC2A8A9C4F00DDE525 /* LanguageService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		03E248DE2A8A9C6E00DDE525 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				03E248E52A8AA41C00DDE525 /* Services */,
+				03E248E02A8A9CC900DDE525 /* Extensions */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		03E248E02A8A9CC900DDE525 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				03E248E32A8AA2C700DDE525 /* Published+UserDefaults.swift */,
+				03E248E82A8AA4D100DDE525 /* Published+SimpleKeychain.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		03E248E52A8AA41C00DDE525 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				03E248E62A8AA42D00DDE525 /* StorageService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		C604EAF52A892FDA00B18E0E = {
 			isa = PBXGroup;
 			children = (
+				03E248DE2A8A9C6E00DDE525 /* Storage */,
+				03E248D72A8A9C0300DDE525 /* Localization */,
 				C67979712A8A99180091BE25 /* Config.xcconfig */,
 				C604EB2A2A89396A00B18E0E /* Core */,
 				C604EB002A892FDA00B18E0E /* App */,
@@ -292,6 +362,8 @@
 			packageProductDependencies = (
 				C604EB4D2A894AE400B18E0E /* SimpleKeychain */,
 				C62BF8002A8A3059002CFFF9 /* MarkdownUI */,
+				C67979742A8AA6E00091BE25 /* Nuke */,
+				C67979782A8AA6E00091BE25 /* NukeUI */,
 			);
 			productName = Sibaro;
 			productReference = C604EAFE2A892FDA00B18E0E /* Sibaro.app */;
@@ -324,6 +396,7 @@
 			packageReferences = (
 				C604EB4C2A894AE400B18E0E /* XCRemoteSwiftPackageReference "SimpleKeychain" */,
 				C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+				C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = C604EAFF2A892FDA00B18E0E /* Products */;
 			projectDirPath = "";
@@ -341,6 +414,7 @@
 			files = (
 				C67979722A8A99180091BE25 /* Config.xcconfig in Resources */,
 				C604EB062A892FDD00B18E0E /* Assets.xcassets in Resources */,
+				03E248DA2A8A9C2600DDE525 /* en.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +441,7 @@
 				C604EB362A8939BB00B18E0E /* HTTPClient.swift in Sources */,
 				C604EB382A8939BB00B18E0E /* Endpoint.swift in Sources */,
 				03E248D52A8A75FE00DDE525 /* Date+DecodeString.swift in Sources */,
+				03E248E92A8AA4D100DDE525 /* Published+SimpleKeychain.swift in Sources */,
 				C604EB472A89406D00B18E0E /* AuthService.swift in Sources */,
 				C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */,
 				C604EB422A893B6600B18E0E /* Errors.swift in Sources */,
@@ -378,13 +453,17 @@
 				34FFBB9F2A8AAAC500D09FA0 /* FormTextFieldView.swift in Sources */,
 				C604EB182A8930C400B18E0E /* TabNavigation.swift in Sources */,
 				C604EB342A8939BB00B18E0E /* HTTPContentType.swift in Sources */,
+				03E248E72A8AA42D00DDE525 /* StorageService.swift in Sources */,
 				C604EB172A8930C400B18E0E /* Sidebar.swift in Sources */,
 				C604EB272A89337400B18E0E /* VisualEffectBlur.swift in Sources */,
 				C604EB352A8939BB00B18E0E /* HTTPMethod.swift in Sources */,
 				C604EB242A89333800B18E0E /* LoginView.swift in Sources */,
+				03E248DD2A8A9C4F00DDE525 /* LanguageService.swift in Sources */,
 				C604EB2D2A89399700B18E0E /* AuthEndpoint.swift in Sources */,
 				C604EB162A8930C400B18E0E /* Panel.swift in Sources */,
 				C604EB3D2A893A9E00B18E0E /* Login.swift in Sources */,
+				03E248E42A8AA2C700DDE525 /* Published+UserDefaults.swift in Sources */,
+				03E248E22A8A9D4100DDE525 /* Languages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +706,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.1.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -639,6 +726,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
 			productName = MarkdownUI;
+		};
+		C67979742A8AA6E00091BE25 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		C67979782A8AA6E00091BE25 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

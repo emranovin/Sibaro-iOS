@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DesiredAppView: View {
     
+    @Environment(\.dismiss) private var dismiss
+    
     @StateObject var viewModel = DesiredAppViewModel()
     
     var body: some View {
@@ -24,7 +26,9 @@ struct DesiredAppView: View {
                 
                 Button {
                     Task {
-                        try await viewModel.requestDesiredApp()
+                        if try await viewModel.requestDesiredApp() {
+                            dismiss()
+                        }
                     }
                 } label: {
                     Text(viewModel.isLoading ? "" : "Submit")

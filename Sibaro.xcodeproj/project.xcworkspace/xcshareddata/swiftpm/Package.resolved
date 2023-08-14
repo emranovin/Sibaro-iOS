@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "nuke",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kean/Nuke",
+      "state" : {
+        "revision" : "29d3a7e0c687f97fe35b584f60b93fc547d3dade",
+        "version" : "12.1.5"
+      }
+    },
+    {
       "identity" : "simplekeychain",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/auth0/SimpleKeychain",

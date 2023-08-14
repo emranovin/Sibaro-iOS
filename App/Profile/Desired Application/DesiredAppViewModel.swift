@@ -31,8 +31,8 @@ class DesiredAppViewModel: ObservableObject {
         }
     }
     
-    func requestDesiredApp() async throws {
-        guard isLoading else { return }
+    func requestDesiredApp() async throws -> Bool {
+        guard !isLoading else { return false }
         
         DispatchQueue.main.async {
             self.isLoading = true
@@ -47,9 +47,14 @@ class DesiredAppViewModel: ObservableObject {
         
         do {
             let result = try await desiredAppService.appSuggestion(token: userToken, name: appName, link: appLink, description: appDescription)
-        } catch {
-            
+            print(result)
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
+            return true
+        } catch let error {
+            print(error.localizedDescription)
+            return false
         }
-        isLoading = false
     }
 }

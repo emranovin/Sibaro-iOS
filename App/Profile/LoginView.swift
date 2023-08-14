@@ -46,23 +46,16 @@ struct LoginView: View {
     
     var content: some View {
         VStack {
+            Spacer()
+            
             // MARK: - App Logo
-            Color.clear
-                .overlay {
-                    Image("iTroyPure")
-                        .resizable()
-                        .renderingMode(.template)
-                        .scaledToFit()
-                        .frame(
-                            minWidth: 100,
-                            idealWidth: 150,
-                            maxWidth: 150,
-                            minHeight: 100,
-                            idealHeight: 150,
-                            maxHeight: 150
-                        )
-                        .shadow(radius: 2)
-                }
+            Image("iTroyPure")
+                .resizable()
+                .renderingMode(.template)
+                .foregroundStyle(.primary)
+                .aspectRatio(contentMode: .fit)
+                .frame(maxHeight: 150)
+                .shadow(radius: 2)
             
             VStack {
                 // MARK: - Fields
@@ -127,7 +120,7 @@ struct LoginView: View {
             }
             .frame(maxWidth: 300)
             
-            Color.clear
+            Spacer()
         }
         .padding()
     }
