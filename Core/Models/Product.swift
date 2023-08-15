@@ -17,6 +17,7 @@ struct Product: Codable, Identifiable {
     let createdAt: Date
     let updatedAt: Date
     let screenshots: [Screenshot]
+    var installationState: InstallationState?
     
     static let mock = Product(
         id: 32,
@@ -51,7 +52,7 @@ struct Product: Codable, Identifiable {
                 width: 392,
                 height: 696
             ),
-        ]
+        ], installationState: .install
     )
 }
 
@@ -83,4 +84,10 @@ struct AppManifest: Codable {
     var url: URL? {
         URL(string: "itms-services://?action=download-manifest&url=\(manifest)")
     }
+}
+
+enum InstallationState: String, Codable {
+    case open
+    case install
+    case update
 }

@@ -15,6 +15,12 @@
 		03E248E42A8AA2C700DDE525 /* Published+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248E32A8AA2C700DDE525 /* Published+UserDefaults.swift */; };
 		03E248E72A8AA42D00DDE525 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248E62A8AA42D00DDE525 /* StorageService.swift */; };
 		03E248E92A8AA4D100DDE525 /* Published+SimpleKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248E82A8AA4D100DDE525 /* Published+SimpleKeychain.swift */; };
+		117ED6F32A8B743400775CEC /* DirectoryReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6EB2A8B743400775CEC /* DirectoryReader.m */; };
+		117ED6F42A8B743400775CEC /* SystemApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6ED2A8B743400775CEC /* SystemApplicationManager.swift */; };
+		117ED6F52A8B743400775CEC /* SystemApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6EE2A8B743400775CEC /* SystemApplication.swift */; };
+		117ED6F62A8B743400775CEC /* EmbeddableSystemApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6EF2A8B743400775CEC /* EmbeddableSystemApplicationManager.swift */; };
+		117ED6F72A8B743400775CEC /* Invocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6F22A8B743400775CEC /* Invocator.m */; };
+		117ED6FA2A8B74FE00775CEC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117ED6F92A8B74FE00775CEC /* MobileCoreServices.framework */; platformFilter = ios; };
 		C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB012A892FDA00B18E0E /* SibaroApp.swift */; };
 		C604EB062A892FDD00B18E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C604EB052A892FDD00B18E0E /* Assets.xcassets */; };
 		C604EB162A8930C400B18E0E /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB122A8930C400B18E0E /* Panel.swift */; };
@@ -58,6 +64,20 @@
 		03E248E32A8AA2C700DDE525 /* Published+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Published+UserDefaults.swift"; sourceTree = "<group>"; };
 		03E248E62A8AA42D00DDE525 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		03E248E82A8AA4D100DDE525 /* Published+SimpleKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Published+SimpleKeychain.swift"; sourceTree = "<group>"; };
+		117ED6E02A8B741E00775CEC /* Sibaro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sibaro-Bridging-Header.h"; sourceTree = "<group>"; };
+		117ED6EB2A8B743400775CEC /* DirectoryReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryReader.m; sourceTree = "<group>"; };
+		117ED6EC2A8B743400775CEC /* DirectoryReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryReader.h; sourceTree = "<group>"; };
+		117ED6ED2A8B743400775CEC /* SystemApplicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemApplicationManager.swift; sourceTree = "<group>"; };
+		117ED6EE2A8B743400775CEC /* SystemApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemApplication.swift; sourceTree = "<group>"; };
+		117ED6EF2A8B743400775CEC /* EmbeddableSystemApplicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbeddableSystemApplicationManager.swift; sourceTree = "<group>"; };
+		117ED6F12A8B743400775CEC /* Invocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Invocator.h; sourceTree = "<group>"; };
+		117ED6F22A8B743400775CEC /* Invocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Invocator.m; sourceTree = "<group>"; };
+		117ED6F92A8B74FE00775CEC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		117ED6FB2A8B755E00775CEC /* LSBundleProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSBundleProxy.h; sourceTree = "<group>"; };
+		117ED6FC2A8B755E00775CEC /* UIImage-ApplicationIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-ApplicationIcons.h"; sourceTree = "<group>"; };
+		117ED6FD2A8B755E00775CEC /* LSApplicationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSApplicationProxy.h; sourceTree = "<group>"; };
+		117ED6FE2A8B755E00775CEC /* LSResourceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSResourceProxy.h; sourceTree = "<group>"; };
+		117ED6FF2A8B755E00775CEC /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
 		C604EAFE2A892FDA00B18E0E /* Sibaro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sibaro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C604EB012A892FDA00B18E0E /* SibaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibaroApp.swift; sourceTree = "<group>"; };
 		C604EB052A892FDD00B18E0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117ED6FA2A8B74FE00775CEC /* MobileCoreServices.framework in Frameworks */,
 				C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */,
 				C67979752A8AA6E00091BE25 /* Nuke in Frameworks */,
 				C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */,
@@ -173,6 +194,57 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		117ED6E32A8B743400775CEC /* Installed Apps Inspect */ = {
+			isa = PBXGroup;
+			children = (
+				117ED6ED2A8B743400775CEC /* SystemApplicationManager.swift */,
+				117ED6EE2A8B743400775CEC /* SystemApplication.swift */,
+				117ED6EF2A8B743400775CEC /* EmbeddableSystemApplicationManager.swift */,
+				117ED6E42A8B743400775CEC /* Private Headers */,
+				117ED6EA2A8B743400775CEC /* DirectoryReader */,
+				117ED6F02A8B743400775CEC /* Invocator */,
+			);
+			path = "Installed Apps Inspect";
+			sourceTree = "<group>";
+		};
+		117ED6E42A8B743400775CEC /* Private Headers */ = {
+			isa = PBXGroup;
+			children = (
+				117ED6FD2A8B755E00775CEC /* LSApplicationProxy.h */,
+				117ED6FF2A8B755E00775CEC /* LSApplicationWorkspace.h */,
+				117ED6FB2A8B755E00775CEC /* LSBundleProxy.h */,
+				117ED6FE2A8B755E00775CEC /* LSResourceProxy.h */,
+				117ED6FC2A8B755E00775CEC /* UIImage-ApplicationIcons.h */,
+			);
+			path = "Private Headers";
+			sourceTree = "<group>";
+		};
+		117ED6EA2A8B743400775CEC /* DirectoryReader */ = {
+			isa = PBXGroup;
+			children = (
+				117ED6EB2A8B743400775CEC /* DirectoryReader.m */,
+				117ED6EC2A8B743400775CEC /* DirectoryReader.h */,
+			);
+			path = DirectoryReader;
+			sourceTree = "<group>";
+		};
+		117ED6F02A8B743400775CEC /* Invocator */ = {
+			isa = PBXGroup;
+			children = (
+				117ED6F12A8B743400775CEC /* Invocator.h */,
+				117ED6F22A8B743400775CEC /* Invocator.m */,
+			);
+			path = Invocator;
+			sourceTree = "<group>";
+		};
+		117ED6F82A8B74FE00775CEC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				117ED6F92A8B74FE00775CEC /* MobileCoreServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C604EAF52A892FDA00B18E0E = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +254,8 @@
 				03E248D72A8A9C0300DDE525 /* Localization */,
 				03E248DE2A8A9C6E00DDE525 /* Storage */,
 				C604EAFF2A892FDA00B18E0E /* Products */,
+				117ED6E02A8B741E00775CEC /* Sibaro-Bridging-Header.h */,
+				117ED6F82A8B74FE00775CEC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -265,6 +339,7 @@
 				C604EB2E2A8939BB00B18E0E /* Networking */,
 				C604EB452A89403800B18E0E /* Services */,
 				03E248D02A8A75A300DDE525 /* Utilities */,
+				117ED6E32A8B743400775CEC /* Installed Apps Inspect */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -355,6 +430,7 @@
 				TargetAttributes = {
 					C604EAFD2A892FDA00B18E0E = {
 						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1420;
 					};
 				};
 			};
@@ -399,13 +475,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117ED6F72A8B743400775CEC /* Invocator.m in Sources */,
 				C604EB372A8939BB00B18E0E /* RequestError.swift in Sources */,
 				C604EB4B2A894AAF00B18E0E /* Account.swift in Sources */,
 				C604EB502A89546F00B18E0E /* EmptyStateView.swift in Sources */,
 				C604EB522A895EC000B18E0E /* ProductItemView.swift in Sources */,
 				C604EB222A8932FB00B18E0E /* ProfileView.swift in Sources */,
+				117ED6F32A8B743400775CEC /* DirectoryReader.m in Sources */,
 				C604EB492A89407D00B18E0E /* ProductsService.swift in Sources */,
 				03E248D22A8A75BD00DDE525 /* SibaroJSONDecoder.swift in Sources */,
+				117ED6F42A8B743400775CEC /* SystemApplicationManager.swift in Sources */,
 				C604EB442A893D3500B18E0E /* ProductsEndpoint.swift in Sources */,
 				C604EB3F2A893ADB00B18E0E /* Product.swift in Sources */,
 				C604EB192A8930C400B18E0E /* MainView.swift in Sources */,
@@ -414,10 +493,12 @@
 				03E248D52A8A75FE00DDE525 /* Date+DecodeString.swift in Sources */,
 				03E248E92A8AA4D100DDE525 /* Published+SimpleKeychain.swift in Sources */,
 				C604EB472A89406D00B18E0E /* AuthService.swift in Sources */,
+				117ED6F62A8B743400775CEC /* EmbeddableSystemApplicationManager.swift in Sources */,
 				C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */,
 				C604EB422A893B6600B18E0E /* Errors.swift in Sources */,
 				C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */,
 				C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */,
+				117ED6F52A8B743400775CEC /* SystemApplication.swift in Sources */,
 				C604EB1C2A89316C00B18E0E /* ProductsListView.swift in Sources */,
 				C604EB182A8930C400B18E0E /* TabNavigation.swift in Sources */,
 				C604EB342A8939BB00B18E0E /* HTTPContentType.swift in Sources */,
@@ -560,6 +641,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = App/Resources/Sibaro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -589,6 +671,8 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Sibaro-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -600,6 +684,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = App/Resources/Sibaro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -629,6 +714,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Sibaro-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -129,7 +129,27 @@ struct ProductsListView: View {
     
     func getList() async {
         do {
+#if os(macOS)
             rawProducts = try await service.products(token: account.userToken)
+            
+#elseif os(iOS)
+            // Get all apps installed on the device
+            let applications = SystemApplicationManager.sharedManager.allInstalledApplications()
+            let serverProducts = try await service.products(token: account.userToken)
+            // WARNING: Make sure to run legit in concurrent mode
+            var resultProducts: [Product] = []
+            for var product in serverProducts {
+                if let installedApp = applications.first {$0.bundleID == product.bundleIdentifier} {
+                    // FIXME: Implement version check functionality
+//                    product.installationState = (Int(installedApp.version) < Int(product.version)) ? .update : .open
+                    product.installationState = .open
+                } else {
+                    product.installationState = .install
+                }
+                resultProducts.append(product)
+            }
+            rawProducts = resultProducts
+#endif
         } catch {
             print(error)
             if let error = error as? RequestError {
