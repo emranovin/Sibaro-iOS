@@ -5,3 +5,7 @@
   Created by Ebrahim Tahernejad on 5/23/1402 AP.
   
 */
+
+"Product_Open" = "OPEN";
+"Product_Install" = "GET";
+"Product_Update" = "UPDATE";

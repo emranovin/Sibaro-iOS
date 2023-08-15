@@ -18,6 +18,7 @@ struct ProductItemView: View {
     
     @EnvironmentObject var account: Account
     @Environment(\.openURL) var openURL
+    @EnvironmentObject var i18n: I18nService
     
     var body: some View {
         HStack {
@@ -56,7 +57,17 @@ struct ProductItemView: View {
                     .opacity(loading ? 1 : 0)
                 
                 Button(action: proceedApp) {
-                    Text(product.installationState?.rawValue ?? "Install")
+                   
+                    Text({(state: InstallationState) -> String in
+                        switch state {
+                        case .open:
+                            return i18n.Product_Open
+                        case .install:
+                            return i18n.Product_Install
+                        case .update:
+                            return i18n.Product_Update    
+                        }
+                    }(product.installationState))
                         .font(.body)
                         .fontWeight(.bold)
                         .padding(.horizontal, 5)
