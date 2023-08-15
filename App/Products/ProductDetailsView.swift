@@ -65,9 +65,10 @@ struct ProductDetailsView: View {
                         .aspectRatio(contentMode: .fill)
                 } else {
                     Rectangle()
+                        .frame(width: 120, height: 120)
                 }
             }
-            .frame(maxWidth: 120)
+            .frame(maxWidth: 120, maxHeight: 120)
             .clipShape(RoundedRectangle(cornerRadius: 27))
             .shadow(radius: 1)
             .padding()
