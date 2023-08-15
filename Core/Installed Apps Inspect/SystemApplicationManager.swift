@@ -49,9 +49,9 @@ class SystemApplicationManager: NSObject {
     }
     
     
-    @discardableResult func openApplication(_ app: SystemApplication) -> Bool {
+    @discardableResult func openApplication(_ bundleID: String?) -> Bool {
         if let workspace = workspace {
-            return workspace.openApplication(withBundleID: app.bundleID)
+            return workspace.openApplication(withBundleID: bundleID)
         }
         return false
     }

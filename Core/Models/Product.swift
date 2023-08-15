@@ -17,9 +17,10 @@ struct Product: Codable, Identifiable {
     let createdAt: String
     let updatedAt: String
     let screenshots: [Screenshot]
+    var installationState: InstallationState?
 
     enum CodingKeys: String, CodingKey {
-        case id, type, title, subtitle, version, description
+        case installationState, id, type, title, subtitle, version, description
         case ipaSize = "ipa_size"
         case icon
         case bundleIdentifier = "bundle_identifier"
@@ -61,7 +62,7 @@ struct Product: Codable, Identifiable {
                 width: 392,
                 height: 696
             ),
-        ]
+        ], installationState: .install
     )
 }
 
@@ -93,4 +94,10 @@ struct AppManifest: Codable {
     var url: URL? {
         URL(string: "itms-services://?action=download-manifest&url=\(manifest)")
     }
+}
+
+enum InstallationState: String, Codable {
+    case open
+    case install
+    case update
 }

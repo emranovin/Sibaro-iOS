@@ -26,7 +26,7 @@ private struct ReversedCall{
         struct Selector{
             static let workspace = #selector(LSApplicationWorkspace_Interface.defaultWorkspace)
             static let getAllInstalledApplications = #selector(LSApplicationWorkspace_Interface.allInstalledApplications)
-            static let openApplicationWithBundleID = #selector(LSApplicationWorkspace_Interface.openApplicationWithBundleID(_:))
+            static let openApplicationWithBundleID = #selector(LSApplicationWorkspace_Interface.openApplicationWithBundleID)
         }
     }
     
@@ -42,8 +42,7 @@ private struct ReversedCall{
     }
     
     struct UIImage{
-        static let applicationIconImageForBundleIdentifier = #selector(UIImage_Private_Interface._applicationIconImageForBundleIdentifier(bundleID:, format:, scale:))
-
+        static let applicationIconImageForBundleIdentifier = #selector(UIImage_Private_Interface._applicationIconImageForBundleIdentifier)
     }
 }
 
@@ -57,8 +56,8 @@ class EmbeddableSystemApplicationManager: NSObject {
     override init(){
         //Setup workspace
         if let myClass =  LSApplicationWorkspace_class as? NSObjectProtocol {
-            if myClass.respondsToSelector(ReversedCall.LSApplicationWorkspace.Selector.workspace) {
-                self.workspace = myClass.performSelector(ReversedCall.LSApplicationWorkspace.Selector.workspace).takeRetainedValue() as? NSObject
+            if myClass.responds(to: ReversedCall.LSApplicationWorkspace.Selector.workspace) {
+                self.workspace = myClass.perform(ReversedCall.LSApplicationWorkspace.Selector.workspace).takeRetainedValue() as? NSObject
             }
         }
     }
@@ -68,31 +67,31 @@ class EmbeddableSystemApplicationManager: NSObject {
         guard let workspace = workspace else{
             return []
         }
-//        workspace.respondsToSelect
-        guard workspace.respondsToSelector(ReversedCall.LSApplicationWorkspace.Selector.getAllInstalledApplications) == true else{
+
+        guard workspace.responds(to: ReversedCall.LSApplicationWorkspace.Selector.getAllInstalledApplications) == true else{
             return []
         }
         var applications = [SystemApplication]()
         
         //Take an Unretained value so ARC doesn't release the workspace's installed apps array
-        if let installedApplicationProxies = workspace.performSelector(ReversedCall.LSApplicationWorkspace.Selector.getAllInstalledApplications).takeUnretainedValue() as? NSArray{
+        if let installedApplicationProxies = workspace.perform(ReversedCall.LSApplicationWorkspace.Selector.getAllInstalledApplications).takeUnretainedValue() as? Array<AnyObject> {
         
             for installedApp in installedApplicationProxies{
-                guard let bundleID = installedApp.valueForKey(ReversedCall.LSApplicationProxy.bundleIdentifier) as? String else{
+                guard let bundleID = installedApp.value(forKey: ReversedCall.LSApplicationProxy.bundleIdentifier) as? String else{
                     return applications
                 }
                 
-                let appIcon = self.applicationIconImageForBundleIdentifier(bundleID)
+                let appIcon = self.applicationIconImageForBundleIdentifier(bundleID: bundleID)
                 
                 let app = SystemApplication()
                 app.map(bundleID: bundleID,
-                        name: installedApp.valueForKey(ReversedCall.LSApplicationProxy.localizedName) as? String,
-                        version: installedApp.valueForKey(ReversedCall.LSApplicationProxy.shortVersionString) as? String,
-                        executableName: installedApp.valueForKey(ReversedCall.LSApplicationProxy.bundleExecutable) as? String,
-                        type: installedApp.valueForKey(ReversedCall.LSApplicationProxy.applicationType) as? String,
-                        signerIdentity: installedApp.valueForKey(ReversedCall.LSApplicationProxy.signerIdentity) as? String,
-                        applicationPath: installedApp.valueForKey(ReversedCall.LSApplicationProxy.dataContainerURL) as? NSURL,
-                        backgroundModes: installedApp.valueForKey(ReversedCall.LSApplicationProxy.UIBackgroundModes) as? [String],
+                        name: installedApp.value(forKey: ReversedCall.LSApplicationProxy.localizedName) as? String,
+                        version: installedApp.value(forKey: ReversedCall.LSApplicationProxy.shortVersionString) as? String,
+                        executableName: installedApp.value(forKey: ReversedCall.LSApplicationProxy.bundleExecutable) as? String,
+                        type: installedApp.value(forKey: ReversedCall.LSApplicationProxy.applicationType) as? String,
+                        signerIdentity: installedApp.value(forKey: ReversedCall.LSApplicationProxy.signerIdentity) as? String,
+                        applicationPath: installedApp.value(forKey: ReversedCall.LSApplicationProxy.dataContainerURL) as? URL,
+                        backgroundModes: installedApp.value(forKey: ReversedCall.LSApplicationProxy.UIBackgroundModes) as? [String],
                         icon: appIcon
                 )
                 applications.append(app)
@@ -109,8 +108,8 @@ class EmbeddableSystemApplicationManager: NSObject {
     }
     
     @discardableResult func openApplication(bundleID: String) -> Bool {
-        if let workspace = workspace, workspace.respondsToSelector(ReversedCall.LSApplicationWorkspace.Selector.openApplicationWithBundleID){
-            if workspace.performSelector(ReversedCall.LSApplicationWorkspace.Selector.openApplicationWithBundleID, withObject: bundleID) != nil{
+        if let workspace = workspace, workspace.responds(to: ReversedCall.LSApplicationWorkspace.Selector.openApplicationWithBundleID){
+            if workspace.perform(ReversedCall.LSApplicationWorkspace.Selector.openApplicationWithBundleID, with: bundleID) != nil{
                 return true //Not entirely accurate, but probably opened
             }
         }
@@ -121,7 +120,7 @@ class EmbeddableSystemApplicationManager: NSObject {
         let appIconSelector = ReversedCall.UIImage.applicationIconImageForBundleIdentifier
         //Selector format is (bundleID: String, format: Int, scale: Double) - format 2 will return a 62x62 image
 
-        return Invocator.performClassSelector(appIconSelector, target: UIImage.self, args: [bundleID, 2, Double(UIScreen.mainScreen().scale)]) as? UIImage
+        return Invocator.performClassSelector(appIconSelector, target: UIImage.self, args: [bundleID, 2, Double(UIScreen.main.scale)]) as? UIImage
     }
 }
 

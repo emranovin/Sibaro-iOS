@@ -48,7 +48,7 @@ struct ProductItemView: View {
                     .opacity(loading ? 1 : 0)
                 
                 Button(action: install) {
-                    Text("Install")
+                    Text(product.installationState?.rawValue ?? "Install")
                         .font(.body)
                         .fontWeight(.semibold)
                         .padding(.horizontal, 5)
@@ -70,13 +70,19 @@ struct ProductItemView: View {
                 self.loading = true
             }
             do {
-                let manifest = try await service.getManifest(
-                    id: product.id,
-                    token: account.userToken
-                )
-                if let manifest {
-                    openURL(manifest)
+                switch product.installationState {
+                case .open :
+                    SystemApplicationManager.sharedManager.openApplication(product.bundleIdentifier)
+                default :
+                    let manifest = try await service.getManifest(
+                        id: product.id,
+                        token: account.userToken
+                    )
+                    if let manifest {
+                        openURL(manifest)
+                    }
                 }
+                
             } catch {
                 print(error)
             }

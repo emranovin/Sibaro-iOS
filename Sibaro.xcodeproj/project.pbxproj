@@ -12,6 +12,7 @@
 		115727942A8A62CE0031AEC9 /* SystemApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115727922A8A62CE0031AEC9 /* SystemApplicationManager.swift */; };
 		115727972A8A63270031AEC9 /* EmbeddableSystemApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115727952A8A63270031AEC9 /* EmbeddableSystemApplicationManager.swift */; };
 		1157279B2A8A6C9E0031AEC9 /* Invocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1157279A2A8A6C9E0031AEC9 /* Invocator.m */; };
+		117ED6C92A8ABD2A00775CEC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117ED6C82A8ABD2A00775CEC /* MobileCoreServices.framework */; platformFilter = ios; };
 		C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB012A892FDA00B18E0E /* SibaroApp.swift */; };
 		C604EB062A892FDD00B18E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C604EB052A892FDD00B18E0E /* Assets.xcassets */; };
 		C604EB162A8930C400B18E0E /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB122A8930C400B18E0E /* Panel.swift */; };
@@ -57,6 +58,7 @@
 		115727952A8A63270031AEC9 /* EmbeddableSystemApplicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbeddableSystemApplicationManager.swift; sourceTree = "<group>"; };
 		1157279A2A8A6C9E0031AEC9 /* Invocator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Invocator.m; sourceTree = "<group>"; };
 		1157279D2A8A6DFA0031AEC9 /* Invocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Invocator.h; sourceTree = "<group>"; };
+		117ED6C82A8ABD2A00775CEC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.2.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		C604EAFE2A892FDA00B18E0E /* Sibaro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sibaro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C604EB012A892FDA00B18E0E /* SibaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibaroApp.swift; sourceTree = "<group>"; };
 		C604EB052A892FDD00B18E0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117ED6C92A8ABD2A00775CEC /* MobileCoreServices.framework in Frameworks */,
 				C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */,
 				C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */,
 			);
@@ -144,6 +147,14 @@
 			path = Invocator;
 			sourceTree = "<group>";
 		};
+		117ED6C72A8ABD2A00775CEC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				117ED6C82A8ABD2A00775CEC /* MobileCoreServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C604EAF52A892FDA00B18E0E = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +162,7 @@
 				C604EB002A892FDA00B18E0E /* App */,
 				C604EAFF2A892FDA00B18E0E /* Products */,
 				115727822A8A617A0031AEC9 /* Sibaro-Bridging-Header.h */,
+				117ED6C72A8ABD2A00775CEC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -520,6 +532,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = App/Resources/Sibaro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -562,6 +575,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = App/Resources/Sibaro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -591,6 +605,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Sibaro-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
