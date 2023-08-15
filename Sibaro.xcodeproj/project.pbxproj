@@ -55,6 +55,7 @@
 		C67979722A8A99180091BE25 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C67979712A8A99180091BE25 /* Config.xcconfig */; };
 		C67979752A8AA6E00091BE25 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C67979742A8AA6E00091BE25 /* Nuke */; };
 		C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C67979782A8AA6E00091BE25 /* NukeUI */; };
+		C6CF976A2A8BDB090035210F /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF97692A8BDB090035210F /* HapticFeedback.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,7 @@
 		C667B4D22A897F1300B2427D /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 		C667B4D52A89873400B2427D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		C67979712A8A99180091BE25 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		C6CF97692A8BDB090035210F /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				C604EB4F2A89546F00B18E0E /* EmptyStateView.swift */,
+				C6CF97692A8BDB090035210F /* HapticFeedback.swift */,
 				C604EB262A89337400B18E0E /* VisualEffectBlur.swift */,
 			);
 			path = General;
@@ -507,6 +510,7 @@
 			files = (
 				117ED6F72A8B743400775CEC /* Invocator.m in Sources */,
 				C604EB372A8939BB00B18E0E /* RequestError.swift in Sources */,
+				C6CF976A2A8BDB090035210F /* HapticFeedback.swift in Sources */,
 				C604EB4B2A894AAF00B18E0E /* Account.swift in Sources */,
 				C604EB502A89546F00B18E0E /* EmptyStateView.swift in Sources */,
 				C604EB522A895EC000B18E0E /* ProductItemView.swift in Sources */,
