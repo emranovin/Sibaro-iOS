@@ -65,9 +65,10 @@ struct ProductDetailsView: View {
                         .aspectRatio(contentMode: .fill)
                 } else {
                     Rectangle()
+                        .frame(width: 120, height: 120)
                 }
             }
-            .frame(maxWidth: 120)
+            .frame(maxWidth: 120, maxHeight: 120)
             .clipShape(RoundedRectangle(cornerRadius: 27))
             .shadow(radius: 1)
             .padding()
@@ -172,7 +173,8 @@ struct ProductDetailsView: View {
     var description: some View {
         
         Markdown(product.description)
-            .multilineTextAlignment(product.description.isRTL ? .trailing : .leading)
+            .multilineTextAlignment(.leading)
+            .environment(\.layoutDirection, product.description.isRTL ? .rightToLeft : .leftToRight)
             .padding()
     }
     
@@ -200,7 +202,10 @@ struct ProductDetailsView: View {
 }
 
 struct ProductDetailsView_Previews: PreviewProvider {
+    @StateObject static var account = Account()
+    
     static var previews: some View {
         ProductDetailsView(product: .mock)
+            .environmentObject(account)
     }
 }
