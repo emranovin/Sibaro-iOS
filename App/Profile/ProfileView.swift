@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     
     @EnvironmentObject var account: Account
+    @State private var showLogoutDialog: Bool = false
     
     var body: some View {
         List {
@@ -26,7 +27,9 @@ struct ProfileView: View {
             }
             
             Section {
-                Button(action: logout) {
+                Button {
+                    showLogoutDialog.toggle()
+                } label: {
                     SettingsItemView(
                         icon: "rectangle.portrait.and.arrow.forward",
                         color: .red,
@@ -36,6 +39,15 @@ struct ProfileView: View {
                 #if os(macOS)
                 .buttonStyle(.borderless)
                 #endif
+                .alert(
+                    "Are you sure you want to logout?",
+                    isPresented: $showLogoutDialog
+                ) {
+                    Button("Logout", role: .destructive) {
+                        logout()
+                    }
+                    Button("Cancel", role: .cancel) {}
+                }
             }
         }
     }
