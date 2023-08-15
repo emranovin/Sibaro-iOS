@@ -264,7 +264,7 @@
 			children = (
 				C67979712A8A99180091BE25 /* Config.xcconfig */,
 				C604EB002A892FDA00B18E0E /* App */,
-				C604EB2A2A89396A00B18E0E /* Core */,
+				C604EB2A2A89396A00B18E0E /* Networking */,
 				03E248D72A8A9C0300DDE525 /* Localization */,
 				117ED6E32A8B743400775CEC /* Managers */,
 				03E248DE2A8A9C6E00DDE525 /* Storage */,
@@ -345,17 +345,17 @@
 			path = General;
 			sourceTree = "<group>";
 		};
-		C604EB2A2A89396A00B18E0E /* Core */ = {
+		C604EB2A2A89396A00B18E0E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				C604EB2B2A89398900B18E0E /* Endpoints */,
 				03E248D32A8A75DE00DDE525 /* Extensions */,
 				C604EB3B2A893A9300B18E0E /* Models */,
-				C604EB2E2A8939BB00B18E0E /* Networking */,
+				C604EB2E2A8939BB00B18E0E /* Base */,
 				C604EB452A89403800B18E0E /* Services */,
 				03E248D02A8A75A300DDE525 /* Utilities */,
 			);
-			path = Core;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		C604EB2B2A89398900B18E0E /* Endpoints */ = {
@@ -367,7 +367,7 @@
 			path = Endpoints;
 			sourceTree = "<group>";
 		};
-		C604EB2E2A8939BB00B18E0E /* Networking */ = {
+		C604EB2E2A8939BB00B18E0E /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				C604EB2F2A8939BB00B18E0E /* HTTPContentType.swift */,
@@ -376,7 +376,7 @@
 				C604EB322A8939BB00B18E0E /* RequestError.swift */,
 				C604EB332A8939BB00B18E0E /* Endpoint.swift */,
 			);
-			path = Networking;
+			path = Base;
 			sourceTree = "<group>";
 		};
 		C604EB3B2A893A9300B18E0E /* Models */ = {
