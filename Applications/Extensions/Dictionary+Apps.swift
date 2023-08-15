@@ -5,6 +5,7 @@
 //  Created by Emran Novin on 8/15/23.
 //
 
+#if os(iOS)
 import Foundation
 
 extension Dictionary where Key == String, Value == SystemApplication {
@@ -12,3 +13,4 @@ extension Dictionary where Key == String, Value == SystemApplication {
         self[bundleIdentifier]?.version
     }
 }
+#endif
