@@ -20,6 +20,21 @@ struct ProductItemView: View {
     @Environment(\.openURL) var openURL
     @EnvironmentObject var i18n: I18nService
     
+    var appState: InstallationState {
+        appManger.getAppState(product)
+    }
+    
+    var appStateTitle: String {
+        switch appState {
+        case .open:
+            return i18n.Product_Open
+        case .install:
+            return i18n.Product_Install
+        case .update:
+            return i18n.Product_Update
+        }
+    }
+    
     var body: some View {
         HStack {
             LazyImage(url: URL(string: product.icon)) { state in
@@ -57,17 +72,7 @@ struct ProductItemView: View {
                     .opacity(loading ? 1 : 0)
                 
                 Button(action: proceedApp) {
-                   
-                    Text({(state: InstallationState) -> String in
-                        switch state {
-                        case .open:
-                            return i18n.Product_Open
-                        case .install:
-                            return i18n.Product_Install
-                        case .update:
-                            return i18n.Product_Update    
-                        }
-                    }(appManger.getAppState(product)))
+                    Text(appStateTitle)
                         .font(.body)
                         .fontWeight(.bold)
                         .padding(.horizontal, 5)
