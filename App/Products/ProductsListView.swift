@@ -98,6 +98,11 @@ struct ProductsListView: View {
                 Text(type.rawValue)
             }
         }
+        #if os(iOS)
+        .onChange(of: sortType) { _ in
+            HapticFeedback.shared.start(.medium)
+        }
+        #endif
     }
     
     var emptyState: some View {

@@ -92,6 +92,9 @@ struct ProductItemView: View {
     }
     
     func proceedApp() {
+        #if os(iOS)
+        HapticFeedback.shared.start(.success)
+        #endif
         Task {
             withAnimation {
                 self.loading = true
