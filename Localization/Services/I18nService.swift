@@ -12,18 +12,18 @@ class I18nService: ObservableObject {
     
     private let storage = StorageService()
     
-    var i18n: Language {
+    var language: Language {
         set {
-            storage.i18n = newValue
+            storage.language = newValue
             objectWillChange.send()
         }
         get {
-            return storage.i18n
+            return storage.language
         }
     }
     
     subscript(dynamicMember key: String) -> String {
-        NSLocalizedString(key, tableName: i18n.rawValue, bundle: Bundle.main, value: key, comment: key)
+        NSLocalizedString(key, tableName: language.rawValue, bundle: Bundle.main, value: key, comment: key)
     }
     
 }
