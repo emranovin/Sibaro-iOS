@@ -8,7 +8,12 @@
 import Foundation
 
 @dynamicMemberLookup
-class I18nService: ObservableObject {
+protocol I18nServicable: ObservableObject {
+    subscript(dynamicMember key: String) -> String { get }
+    var language: Language { get set }
+}
+
+class I18nService: I18nServicable {
     
     private let storage = StorageService()
     

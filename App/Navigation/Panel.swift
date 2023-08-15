@@ -34,14 +34,14 @@ enum Panel: CaseIterable {
         }
     }
     
-    var view: AnyView {
+    @ViewBuilder func view() -> some View {
         switch self {
         case .apps:
-            return AnyView(ProductsListView(type: .app))
+            ProductsListView(type: .app)
         case .games:
-            return AnyView(ProductsListView(type: .game))
+            ProductsListView(type: .game)
         case .profile:
-            return AnyView(ProfileView())
+            ProfileView()
         }
     }
 }

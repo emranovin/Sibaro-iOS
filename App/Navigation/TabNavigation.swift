@@ -18,7 +18,7 @@ struct TabNavigation: View {
             ForEach(Panel.allCases, id: \.self) { item in
                 let menuText = Text(item.title)
                 NavigationStack(path: $path) {
-                    item.view
+                    item.view()
                         .navigationTitle(item.title)
                 }
                 .tabItem {
