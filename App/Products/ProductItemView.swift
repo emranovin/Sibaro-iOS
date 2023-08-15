@@ -132,6 +132,8 @@ struct ProductItemView: View {
 }
 
 struct ProductItemView_Previews: PreviewProvider {
+    @ObservedObject static var i18n = I18nService()
+    
     static var previews: some View {
         List {
             ProductItemView(product: .mock)
@@ -139,5 +141,6 @@ struct ProductItemView_Previews: PreviewProvider {
             ProductItemView(product: .mock)
         }
         .listStyle(.plain)
+        .environmentObject(i18n)
     }
 }
