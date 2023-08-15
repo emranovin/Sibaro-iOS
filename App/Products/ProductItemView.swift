@@ -15,10 +15,25 @@ struct ProductItemView: View {
     private let service = ProductsService()
     
     @State var loading: Bool = false
-    
+    @StateObject var appManger = ApplicationService.sharedManager
     @EnvironmentObject var account: Account
     @Environment(\.openURL) var openURL
     @EnvironmentObject var i18n: I18nService
+    
+    var appState: InstallationState {
+        appManger.getAppState(product)
+    }
+    
+    var appStateTitle: String {
+        switch appState {
+        case .open:
+            return i18n.Product_Open
+        case .install:
+            return i18n.Product_Install
+        case .update:
+            return i18n.Product_Update
+        }
+    }
     
     var body: some View {
         HStack {
@@ -57,17 +72,7 @@ struct ProductItemView: View {
                     .opacity(loading ? 1 : 0)
                 
                 Button(action: proceedApp) {
-                   
-                    Text({(state: InstallationState) -> String in
-                        switch state {
-                        case .open:
-                            return i18n.Product_Open
-                        case .install:
-                            return i18n.Product_Install
-                        case .update:
-                            return i18n.Product_Update    
-                        }
-                    }(product.installationState))
+                    Text(appStateTitle)
                         .font(.body)
                         .fontWeight(.bold)
                         .padding(.horizontal, 5)
@@ -96,9 +101,9 @@ struct ProductItemView: View {
                 try await install()
                 #elseif os(iOS)
                 
-                switch product.installationState {
+                switch appManger.getAppState(product) {
                 case .open :
-                    SystemApplicationManager.sharedManager.openApplication(product.bundleIdentifier)
+                    ApplicationService.sharedManager.openApplication(product.bundleIdentifier)
                 default :
                     try await install()
                 }

@@ -17,18 +17,6 @@ struct Product: Codable, Identifiable {
     let createdAt: Date
     let updatedAt: Date
     let screenshots: [Screenshot]
-    var installationState: InstallationState {
-        #if os(iOS)
-        guard
-            let installedVersion = SystemApplicationManager.sharedManager.allInstalledApplications().productVersion(for: bundleIdentifier)
-        else {
-            return .install
-        }
-        return version.isBigger(than: installedVersion) ? .update : .open
-        #else
-        .install
-        #endif
-    }
     
     static let mock = Product(
         id: 32,

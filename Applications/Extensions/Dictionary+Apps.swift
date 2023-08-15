@@ -7,8 +7,8 @@
 
 import Foundation
 
-extension Array where Element == SystemApplication {
+extension Dictionary where Key == String, Value == SystemApplication {
     func productVersion(for bundleIdentifier: String) -> String? {
-        first{$0.bundleID == bundleIdentifier}?.version
+        self[bundleIdentifier]?.version
     }
 }
