@@ -7,12 +7,14 @@
 
 import Foundation
 
-protocol ProductsServiceable {
+protocol ProductsRepositoryType {
     func products(token: String) async throws -> [Product]
     func getManifest(id: Int, token: String) async throws -> URL?
 }
 
-struct ProductsService: HTTPClient, ProductsServiceable {
+struct ProductsRepository: HTTPClient, ProductsRepositoryType {
+    @Injected(\.storage) var storage
+    
     func products(token: String) async throws -> [Product] {
         return try await sendRequest(
             endpoint: ProductsEndpoint.applications(token: token),

@@ -9,17 +9,9 @@ import SwiftUI
 
 struct LoginView: View {
     
-    /// Status
-    @State var loading: Bool = false
-    @State var message: String = ""
+    @StateObject var viewModel = ViewModel()
     
-    /// Fields
-    @State var username: String = ""
-    @State var password: String = ""
     @FocusState private var focusedField: LoginField?
-    
-    /// Account management
-    @EnvironmentObject var account: Account
     
     private enum LoginField: Hashable {
         case username, password
@@ -62,10 +54,10 @@ struct LoginView: View {
                 VStack(alignment: .leading) {
                     Label {
                         // MARK: - Username Field
-                        TextField("Username", text: $username)
+                        TextField("Username", text: $viewModel.username)
                             .submitLabel(.next)
                             .focused($focusedField, equals: .username)
-                            .disabled(loading)
+                            .disabled(viewModel.loading)
                             .padding()
                             .onSubmit {
                                 focusedField = .password
@@ -76,13 +68,13 @@ struct LoginView: View {
                     
                     Label {
                         // MARK: - Password Field
-                        SecureField("Password", text: $password)
+                        SecureField("Password", text: $viewModel.password)
                             .focused($focusedField, equals: .password)
                             .privacySensitive(true)
                             .submitLabel(.done)
-                            .disabled(loading)
+                            .disabled(viewModel.loading)
                             .padding()
-                            .onSubmit(login)
+                            .onSubmit(viewModel.login)
                     } icon: {
                         Image(systemName: "lock")
                     }
@@ -97,9 +89,9 @@ struct LoginView: View {
                 // MARK: - Login button
                 ZStack {
                     ProgressView()
-                        .opacity(loading ? 1 : 0)
+                        .opacity(viewModel.loading ? 1 : 0)
                     
-                    Button(action: login) {
+                    Button(action: viewModel.login) {
                         Text("Login")
                             .font(.body)
                             .fontWeight(.semibold)
@@ -110,11 +102,11 @@ struct LoginView: View {
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)
                     .padding(.vertical)
-                    .opacity(loading ? 0 : 1)
+                    .opacity(viewModel.loading ? 0 : 1)
                 }
                 
                 // MARK: - Response message
-                Text(message)
+                Text(viewModel.message)
                     .font(.callout)
                     .foregroundColor(.red)
             }
@@ -126,37 +118,6 @@ struct LoginView: View {
     }
 }
 
-extension LoginView {
-    func login() {
-        Task {
-            withAnimation {
-                focusedField = nil
-                self.loading = true
-                self.message = ""
-            }
-            do {
-                try await account.login(
-                    username: username,
-                    password: password
-                )
-            } catch {
-                print(error)
-                if let error = error as? RequestError {
-                    switch error {
-                    case .unauthorized(let data):
-                        let decodedResponse = try JSONDecoder().decode(LoginMessage.self, from: data)
-                        message = decodedResponse.detail
-                    default:
-                        message = error.description
-                    }
-                }
-            }
-            withAnimation {
-                self.loading = false
-            }
-        }
-    }
-}
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {

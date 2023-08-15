@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-    @StateObject var account = Account()
+    @StateObject var viewModel = ViewModel()
     
     #if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
@@ -17,7 +17,7 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
-            if account.isUserLoggedIn {
+            if viewModel.isAuthenticated {
                 #if os(iOS)
                 if horizontalSizeClass == .compact {
                     TabNavigation()
@@ -31,7 +31,6 @@ struct MainView: View {
                 LoginView()
             }
         }
-        .environmentObject(account)
     }
 }
 

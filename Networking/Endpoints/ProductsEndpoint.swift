@@ -26,13 +26,20 @@ extension ProductsEndpoint: Endpoint {
         return .get
     }
     
+    var needsToken: Bool {
+        switch self {
+        case .applications,
+             .appManifest:
+            return true
+        }
+    }
+    
     var header: [String : String]? {
         switch self {
-        case .applications(let token),
-             .appManifest(_, let token):
+        case .applications,
+             .appManifest:
             return [
-                "Content-Type" : "application/json; charset=utf-8",
-                "Authorization": token
+                "Content-Type" : "application/json; charset=utf-8"
             ]
         }
         

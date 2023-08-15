@@ -8,7 +8,8 @@
 import Foundation
 
 protocol HTTPClient {
-    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async throws -> T
+    var storage: StorageServicable { get set }
+    mutating func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async throws -> T
 }
 
 extension HTTPClient {
@@ -29,7 +30,11 @@ extension HTTPClient {
         
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
-        request.allHTTPHeaderFields = endpoint.baseHeader.merging(endpoint.header ?? [:], uniquingKeysWith: { (first, _) in first })
+        request.allHTTPHeaderFields = endpoint.baseHeader
+            .merging(endpoint.header ?? [:], uniquingKeysWith: { (first, _) in first })
+            .merging(endpoint.needsToken && storage.token != nil ? [
+                "Authorization": "Bearer \(storage.token!)"
+            ] : [:], uniquingKeysWith: { (first, _) in first })
         
         if let body = endpoint.body {
             // TODO: Manage this `try` of JSONSerialization error
@@ -57,6 +62,7 @@ extension HTTPClient {
                 throw RequestError.decode
             }
         case 400, 401:
+            storage.logout()
             throw RequestError.unauthorized(data)
         default:
             throw RequestError.unexpectedStatusCode(response.statusCode)

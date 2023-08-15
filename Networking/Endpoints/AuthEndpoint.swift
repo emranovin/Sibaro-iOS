@@ -29,6 +29,13 @@ extension AuthEndpoint: Endpoint {
         }
     }
     
+    var needsToken: Bool {
+        switch self {
+        case .login(_, _):
+            return false
+        }
+    }
+    
     var header: [String : String]? {
         return ["Content-Type" : "application/json; charset=utf-8"]
     }
