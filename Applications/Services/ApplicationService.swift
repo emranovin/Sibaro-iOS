@@ -1,27 +1,51 @@
 //
-//  ApplicationManager.swift
+//  ApplicationService.swift
 //  AppExplorer
 //
 //  Created by Cardasis, Jonathan (J.) on 7/13/16.
 //  Copyright © 2016 Cardasis, Jonathan (J.). All rights reserved.
 //
+
+protocol ApplicationManagerServicable {
+    func getAppState(_ product: Product) -> InstallationState
+}
+
 #if os(iOS)
 import Foundation
 
-class SystemApplicationManager: NSObject {
-    static let sharedManager = SystemApplicationManager()
+class ApplicationService: NSObject, ObservableObject, ApplicationManagerServicable {
+    static let sharedManager = ApplicationService()
     fileprivate var workspace: LSApplicationWorkspace?
     
     
     override init() {
         workspace = LSApplicationWorkspace.defaultWorkspace() as? LSApplicationWorkspace
+        super.init()
+        allInstalledApplications()
+    }
+
+    func getAppState(_ product: Product) -> InstallationState {
+        
+        guard
+            let installedVersion = systemApplications?[product.bundleIdentifier]?.version
+        else {
+            return .install
+        }
+        
+        return product.version.isBigger(than: installedVersion) ? .update : .open
     }
     
-    func allInstalledApplications() -> [SystemApplication]{
-        guard let workspace = workspace else { //protect
-            return []
+    @Published var systemApplications: [String: SystemApplication]?
+    
+    @discardableResult
+    func allInstalledApplications(refresh: Bool = false) -> [String: SystemApplication] {
+        if !refresh, let systemApplications {
+            return systemApplications
         }
-        var applications = [SystemApplication]()
+        guard let workspace = workspace else { //protect
+            return [:]
+        }
+        var applications = [String: SystemApplication]()
         let installedApplicationProxies = workspace.allInstalledApplications() as! [LSApplicationProxy]
         
         for applicationProxy in installedApplicationProxies {
@@ -41,10 +65,9 @@ class SystemApplicationManager: NSObject {
                     backgroundModes: applicationProxy.uiBackgroundModes as? [String],
                     icon: appIcon
             )
-            
-            applications.append(app)
+            applications[app.bundleID!] = app
         }
-        
+        systemApplications = applications
         return applications
     }
     
@@ -69,5 +92,14 @@ class SystemApplicationManager: NSObject {
             , scale: Double(UIScreen.main.scale)) as? UIImage
     }
     
+}
+
+#else
+class ApplicationService: NSObject, ObservableObject, ApplicationManagerServicable {
+    static let sharedManager = ApplicationService()
+    
+    func getAppState(_ product: Product) -> InstallationState {
+        return .install
+    }
 }
 #endif
