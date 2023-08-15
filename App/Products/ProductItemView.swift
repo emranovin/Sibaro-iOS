@@ -50,13 +50,13 @@ struct ProductItemView: View {
             
             Spacer()
             
-            // MARK: - Install button
+            // MARK: - proceedApp button
             ZStack {
                 ProgressView()
                     .opacity(loading ? 1 : 0)
                 
-                Button(action: install) {
-                    Text("Install")
+                Button(action: proceedApp) {
+                    Text(product.installationState?.rawValue ?? "Install")
                         .font(.body)
                         .fontWeight(.bold)
                         .padding(.horizontal, 5)
@@ -75,25 +75,39 @@ struct ProductItemView: View {
         #endif
     }
     
-    func install() {
+    func proceedApp() {
         Task {
             withAnimation {
                 self.loading = true
             }
             do {
-                let manifest = try await service.getManifest(
-                    id: product.id,
-                    token: account.userToken
-                )
-                if let manifest {
-                    openURL(manifest)
+                #if os(macOS)
+                try await install()
+                #elseif os(iOS)
+                
+                switch product.installationState {
+                case .open :
+                    SystemApplicationManager.sharedManager.openApplication(product.bundleIdentifier)
+                default :
+                    try await install()
                 }
+                #endif
             } catch {
                 print(error)
             }
             withAnimation {
                 self.loading = false
             }
+        }
+    }
+    
+    private func install() async throws {
+        let manifest = try await service.getManifest(
+            id: product.id,
+            token: account.userToken
+        )
+        if let manifest {
+            openURL(manifest)
         }
     }
 }
