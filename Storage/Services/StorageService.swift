@@ -13,5 +13,5 @@ class StorageService {
     @Published(key: "Sibaro.Username") var username: String? = nil
     
     // MARK: - Language
-    @Published(key: "Sibaro.Language") var i18n: Language = .en
+    @Published(key: "Sibaro.Language") var language: Language = .en
 }
