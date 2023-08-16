@@ -6,17 +6,16 @@
 //  Copyright © 2016 Cardasis, Jonathan (J.). All rights reserved.
 //
 
-protocol ApplicationManagerServicable {
+protocol ApplicationServicable {
     func getAppState(_ product: Product) -> InstallationState
+    @discardableResult func openApplication(_ bundleID: String?) -> Bool
 }
 
 #if os(iOS)
 import Foundation
 
-class ApplicationService: NSObject, ObservableObject, ApplicationManagerServicable {
-    static let sharedManager = ApplicationService()
+class ApplicationService: NSObject, ObservableObject, ApplicationServicable {
     fileprivate var workspace: LSApplicationWorkspace?
-    
     
     override init() {
         workspace = LSApplicationWorkspace.defaultWorkspace() as? LSApplicationWorkspace
@@ -96,10 +95,12 @@ class ApplicationService: NSObject, ObservableObject, ApplicationManagerServicab
 
 #else
 class ApplicationService: NSObject, ObservableObject, ApplicationManagerServicable {
-    static let sharedManager = ApplicationService()
-    
     func getAppState(_ product: Product) -> InstallationState {
         return .install
+    }
+    
+    func openApplication(_ bundleID: String?) -> Bool {
+        return false
     }
 }
 #endif

@@ -9,5 +9,6 @@ import Foundation
 import Combine
 
 class BaseViewModel: ObservableObject {
+    @Injected(\.i18n) var i18n
     var cancelBag: Set<AnyCancellable> = []
 }

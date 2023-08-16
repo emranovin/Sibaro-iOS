@@ -10,34 +10,29 @@ import NukeUI
 
 struct ProductItemView: View {
     
-    var product: Product
     
-    private let service = ProductsService()
+    @StateObject var viewModel: ViewModel
     
-    @State var loading: Bool = false
-    @StateObject var appManger = ApplicationService.sharedManager
-    @EnvironmentObject var account: Account
-    @Environment(\.openURL) var openURL
-    @EnvironmentObject var i18n: I18nService
-    
-    var appState: InstallationState {
-        appManger.getAppState(product)
+    init(product: Product) {
+        _viewModel = StateObject(
+            wrappedValue: ViewModel(product: product)
+        )
     }
     
     var appStateTitle: String {
-        switch appState {
+        switch viewModel.appState {
         case .open:
-            return i18n.Product_Open
+            return viewModel.i18n.Product_Open
         case .install:
-            return i18n.Product_Install
+            return viewModel.i18n.Product_Install
         case .update:
-            return i18n.Product_Update
+            return viewModel.i18n.Product_Update
         }
     }
     
     var body: some View {
         HStack {
-            LazyImage(url: URL(string: product.icon)) { state in
+            LazyImage(url: URL(string: viewModel.product.icon)) { state in
                 if let image = state.image {
                     image
                         .resizable()
@@ -51,13 +46,13 @@ struct ProductItemView: View {
             .shadow(radius: 1)
             
             VStack {
-                Text(product.title)
+                Text(viewModel.product.title)
                     .font(.title3)
                     .fontWeight(.regular)
                     .foregroundStyle(.primary)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(product.subtitle)
+                Text(viewModel.product.subtitle)
                     .font(.footnote)
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
@@ -69,7 +64,7 @@ struct ProductItemView: View {
             // MARK: - proceedApp button
             ZStack {
                 ProgressView()
-                    .opacity(loading ? 1 : 0)
+                    .opacity(viewModel.loading ? 1 : 0)
                 
                 Button(action: proceedApp) {
                     Text(appStateTitle)
@@ -83,7 +78,7 @@ struct ProductItemView: View {
                 .controlSize(.large)
                 #endif
                 .buttonStyle(.bordered)
-                .opacity(loading ? 0 : 1)
+                .opacity(viewModel.loading ? 0 : 1)
             }
         }
         #if os(macOS)
@@ -96,44 +91,13 @@ struct ProductItemView: View {
         HapticFeedback.shared.start(.success)
         #endif
         Task {
-            withAnimation {
-                self.loading = true
-            }
-            do {
-                #if os(macOS)
-                try await install()
-                #elseif os(iOS)
-                
-                switch appManger.getAppState(product) {
-                case .open :
-                    ApplicationService.sharedManager.openApplication(product.bundleIdentifier)
-                default :
-                    try await install()
-                }
-                #endif
-            } catch {
-                print(error)
-            }
-            withAnimation {
-                self.loading = false
-            }
+            viewModel.handleApplicationAction()
         }
     }
     
-    private func install() async throws {
-        let manifest = try await service.getManifest(
-            id: product.id,
-            token: account.userToken
-        )
-        if let manifest {
-            openURL(manifest)
-        }
-    }
 }
 
 struct ProductItemView_Previews: PreviewProvider {
-    @ObservedObject static var i18n = I18nService()
-    
     static var previews: some View {
         List {
             ProductItemView(product: .mock)
@@ -141,6 +105,5 @@ struct ProductItemView_Previews: PreviewProvider {
             ProductItemView(product: .mock)
         }
         .listStyle(.plain)
-        .environmentObject(i18n)
     }
 }

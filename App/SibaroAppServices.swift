@@ -6,6 +6,11 @@
 //
 
 import Foundation
+#if os(iOS)
+import UIKit
+#else
+import Cocoa
+#endif
 
 // MARK: - Services
 extension Container {
@@ -15,6 +20,10 @@ extension Container {
     
     var storage: Factory<StorageServicable> {
         self { StorageService() }
+    }
+    
+    var applications: Factory<ApplicationServicable> {
+        self { ApplicationService() }
     }
 }
 
@@ -27,5 +36,18 @@ extension Container {
     
     var productRepository: Factory<ProductsRepositoryType> {
         self { ProductsRepository() }
+    }
+}
+
+// MARK: - Functions
+extension Container {
+    var openURL: Factory<(_ url: URL) -> Bool> {
+        self {
+            #if os(iOS)
+            UIApplication.shared.openURL
+            #else
+            NSWorkspace.shared.open
+            #endif
+        }
     }
 }

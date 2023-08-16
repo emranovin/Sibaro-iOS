@@ -15,7 +15,7 @@ protocol I18nServicable {
 
 class I18nService: I18nServicable, ObservableObject {
     
-    private let storage = StorageService()
+    @Injected(\.storage) var storage
     
     var language: Language {
         set {

@@ -30,6 +30,7 @@
 		03FDA30F2A8C1952003D192D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA30E2A8C1952003D192D /* MainViewModel.swift */; };
 		03FDA3112A8C1A48003D192D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA3102A8C1A48003D192D /* ViewModel.swift */; };
 		03FDA3142A8C1D1B003D192D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA3132A8C1D1B003D192D /* LoginViewModel.swift */; };
+		03FDA3182A8D0C1C003D192D /* ProductItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA3172A8D0C1C003D192D /* ProductItemViewModel.swift */; };
 		117ED6F32A8B743400775CEC /* DirectoryReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6EB2A8B743400775CEC /* DirectoryReader.m */; };
 		117ED6F42A8B743400775CEC /* ApplicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6ED2A8B743400775CEC /* ApplicationService.swift */; };
 		117ED6F52A8B743400775CEC /* SystemApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6EE2A8B743400775CEC /* SystemApplication.swift */; };
@@ -98,6 +99,7 @@
 		03FDA30E2A8C1952003D192D /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		03FDA3102A8C1A48003D192D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		03FDA3132A8C1D1B003D192D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		03FDA3172A8D0C1C003D192D /* ProductItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemViewModel.swift; sourceTree = "<group>"; };
 		117ED6E02A8B741E00775CEC /* Sibaro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sibaro-Bridging-Header.h"; sourceTree = "<group>"; };
 		117ED6EB2A8B743400775CEC /* DirectoryReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryReader.m; sourceTree = "<group>"; };
 		117ED6EC2A8B743400775CEC /* DirectoryReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryReader.h; sourceTree = "<group>"; };
@@ -260,6 +262,24 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		03FDA3152A8D0ACC003D192D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C604EB212A8932FB00B18E0E /* ProfileView.swift */,
+				363A1BE22A8CA8E700148CBB /* ProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		03FDA3162A8D0BF6003D192D /* Product Item */ = {
+			isa = PBXGroup;
+			children = (
+				C604EB512A895EC000B18E0E /* ProductItemView.swift */,
+				03FDA3172A8D0C1C003D192D /* ProductItemViewModel.swift */,
+			);
+			path = "Product Item";
+			sourceTree = "<group>";
+		};
 		110D7FC62A8BCBD5004A7ED9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,7 +405,7 @@
 				C667B4D42A89872800B2427D /* Extensions */,
 				C604EB252A89336E00B18E0E /* General */,
 				C604EB112A8930A900B18E0E /* Navigation */,
-				C604EB202A8932E900B18E0E /* Profile */,
+				C604EB202A8932E900B18E0E /* User */,
 				C604EB1A2A89314900B18E0E /* Products */,
 				C604EB102A89309700B18E0E /* Resources */,
 				C604EB012A892FDA00B18E0E /* SibaroApp.swift */,
@@ -417,21 +437,20 @@
 		C604EB1A2A89314900B18E0E /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				03FDA3162A8D0BF6003D192D /* Product Item */,
 				363A1BE02A8C909900148CBB /* Products List */,
-				C604EB512A895EC000B18E0E /* ProductItemView.swift */,
 				C667B4D22A897F1300B2427D /* ProductDetailsView.swift */,
 			);
 			path = Products;
 			sourceTree = "<group>";
 		};
-		C604EB202A8932E900B18E0E /* Profile */ = {
+		C604EB202A8932E900B18E0E /* User */ = {
 			isa = PBXGroup;
 			children = (
+				03FDA3152A8D0ACC003D192D /* Profile */,
 				03FDA3122A8C1D07003D192D /* Login */,
-				C604EB212A8932FB00B18E0E /* ProfileView.swift */,
-				363A1BE22A8CA8E700148CBB /* ProfileViewModel.swift */,
 			);
-			path = Profile;
+			path = User;
 			sourceTree = "<group>";
 		};
 		C604EB252A89336E00B18E0E /* General */ = {
@@ -620,6 +639,7 @@
 				C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */,
 				C604EB422A893B6600B18E0E /* Errors.swift in Sources */,
 				11D5D8E52A8BBC6300A3C22B /* Dictionary+Apps.swift in Sources */,
+				03FDA3182A8D0C1C003D192D /* ProductItemViewModel.swift in Sources */,
 				C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */,
 				C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */,
 				363A1BDF2A8C8DF500148CBB /* ProductsListViewModel.swift in Sources */,

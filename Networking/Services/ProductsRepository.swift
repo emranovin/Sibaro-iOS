@@ -8,23 +8,23 @@
 import Foundation
 
 protocol ProductsRepositoryType {
-    func products(token: String) async throws -> [Product]
-    func getManifest(id: Int, token: String) async throws -> URL?
+    func products() async throws -> [Product]
+    func getManifest(id: Int) async throws -> URL?
 }
 
 struct ProductsRepository: HTTPClient, ProductsRepositoryType {
     @Injected(\.storage) var storage
     
-    func products(token: String) async throws -> [Product] {
+    func products() async throws -> [Product] {
         return try await sendRequest(
-            endpoint: ProductsEndpoint.applications(token: token),
+            endpoint: ProductsEndpoint.applications,
             responseModel: [Product].self
         )
     }
     
     func getManifest(id: Int, token: String) async throws -> URL? {
         let response = try await sendRequest(
-            endpoint: ProductsEndpoint.appManifest(id: id, token: token),
+            endpoint: ProductsEndpoint.appManifest,
             responseModel: AppManifest.self
         )
         

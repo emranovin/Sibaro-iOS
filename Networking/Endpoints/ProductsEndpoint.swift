@@ -8,8 +8,8 @@
 import Foundation
 
 enum ProductsEndpoint {
-    case applications(token: String)
-    case appManifest(id: Int, token: String)
+    case applications
+    case appManifest(id: Int)
 }
 
 extension ProductsEndpoint: Endpoint {
@@ -17,7 +17,7 @@ extension ProductsEndpoint: Endpoint {
         switch self {
         case .applications:
             return "/api/applications/"
-        case .appManifest(let id, _):
+        case .appManifest(let id):
             return "/api/applications/\(id)/"
         }
     }
