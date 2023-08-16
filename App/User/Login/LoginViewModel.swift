@@ -43,7 +43,7 @@ extension LoginView {
             }
         }
         
-        func login() {
+        nonisolated func login() {
             Task {
                 await _login()
             }
