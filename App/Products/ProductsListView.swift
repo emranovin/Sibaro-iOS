@@ -98,6 +98,11 @@ struct ProductsListView: View {
                 Text(type.rawValue)
             }
         }
+        #if os(iOS)
+        .onChange(of: sortType) { _ in
+            HapticFeedback.shared.start(.medium)
+        }
+        #endif
     }
     
     var emptyState: some View {
@@ -151,9 +156,14 @@ struct ProductsListView: View {
 
 struct ProductsListView_Previews: PreviewProvider {
     @StateObject static var account = Account()
+    @ObservedObject static var i18n = I18nService()
     
     static var previews: some View {
-        return ProductsListView(type: .app)
-            .environmentObject(account)
+        NavigationStack {
+            ProductsListView(type: .app)
+                .environmentObject(account)
+                .environmentObject(i18n)
+                .navigationTitle("Apps")
+        }
     }
 }

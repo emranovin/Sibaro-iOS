@@ -84,3 +84,9 @@ struct AppManifest: Codable {
         URL(string: "itms-services://?action=download-manifest&url=\(manifest)")
     }
 }
+
+enum InstallationState: String, Codable {
+    case open
+    case install
+    case update
+}

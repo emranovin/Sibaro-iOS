@@ -18,7 +18,7 @@ struct TabNavigation: View {
             ForEach(Panel.allCases, id: \.self) { item in
                 let menuText = Text(item.title)
                 NavigationStack(path: $path) {
-                    item.view
+                    item.view()
                         .navigationTitle(item.title)
                 }
                 .tabItem {
@@ -32,8 +32,14 @@ struct TabNavigation: View {
 }
 
 struct TabNavigation_Previews: PreviewProvider {
+    
+    @StateObject static var account = Account()
+    @ObservedObject static var i18n = I18nService()
+    
     static var previews: some View {
         TabNavigation()
+            .environmentObject(account)
+            .environmentObject(i18n)
     }
 }
 #endif

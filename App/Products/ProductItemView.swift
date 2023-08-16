@@ -15,9 +15,25 @@ struct ProductItemView: View {
     private let service = ProductsService()
     
     @State var loading: Bool = false
-    
+    @StateObject var appManger = ApplicationService.sharedManager
     @EnvironmentObject var account: Account
     @Environment(\.openURL) var openURL
+    @EnvironmentObject var i18n: I18nService
+    
+    var appState: InstallationState {
+        appManger.getAppState(product)
+    }
+    
+    var appStateTitle: String {
+        switch appState {
+        case .open:
+            return i18n.Product_Open
+        case .install:
+            return i18n.Product_Install
+        case .update:
+            return i18n.Product_Update
+        }
+    }
     
     var body: some View {
         HStack {
@@ -50,13 +66,13 @@ struct ProductItemView: View {
             
             Spacer()
             
-            // MARK: - Install button
+            // MARK: - proceedApp button
             ZStack {
                 ProgressView()
                     .opacity(loading ? 1 : 0)
                 
-                Button(action: install) {
-                    Text("Install")
+                Button(action: proceedApp) {
+                    Text(appStateTitle)
                         .font(.body)
                         .fontWeight(.bold)
                         .padding(.horizontal, 5)
@@ -75,19 +91,26 @@ struct ProductItemView: View {
         #endif
     }
     
-    func install() {
+    func proceedApp() {
+        #if os(iOS)
+        HapticFeedback.shared.start(.success)
+        #endif
         Task {
             withAnimation {
                 self.loading = true
             }
             do {
-                let manifest = try await service.getManifest(
-                    id: product.id,
-                    token: account.userToken
-                )
-                if let manifest {
-                    openURL(manifest)
+                #if os(macOS)
+                try await install()
+                #elseif os(iOS)
+                
+                switch appManger.getAppState(product) {
+                case .open :
+                    ApplicationService.sharedManager.openApplication(product.bundleIdentifier)
+                default :
+                    try await install()
                 }
+                #endif
             } catch {
                 print(error)
             }
@@ -96,9 +119,21 @@ struct ProductItemView: View {
             }
         }
     }
+    
+    private func install() async throws {
+        let manifest = try await service.getManifest(
+            id: product.id,
+            token: account.userToken
+        )
+        if let manifest {
+            openURL(manifest)
+        }
+    }
 }
 
 struct ProductItemView_Previews: PreviewProvider {
+    @ObservedObject static var i18n = I18nService()
+    
     static var previews: some View {
         List {
             ProductItemView(product: .mock)
@@ -106,5 +141,6 @@ struct ProductItemView_Previews: PreviewProvider {
             ProductItemView(product: .mock)
         }
         .listStyle(.plain)
+        .environmentObject(i18n)
     }
 }

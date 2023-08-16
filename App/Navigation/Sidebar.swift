@@ -25,7 +25,7 @@ struct Sidebar: View {
             .navigationTitle("Sibaro")
         } detail: {
             NavigationStack(path: $path) {
-                selection?.view
+                selection?.view()
             }
         }
     }

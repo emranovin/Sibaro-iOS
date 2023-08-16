@@ -36,7 +36,10 @@ struct MainView: View {
 }
 
 struct MainView_Previews: PreviewProvider {
+    @ObservedObject static var i18n = I18nService()
+    
     static var previews: some View {
         MainView()
+            .environmentObject(i18n)
     }
 }
