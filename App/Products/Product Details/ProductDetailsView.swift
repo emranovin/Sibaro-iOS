@@ -107,15 +107,26 @@ struct ProductDetailsView: View {
                     Button(action: proceedApp) {
                         Text(appStateTitle)
                             .font(.body)
+                            #if os(macOS)
+                            .fontWeight(.medium)
+                            .foregroundStyle(Color.accentColor)
+                            .padding(.vertical, 2)
+                            .frame(minWidth: 64)
+                            #else
+                            .frame(minWidth: 60)
                             .fontWeight(.semibold)
-                            .padding(.horizontal, 5)
+                            #endif
                     }
                     #if os(iOS)
+                    .buttonStyle(.bordered)
                     .buttonBorderShape(.capsule)
+                    .controlSize(.mini)
                     #elseif os(macOS)
-                    .controlSize(.large)
+                    .buttonStyle(.plain)
+                    .tint(.white)
+                    .background(Color("ProductActionColor"))
+                    .clipShape(Capsule())
                     #endif
-                    .buttonStyle(.borderedProminent)
                     .opacity(viewModel.loading ? 0 : 1)
                 }
             }

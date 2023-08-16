@@ -9,6 +9,7 @@ import Foundation
 
 
 extension ProductItemView {
+    @MainActor
     class ViewModel: BaseViewModel {
         @Injected(\.applications) var applications
         @Injected(\.productRepository) var productRepository
@@ -50,7 +51,7 @@ extension ProductItemView {
             loading = false
         }
         
-        func handleApplicationAction() {
+        nonisolated func handleApplicationAction() {
             Task {
                 await _handleApplicationAction()
             }

@@ -59,6 +59,7 @@ struct LoginView: View {
                             .focused($focusedField, equals: .username)
                             .disabled(viewModel.loading)
                             .padding()
+                            .disableAutocorrection(true)
                             .onSubmit {
                                 focusedField = .password
                             }
