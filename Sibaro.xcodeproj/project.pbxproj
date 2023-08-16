@@ -12,9 +12,7 @@
 		03E248DA2A8A9C2600DDE525 /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03E248D92A8A9C2600DDE525 /* en.strings */; };
 		03E248DD2A8A9C4F00DDE525 /* I18nService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248DC2A8A9C4F00DDE525 /* I18nService.swift */; };
 		03E248E22A8A9D4100DDE525 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248E12A8A9D4100DDE525 /* Languages.swift */; };
-		03E248E42A8AA2C700DDE525 /* Published+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248E32A8AA2C700DDE525 /* Published+UserDefaults.swift */; };
 		03E248E72A8AA42D00DDE525 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248E62A8AA42D00DDE525 /* StorageService.swift */; };
-		03E248E92A8AA4D100DDE525 /* Published+SimpleKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E248E82A8AA4D100DDE525 /* Published+SimpleKeychain.swift */; };
 		03FDA2F72A8C110A003D192D /* SibaroAppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA2F62A8C110A003D192D /* SibaroAppServices.swift */; };
 		03FDA30A2A8C169A003D192D /* Locking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA2FF2A8C169A003D192D /* Locking.swift */; };
 		03FDA30F2A8C1952003D192D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA30E2A8C1952003D192D /* MainViewModel.swift */; };
@@ -25,6 +23,7 @@
 		03FDA31E2A8D470F003D192D /* Injections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA31B2A8D470F003D192D /* Injections.swift */; };
 		03FDA31F2A8D470F003D192D /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA31C2A8D470F003D192D /* Container.swift */; };
 		03FDA3202A8D470F003D192D /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA31D2A8D470F003D192D /* Factory.swift */; };
+		03FDA3222A8D5FE2003D192D /* Stored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA3212A8D5FE2003D192D /* Stored.swift */; };
 		117ED6F32A8B743400775CEC /* DirectoryReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6EB2A8B743400775CEC /* DirectoryReader.m */; };
 		117ED6F42A8B743400775CEC /* ApplicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6ED2A8B743400775CEC /* ApplicationService.swift */; };
 		117ED6F52A8B743400775CEC /* SystemApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6EE2A8B743400775CEC /* SystemApplication.swift */; };
@@ -76,9 +75,7 @@
 		03E248D92A8A9C2600DDE525 /* en.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = en.strings; sourceTree = "<group>"; };
 		03E248DC2A8A9C4F00DDE525 /* I18nService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I18nService.swift; sourceTree = "<group>"; };
 		03E248E12A8A9D4100DDE525 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
-		03E248E32A8AA2C700DDE525 /* Published+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Published+UserDefaults.swift"; sourceTree = "<group>"; };
 		03E248E62A8AA42D00DDE525 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
-		03E248E82A8AA4D100DDE525 /* Published+SimpleKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Published+SimpleKeychain.swift"; sourceTree = "<group>"; };
 		03FDA2F62A8C110A003D192D /* SibaroAppServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibaroAppServices.swift; sourceTree = "<group>"; };
 		03FDA2FF2A8C169A003D192D /* Locking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locking.swift; sourceTree = "<group>"; };
 		03FDA30E2A8C1952003D192D /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -89,6 +86,7 @@
 		03FDA31B2A8D470F003D192D /* Injections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injections.swift; sourceTree = "<group>"; };
 		03FDA31C2A8D470F003D192D /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		03FDA31D2A8D470F003D192D /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
+		03FDA3212A8D5FE2003D192D /* Stored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stored.swift; sourceTree = "<group>"; };
 		117ED6E02A8B741E00775CEC /* Sibaro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sibaro-Bridging-Header.h"; sourceTree = "<group>"; };
 		117ED6EB2A8B743400775CEC /* DirectoryReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryReader.m; sourceTree = "<group>"; };
 		117ED6EC2A8B743400775CEC /* DirectoryReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryReader.h; sourceTree = "<group>"; };
@@ -210,8 +208,7 @@
 		03E248E02A8A9CC900DDE525 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				03E248E32A8AA2C700DDE525 /* Published+UserDefaults.swift */,
-				03E248E82A8AA4D100DDE525 /* Published+SimpleKeychain.swift */,
+				03FDA3212A8D5FE2003D192D /* Stored.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -623,7 +620,6 @@
 				03E248D52A8A75FE00DDE525 /* Date+DecodeString.swift in Sources */,
 				03FDA2F72A8C110A003D192D /* SibaroAppServices.swift in Sources */,
 				03FDA3112A8C1A48003D192D /* ViewModel.swift in Sources */,
-				03E248E92A8AA4D100DDE525 /* Published+SimpleKeychain.swift in Sources */,
 				C604EB472A89406D00B18E0E /* AuthRepository.swift in Sources */,
 				363A1BE62A8D25A300148CBB /* ProductDetailsViewModel.swift in Sources */,
 				117ED6F62A8B743400775CEC /* EmbeddableSystemApplicationManager.swift in Sources */,
@@ -650,8 +646,8 @@
 				03FDA3202A8D470F003D192D /* Factory.swift in Sources */,
 				C604EB2D2A89399700B18E0E /* AuthEndpoint.swift in Sources */,
 				C604EB162A8930C400B18E0E /* Panel.swift in Sources */,
+				03FDA3222A8D5FE2003D192D /* Stored.swift in Sources */,
 				C604EB3D2A893A9E00B18E0E /* Login.swift in Sources */,
-				03E248E42A8AA2C700DDE525 /* Published+UserDefaults.swift in Sources */,
 				03E248E22A8A9D4100DDE525 /* Languages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
