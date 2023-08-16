@@ -11,6 +11,8 @@ extension ProfileView {
     class ViewModel: BaseViewModel {
         @Injected(\.storage) private var storage
         
+        @Published var showLogoutDialog: Bool = false
+        
         var userName: String {
             return storage.username ?? ""
         }

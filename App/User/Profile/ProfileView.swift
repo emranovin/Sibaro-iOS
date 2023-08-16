@@ -26,7 +26,9 @@ struct ProfileView: View {
             }
             
             Section {
-                Button(action: viewModel.logout) {
+                Button {
+                    viewModel.showLogoutDialog.toggle()
+                } label: {
                     SettingsItemView(
                         icon: "rectangle.portrait.and.arrow.forward",
                         color: .red,
@@ -36,6 +38,15 @@ struct ProfileView: View {
                 #if os(macOS)
                 .buttonStyle(.borderless)
                 #endif
+                .alert(
+                    "Are you sure you want to logout?",
+                    isPresented: $viewModel.showLogoutDialog
+                ) {
+                    Button("Logout", role: .destructive) {
+                        viewModel.logout()
+                    }
+                    Button("Cancel", role: .cancel) {}
+                }
             }
         }
     }

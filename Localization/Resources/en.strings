@@ -6,6 +6,6 @@
   
 */
 
-"Product_Open" = "OPEN";
-"Product_Install" = "GET";
-"Product_Update" = "UPDATE";
+"Product_Open" = "Open";
+"Product_Install" = "Get";
+"Product_Update" = "Update";
