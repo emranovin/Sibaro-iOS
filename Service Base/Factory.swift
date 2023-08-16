@@ -14,7 +14,6 @@ class Factory<T> {
     
     init(_ container: Container, factory: @escaping () -> T) {
         self.container = container
-        print(String(describing: T.self))
         self.key = String(describing: T.self)
         container.manager.register(key: key, clear: false, factory: factory)
     }

@@ -34,9 +34,15 @@ enum StoredLocation {
 
 @propertyWrapper
 struct Stored<Value: Codable> {
+    let location: StoredLocation
+    let key: String
     var wrappedValue: Value {
         willSet {  // Before modifying wrappedValue
             publisher.subject.send(newValue)
+            guard let value = try? JSONEncoder().encode(newValue) else {
+                return
+            }
+            location.set(value, for: key)
         }
     }
 
@@ -56,6 +62,8 @@ struct Stored<Value: Codable> {
         }
     }
     init(wrappedValue: Value, key: String, in location: StoredLocation = .standard) {
+        self.location = location
+        self.key = key
         var value = wrappedValue
         if let data = location.data(for: key) {
             do {
