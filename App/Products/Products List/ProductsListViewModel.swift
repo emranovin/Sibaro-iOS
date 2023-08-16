@@ -8,6 +8,7 @@
 import Foundation
 
 extension ProductsListView {
+    @MainActor
     class ViewModel: BaseViewModel {
         @Injected(\.productRepository) var productRepository
         @Injected(\.storage) var storage

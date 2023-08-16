@@ -11,15 +11,23 @@ import MarkdownUI
 
 struct ProductDetailsView: View {
     
-    var product: Product
+    @StateObject var viewModel: ViewModel
+    @Environment(\.dismiss) var dismissAction
     
-    private let service = ProductsService()
+    init(product: Product) {
+        self._viewModel = StateObject(wrappedValue: ViewModel(product: product))
+    }
     
-    @State var loading: Bool = false
-    
-    @EnvironmentObject var account: Account
-    @Environment(\.openURL) var openURL
-    @Environment(\.presentationMode) var presentationMode
+    var appStateTitle: String {
+        switch viewModel.appState {
+        case .open:
+            return viewModel.i18n.Product_Open
+        case .install:
+            return viewModel.i18n.Product_Install
+        case .update:
+            return viewModel.i18n.Product_Update
+        }
+    }
     
     var body: some View {
         NavigationStack {
@@ -45,7 +53,7 @@ struct ProductDetailsView: View {
             .toolbar {
                 ToolbarItem {
                     Button {
-                        presentationMode.wrappedValue.dismiss()
+                        dismissAction()
                     } label: {
                         Label("Close", systemImage: "xmark.circle.fill")
                             .symbolRenderingMode(.hierarchical)
@@ -58,7 +66,7 @@ struct ProductDetailsView: View {
     
     var appPromotion: some View {
         HStack {
-            LazyImage(url: URL(string: product.icon)) { state in
+            LazyImage(url: URL(string: viewModel.product.icon)) { state in
                 if let image = state.image {
                     image
                         .resizable()
@@ -74,7 +82,7 @@ struct ProductDetailsView: View {
             .padding()
             
             VStack(alignment: .leading) {
-                Text(product.title)
+                Text(viewModel.product.title)
                     .font(.title3)
                     .fontWeight(.semibold)
                     .foregroundStyle(.primary)
@@ -82,7 +90,7 @@ struct ProductDetailsView: View {
                     .minimumScaleFactor(0.8)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(product.subtitle)
+                Text(viewModel.product.subtitle)
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.leading)
@@ -94,10 +102,10 @@ struct ProductDetailsView: View {
                 // MARK: - Install button
                 ZStack(alignment: .leading) {
                     ProgressView()
-                        .opacity(loading ? 1 : 0)
+                        .opacity(viewModel.loading ? 1 : 0)
                     
-                    Button(action: install) {
-                        Text("Install")
+                    Button(action: proceedApp) {
+                        Text(appStateTitle)
                             .font(.body)
                             .fontWeight(.semibold)
                             .padding(.horizontal, 5)
@@ -108,7 +116,7 @@ struct ProductDetailsView: View {
                     .controlSize(.large)
                     #endif
                     .buttonStyle(.borderedProminent)
-                    .opacity(loading ? 0 : 1)
+                    .opacity(viewModel.loading ? 0 : 1)
                 }
             }
             .padding(.trailing, 12)
@@ -126,7 +134,7 @@ struct ProductDetailsView: View {
                     .textCase(.uppercase)
                     .foregroundStyle(.tertiary)
                     
-                Text(product.ipaSize)
+                Text(viewModel.product.ipaSize)
                     .font(.title3)
                     .fontWeight(.medium)
                     .foregroundStyle(.secondary)
@@ -141,7 +149,7 @@ struct ProductDetailsView: View {
                     .textCase(.uppercase)
                     .foregroundStyle(.tertiary)
                 
-                Text(product.version)
+                Text(viewModel.product.version)
                     .font(.title3)
                     .fontWeight(.medium)
                     .foregroundStyle(.secondary)
@@ -152,7 +160,7 @@ struct ProductDetailsView: View {
     var screenshots: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(product.screenshots, id: \.id) { screenshot in
+                ForEach(viewModel.product.screenshots, id: \.id) { screenshot in
                     LazyImage(url: screenshot.url) { state in
                         if let image = state.image {
                             image
@@ -172,36 +180,21 @@ struct ProductDetailsView: View {
     
     var description: some View {
         
-        Markdown(product.description)
+        Markdown(viewModel.product.description)
             .multilineTextAlignment(.leading)
-            .environment(\.layoutDirection, product.description.isRTL ? .rightToLeft : .leftToRight)
+            .environment(\.layoutDirection, viewModel.product.description.isRTL ? .rightToLeft : .leftToRight)
             .padding()
     }
     
-    func install() {
+    func proceedApp() {
         #if os(iOS)
         HapticFeedback.shared.start(.success)
         #endif
         Task {
-            withAnimation {
-                self.loading = true
-            }
-            do {
-                let manifest = try await service.getManifest(
-                    id: product.id,
-                    token: account.userToken
-                )
-                if let manifest {
-                    openURL(manifest)
-                }
-            } catch {
-                print(error)
-            }
-            withAnimation {
-                self.loading = false
-            }
+            viewModel.handleApplicationAction()
         }
     }
+    
 }
 
 struct ProductDetailsView_Previews: PreviewProvider {

@@ -41,6 +41,7 @@
 		11D5D8E52A8BBC6300A3C22B /* Dictionary+Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D5D8E42A8BBC6300A3C22B /* Dictionary+Apps.swift */; };
 		363A1BDF2A8C8DF500148CBB /* ProductsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A1BDE2A8C8DF500148CBB /* ProductsListViewModel.swift */; };
 		363A1BE32A8CA8E700148CBB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A1BE22A8CA8E700148CBB /* ProfileViewModel.swift */; };
+		363A1BE62A8D25A300148CBB /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A1BE52A8D25A300148CBB /* ProductDetailsViewModel.swift */; };
 		C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB012A892FDA00B18E0E /* SibaroApp.swift */; };
 		C604EB062A892FDD00B18E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C604EB052A892FDD00B18E0E /* Assets.xcassets */; };
 		C604EB162A8930C400B18E0E /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB122A8930C400B18E0E /* Panel.swift */; };
@@ -118,6 +119,7 @@
 		11D5D8E42A8BBC6300A3C22B /* Dictionary+Apps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Apps.swift"; sourceTree = "<group>"; };
 		363A1BDE2A8C8DF500148CBB /* ProductsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListViewModel.swift; sourceTree = "<group>"; };
 		363A1BE22A8CA8E700148CBB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		363A1BE52A8D25A300148CBB /* ProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewModel.swift; sourceTree = "<group>"; };
 		C604EAFE2A892FDA00B18E0E /* Sibaro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sibaro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C604EB012A892FDA00B18E0E /* SibaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibaroApp.swift; sourceTree = "<group>"; };
 		C604EB052A892FDD00B18E0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -375,6 +377,15 @@
 			path = MainView;
 			sourceTree = "<group>";
 		};
+		363A1BE42A8D256D00148CBB /* Product Details */ = {
+			isa = PBXGroup;
+			children = (
+				C667B4D22A897F1300B2427D /* ProductDetailsView.swift */,
+				363A1BE52A8D25A300148CBB /* ProductDetailsViewModel.swift */,
+			);
+			path = "Product Details";
+			sourceTree = "<group>";
+		};
 		C604EAF52A892FDA00B18E0E = {
 			isa = PBXGroup;
 			children = (
@@ -437,9 +448,9 @@
 		C604EB1A2A89314900B18E0E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03FDA3162A8D0BF6003D192D /* Product Item */,
 				363A1BE02A8C909900148CBB /* Products List */,
-				C667B4D22A897F1300B2427D /* ProductDetailsView.swift */,
+				03FDA3162A8D0BF6003D192D /* Product Item */,
+				363A1BE42A8D256D00148CBB /* Product Details */,
 			);
 			path = Products;
 			sourceTree = "<group>";
@@ -635,6 +646,7 @@
 				03FDA3112A8C1A48003D192D /* ViewModel.swift in Sources */,
 				03E248E92A8AA4D100DDE525 /* Published+SimpleKeychain.swift in Sources */,
 				C604EB472A89406D00B18E0E /* AuthRepository.swift in Sources */,
+				363A1BE62A8D25A300148CBB /* ProductDetailsViewModel.swift in Sources */,
 				117ED6F62A8B743400775CEC /* EmbeddableSystemApplicationManager.swift in Sources */,
 				C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */,
 				C604EB422A893B6600B18E0E /* Errors.swift in Sources */,

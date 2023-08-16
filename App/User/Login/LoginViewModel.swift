@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 extension LoginView {
+    @MainActor
     class ViewModel: BaseViewModel {
         @Injected(\.authRepository) var auth
         @Injected(\.storage) var storage
