@@ -15,15 +15,15 @@ import Cocoa
 // MARK: - Services
 extension Container {
     var i18n: Factory<I18nServicable> {
-        self { I18nService() }
+        Factory(self) { I18nService() }
     }
     
     var storage: Factory<StorageServicable> {
-        self { StorageService() }
+        Factory(self) { StorageService() }
     }
     
     var applications: Factory<ApplicationServicable> {
-        self { ApplicationService() }
+        Factory(self) { ApplicationService() }
     }
 }
 
@@ -31,18 +31,18 @@ extension Container {
 // MARK: - Repositories
 extension Container {
     var authRepository: Factory<AuthRepositoryType> {
-        self { AuthRepository() }
+        Factory(self) { AuthRepository() }
     }
     
     var productRepository: Factory<ProductsRepositoryType> {
-        self { ProductsRepository() }
+        Factory(self) { ProductsRepository() }
     }
 }
 
 // MARK: - Functions
 extension Container {
     var openURL: Factory<(_ url: URL) -> Bool> {
-        self {
+        Factory(self) {
             #if os(iOS)
             UIApplication.shared.openURL
             #else

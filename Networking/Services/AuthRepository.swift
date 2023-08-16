@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol AuthRepositoryType {
+protocol AuthRepositoryType: BaseService {
     func login(
         username: String,
         password: String
     ) async throws -> LoginResult
 }
 
-struct AuthRepository: HTTPClient, AuthRepositoryType {
+class AuthRepository: BaseService, HTTPClient, AuthRepositoryType {
     @Injected(\.storage) var storage
     
     func login(

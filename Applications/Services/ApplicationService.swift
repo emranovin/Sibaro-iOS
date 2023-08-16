@@ -6,7 +6,7 @@
 //  Copyright © 2016 Cardasis, Jonathan (J.). All rights reserved.
 //
 
-protocol ApplicationServicable {
+protocol ApplicationServicable: BaseService {
     func getAppState(_ product: Product) -> InstallationState
     @discardableResult func openApplication(_ bundleID: String?) -> Bool
 }
@@ -14,7 +14,7 @@ protocol ApplicationServicable {
 #if os(iOS)
 import Foundation
 
-class ApplicationService: NSObject, ObservableObject, ApplicationServicable {
+class ApplicationService: BaseService, ApplicationServicable {
     fileprivate var workspace: LSApplicationWorkspace?
     
     override init() {
@@ -94,7 +94,7 @@ class ApplicationService: NSObject, ObservableObject, ApplicationServicable {
 }
 
 #else
-class ApplicationService: NSObject, ObservableObject, ApplicationManagerServicable {
+class ApplicationService: BaseService, ApplicationServicable {
     func getAppState(_ product: Product) -> InstallationState {
         return .install
     }

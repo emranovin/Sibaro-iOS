@@ -12,7 +12,7 @@ protocol ProductsRepositoryType {
     func getManifest(id: Int) async throws -> URL?
 }
 
-struct ProductsRepository: HTTPClient, ProductsRepositoryType {
+class ProductsRepository: BaseService, HTTPClient, ProductsRepositoryType {
     @Injected(\.storage) var storage
     
     func products() async throws -> [Product] {

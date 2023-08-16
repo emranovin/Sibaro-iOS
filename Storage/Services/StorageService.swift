@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol StorageServicable {
+protocol StorageServicable: BaseService {
     var token: String? { get set }
     var username: String? { get set }
     func logout()
@@ -15,7 +15,7 @@ protocol StorageServicable {
     var language: Language { get set }
 }
 
-class StorageService: StorageServicable, ObservableObject {
+class StorageService: BaseService, StorageServicable {
     // MARK: - UserInfo
     @Published(keychain: "Sibaro.Token") var token: String? = nil
     @Published(key: "Sibaro.Username") var username: String? = nil
@@ -24,6 +24,13 @@ class StorageService: StorageServicable, ObservableObject {
         username = nil
     }
     
+    override init() {
+        super.init()
+        print("hello instance")
+        objectWillChange.sink { _ in
+            print("HEllo")
+        }.store(in: &cancelBag)
+    }
     
     // MARK: - Language
     @Published(key: "Sibaro.Language") var language: Language = .en

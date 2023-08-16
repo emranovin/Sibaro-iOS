@@ -29,10 +29,10 @@ import Foundation
 // MARK: - Locking
 
 /// Master recursive lock
-internal var globalRecursiveLock = RecursiveLock()
+var globalContainerRecursiveLock = RecursiveLock()
 
 /// Custom recursive lock class
-internal final class RecursiveLock: NSLocking {
+final class RecursiveLock: NSLocking {
 
     init() {
         let mutexAttr = UnsafeMutablePointer<pthread_mutexattr_t>.allocate(capacity: 1)
