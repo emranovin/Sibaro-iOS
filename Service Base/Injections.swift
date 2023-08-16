@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 @propertyWrapper
-struct Inject<T> {
+struct Injected<T> {
     private var dependency: T?
     
     init(_ keyPath: KeyPath<Container, Factory<T>>) {
@@ -50,18 +50,12 @@ struct Inject<T> {
     // When wrappedValue sends a notification, call the _enclosingInstance's objectWillChange.send().
     // Use a closure to weakly reference _enclosingInstance.
     private mutating func setup<OuterSelf: ObservableObject>(_ enclosingInstance: OuterSelf) where OuterSelf.ObjectWillChangePublisher == ObservableObjectPublisher {
-//        cancellable = (wrappedValue as? BaseService)?.objectWillChange.sink(receiveValue: { _ in
-//            print("hello")
-//        })
         cancellable = (wrappedValue as? BaseService)?.objectWillChange.receive(on: RunLoop.main).sink(receiveValue: { [weak enclosingInstance] _ in
-            print("hello object will change")
             (enclosingInstance?.objectWillChange)?.send()
         })
     }
 
 }
-
-typealias Injected = Inject
 
 /*
 @propertyWrapper

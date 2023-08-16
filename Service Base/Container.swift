@@ -38,10 +38,8 @@ final class ContainerManager {
     
     func resolve<T>(key: String) -> T? {
         globalContainerRecursiveLock.lock()
-        print("cache \(key) \(registeredCached[key])")
         let value = (registeredCached[key] as? T) ?? (registered[key] as? ServiceFactoryContainer<T>)?.factory()
         registeredCached[key] = value
-        print("cache out \(key) \(value)")
         globalContainerRecursiveLock.unlock()
         return value
     }

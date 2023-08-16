@@ -24,14 +24,6 @@ class StorageService: BaseService, StorageServicable {
         username = nil
     }
     
-    override init() {
-        super.init()
-        print("hello instance")
-        objectWillChange.sink { _ in
-            print("HEllo")
-        }.store(in: &cancelBag)
-    }
-    
     // MARK: - Language
     @Published(key: "Sibaro.Language") var language: Language = .en
 }
