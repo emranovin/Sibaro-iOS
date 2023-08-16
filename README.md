@@ -15,7 +15,7 @@
 ### Configure the project 🛠
 
 - Clone the project
-- **<span style="color:red">Important:</span>** Open __`Config.xconfig`__ file with any editor except **xcode** and change __`CONFIG_BUNDLE_ID`__'s value to your **new app bundle identifier** and __`CONFIG_DEV_TEAM`__'s value to your **team ID**.
+- **<span style="color:red">Important:</span>** Open __`Config.xcconfig`__ file with any editor except **xcode** and change __`CONFIG_BUNDLE_ID`__'s value to your **new app bundle identifier** and __`CONFIG_DEV_TEAM`__'s value to your **team ID**.
 - Build & run.
 
 
