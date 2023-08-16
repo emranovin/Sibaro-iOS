@@ -55,6 +55,7 @@ struct LoginView: View {
                     Label {
                         // MARK: - Username Field
                         TextField("Username", text: $viewModel.username)
+                            .textContentType(.username)
                             .submitLabel(.next)
                             .focused($focusedField, equals: .username)
                             .disabled(viewModel.loading)
@@ -71,6 +72,7 @@ struct LoginView: View {
                     Label {
                         // MARK: - Password Field
                         SecureField("Password", text: $viewModel.password)
+                            .textContentType(.password)
                             .focused($focusedField, equals: .password)
                             .privacySensitive(true)
                             .submitLabel(.done)
