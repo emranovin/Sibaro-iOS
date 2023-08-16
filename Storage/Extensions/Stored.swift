@@ -34,21 +34,21 @@ enum StoredLocation {
 
 @propertyWrapper
 struct Stored<Value: Codable> {
-    public var wrappedValue: Value {
+    var wrappedValue: Value {
         willSet {  // Before modifying wrappedValue
             publisher.subject.send(newValue)
         }
     }
 
-    public var projectedValue: Publisher {
+    var projectedValue: Publisher {
         publisher
     }
     private var publisher: Publisher
-    public struct Publisher: Combine.Publisher {
-        public typealias Output = Value
-        public typealias Failure = Never
+    struct Publisher: Combine.Publisher {
+        typealias Output = Value
+        typealias Failure = Never
         var subject: CurrentValueSubject<Value, Never> // PassthroughSubject will lack the call of initial assignment
-        public func receive<S>(subscriber: S) where S: Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
+        func receive<S>(subscriber: S) where S: Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
             subject.subscribe(subscriber)
         }
         init(_ output: Output) {
@@ -65,7 +65,7 @@ struct Stored<Value: Codable> {
         self.wrappedValue = value
         publisher = Publisher(value)
     }
-    public static subscript<OuterSelf: ObservableObject>(
+    static subscript<OuterSelf: ObservableObject>(
         _enclosingInstance observed: OuterSelf,
         wrapped wrappedKeyPath: ReferenceWritableKeyPath<OuterSelf, Value>,
         storage storageKeyPath: ReferenceWritableKeyPath<OuterSelf, Self>
