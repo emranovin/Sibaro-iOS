@@ -205,10 +205,7 @@ struct ProductDetailsView: View {
 }
 
 struct ProductDetailsView_Previews: PreviewProvider {
-    @StateObject static var account = Account()
-    
     static var previews: some View {
         ProductDetailsView(product: .mock)
-            .environmentObject(account)
     }
 }

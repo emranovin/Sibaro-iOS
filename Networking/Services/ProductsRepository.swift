@@ -22,9 +22,9 @@ struct ProductsRepository: HTTPClient, ProductsRepositoryType {
         )
     }
     
-    func getManifest(id: Int, token: String) async throws -> URL? {
+    func getManifest(id: Int) async throws -> URL? {
         let response = try await sendRequest(
-            endpoint: ProductsEndpoint.appManifest,
+            endpoint: ProductsEndpoint.appManifest(id: id),
             responseModel: AppManifest.self
         )
         
