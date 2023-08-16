@@ -23,31 +23,32 @@ struct DesiredAppView: View {
                             
                 }
                 .padding()
-                
-                Button {
-                    Task {
-                        if try await viewModel.requestDesiredApp() {
-                            dismiss()
-                        }
-                    }
-                } label: {
-                    Text(viewModel.isLoading ? "" : "Submit")
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .frame(width: 300, height: 45)
-                        .background {
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.blue)
-                        }
-                        .overlay(
-                            ProgressView()
-                                .foregroundColor(Color.white)
-                                .opacity(viewModel.isLoading ? 1 : 0)
-                        )
-                }
 
+                ZStack {
+                    ProgressView()
+                        .opacity(viewModel.isLoading ? 1 : 0)
+                    
+                    Button {
+                        Task {
+                            if try await viewModel.requestDesiredApp() {
+                                dismiss()
+                            }
+                        }
+                    } label: {
+                        Text("Submit")
+                            .font(.body)
+                            .fontWeight(.semibold)
+                            .frame(width: 250)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .cornerRadius(10)
+                    .controlSize(.large)
+                    .buttonStyle(.borderedProminent)
+                    .padding(.vertical)
+                    .opacity(viewModel.isLoading ? 0 : 1)
+                }
             }
-            .navigationBarTitle("Desired App")
+            .navigationTitle("Desired App")
     }
 }
 

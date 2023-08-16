@@ -18,7 +18,10 @@ struct FormTextFieldView: View {
                 .font(.headline)
                 .padding(.leading, 5)
             TextField(title, text: $value, axis: .vertical)
+                .textFieldStyle(.plain)
+                #if os(iOS)
                 .textInputAutocapitalization(.never)
+                #endif
                 .autocorrectionDisabled()
                 .padding(.vertical, 10)
                 .frame(minHeight: 40, maxHeight: 150, alignment: .top)
