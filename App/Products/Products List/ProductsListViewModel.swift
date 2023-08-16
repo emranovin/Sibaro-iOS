@@ -53,7 +53,7 @@ extension ProductsListView {
         
         func _getList() async {
             do {
-                rawProducts = try await productRepository.products(token: storage.token ?? "")
+                rawProducts = try await productRepository.products()
             } catch {
                 print(error)
                 if let error = error as? RequestError {
