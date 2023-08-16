@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @EnvironmentObject var account: Account
+    @StateObject var viewModel: ViewModel = ViewModel()
     
     var body: some View {
         List {
@@ -19,14 +19,14 @@ struct ProfileView: View {
                         .foregroundStyle(Color.accentColor.gradient)
                         .font(.largeTitle)
                     
-                    Text(account.storageUsername)
+                    Text(viewModel.userName)
                         .font(.title)
                 }
                 .fontWeight(.medium)
             }
             
             Section {
-                Button(action: logout) {
+                Button(action: viewModel.logout) {
                     SettingsItemView(
                         icon: "rectangle.portrait.and.arrow.forward",
                         color: .red,
@@ -40,11 +40,6 @@ struct ProfileView: View {
         }
     }
 
-    func logout() {
-        Task {
-            try await account.logout()
-        }
-    }
 }
 
 struct SettingsItemView: View {
@@ -84,10 +79,8 @@ struct SettingsItemView: View {
 }
 
 struct ProfileView_Previews: PreviewProvider {
-    @StateObject static var account = Account()
     
     static var previews: some View {
         ProfileView()
-            .environmentObject(account)
     }
 }
