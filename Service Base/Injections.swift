@@ -22,7 +22,7 @@ struct Injected<T> {
         mutating set { dependency = newValue }
     }
 
-    var projectedValue: Inject<T> {
+    var projectedValue: Injected<T> {
         get { return self }
         mutating set { self = newValue }
     }
