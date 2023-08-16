@@ -9,7 +9,7 @@ import Foundation
 
 protocol HTTPClient {
     var storage: StorageServicable { get set }
-    mutating func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async throws -> T
+    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async throws -> T
 }
 
 extension HTTPClient {
