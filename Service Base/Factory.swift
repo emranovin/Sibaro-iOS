@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Factory<T> {
+struct Factory<T> {
     
     private weak var container: Container?
     private var key: String
