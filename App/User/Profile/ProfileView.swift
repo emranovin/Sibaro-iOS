@@ -38,7 +38,7 @@ struct ProfileView: View {
                 #if os(macOS)
                 .buttonStyle(.borderless)
                 #endif
-                .sheet(isPresented: $viewModel.showAppsuggestion) {
+                .sheet(isPresented: $viewModel.showAppSuggestion) {
                     SubmitAppView()
                         .presentationDetents([.fraction(0.6), .large])
                         #if os(macOS)
