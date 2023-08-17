@@ -199,18 +199,18 @@
 		03E248DE2A8A9C6E00DDE525 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				03E248E02A8A9CC900DDE525 /* Extensions */,
+				03E248E02A8A9CC900DDE525 /* Utilities */,
 				03E248E52A8AA41C00DDE525 /* Services */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
 		};
-		03E248E02A8A9CC900DDE525 /* Extensions */ = {
+		03E248E02A8A9CC900DDE525 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				03FDA3212A8D5FE2003D192D /* Stored.swift */,
 			);
-			path = Extensions;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		03E248E52A8AA41C00DDE525 /* Services */ = {

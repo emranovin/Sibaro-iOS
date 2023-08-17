@@ -22,17 +22,40 @@ struct ProductsListView: View {
         self._viewModel = StateObject(wrappedValue: ViewModel(type: type))
     }
     
-    var body: some View {
+    var listView: some View {
+        #if os(iOS)
         List(viewModel.products, id: \.id) { product in
             Button {
                 viewModel.selectedProduct = product
             } label: {
                 ProductItemView(product: product)
             }
-                
         }
         .listStyle(.plain)
-        .overlay(emptyState)
+        #else
+        ScrollView {
+            LazyVGrid(columns: [
+                .init(.flexible(), spacing: 5.0),
+                .init(.flexible(), spacing: 5.0)
+            ]) {
+                ForEach(viewModel.products, id: \.id) { product in
+                    ProductItemView(product: product)
+                        .onTapGesture {
+                            viewModel.selectedProduct = product
+                        }
+                        .padding()
+                }
+            }
+            .padding()
+        }
+        #endif
+    }
+    
+    var body: some View {
+        listView
+        .overlay {
+            emptyState
+        }
         .searchable(text: $viewModel.search)
         .task {
             viewModel.getList()
