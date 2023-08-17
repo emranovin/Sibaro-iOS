@@ -61,7 +61,9 @@ extension HTTPClient {
                 #endif
                 throw RequestError.decode
             }
-        case 400, 401:
+        case 400:
+            throw RequestError.badRequest(data)
+        case 401:
             storage.logout()
             throw RequestError.unauthorized(data)
         default:

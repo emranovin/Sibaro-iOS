@@ -26,6 +26,16 @@ struct ProfileView: View {
             }
             
             Section {
+                NavigationLink {
+                    SubmitAppView()
+                } label: {
+                    SettingsItemView(
+                        icon: "list.bullet.clipboard.fill",
+                        color: .blue,
+                        title: "Request New App"
+                    )
+                }
+                
                 Button {
                     viewModel.showLogoutDialog.toggle()
                 } label: {
@@ -50,7 +60,6 @@ struct ProfileView: View {
             }
         }
     }
-
 }
 
 struct SettingsItemView: View {
