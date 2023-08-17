@@ -61,6 +61,7 @@
 		C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */ = {isa = PBXBuildFile; productRef = C604EB4D2A894AE400B18E0E /* SimpleKeychain */; };
 		C604EB502A89546F00B18E0E /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB4F2A89546F00B18E0E /* EmptyStateView.swift */; };
 		C604EB522A895EC000B18E0E /* ProductItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB512A895EC000B18E0E /* ProductItemView.swift */; };
+		C61B1ADC2A8E805800F3AD27 /* NSTextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61B1ADB2A8E805800F3AD27 /* NSTextView+Extensions.swift */; };
 		C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = C62BF8002A8A3059002CFFF9 /* MarkdownUI */; };
 		C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D22A897F1300B2427D /* ProductDetailsView.swift */; };
 		C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D52A89873400B2427D /* String+Extensions.swift */; };
@@ -139,6 +140,7 @@
 		C604EB482A89407D00B18E0E /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
 		C604EB4F2A89546F00B18E0E /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		C604EB512A895EC000B18E0E /* ProductItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemView.swift; sourceTree = "<group>"; };
+		C61B1ADB2A8E805800F3AD27 /* NSTextView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Extensions.swift"; sourceTree = "<group>"; };
 		C667B4D22A897F1300B2427D /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 		C667B4D52A89873400B2427D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		C67979712A8A99180091BE25 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 		C667B4D42A89872800B2427D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C61B1ADB2A8E805800F3AD27 /* NSTextView+Extensions.swift */,
 				C667B4D52A89873400B2427D /* String+Extensions.swift */,
 			);
 			path = Extensions;
@@ -651,6 +654,7 @@
 				03E248D52A8A75FE00DDE525 /* Date+DecodeString.swift in Sources */,
 				03FDA2F72A8C110A003D192D /* SibaroAppServices.swift in Sources */,
 				03FDA3112A8C1A48003D192D /* ViewModel.swift in Sources */,
+				C61B1ADC2A8E805800F3AD27 /* NSTextView+Extensions.swift in Sources */,
 				C604EB472A89406D00B18E0E /* AuthRepository.swift in Sources */,
 				363A1BE62A8D25A300148CBB /* ProductDetailsViewModel.swift in Sources */,
 				117ED6F62A8B743400775CEC /* EmbeddableSystemApplicationManager.swift in Sources */,

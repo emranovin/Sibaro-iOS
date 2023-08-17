@@ -35,6 +35,9 @@ struct ProfileView: View {
                         title: "Request New App"
                     )
                 }
+                #if os(macOS)
+                .buttonStyle(.borderless)
+                #endif
                 .sheet(isPresented: $viewModel.showAppsuggestion) {
                     SubmitAppView()
                         .presentationDetents([.fraction(0.6), .large])
