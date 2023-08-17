@@ -68,7 +68,6 @@
 		C67979752A8AA6E00091BE25 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C67979742A8AA6E00091BE25 /* Nuke */; };
 		C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C67979782A8AA6E00091BE25 /* NukeUI */; };
 		C6AD3FBE2A8E1991008182BC /* SubmitAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FBB2A8E1991008182BC /* SubmitAppView.swift */; };
-		C6AD3FBF2A8E1991008182BC /* FormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FBC2A8E1991008182BC /* FormTextFieldView.swift */; };
 		C6AD3FC02A8E1991008182BC /* SubmitAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FBD2A8E1991008182BC /* SubmitAppViewModel.swift */; };
 		C6AD3FC22A8E19AC008182BC /* SubmitAppEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FC12A8E19AC008182BC /* SubmitAppEndpoint.swift */; };
 		C6AD3FC42A8E19CE008182BC /* SubmitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FC32A8E19CE008182BC /* SubmitApp.swift */; };
@@ -144,7 +143,6 @@
 		C667B4D52A89873400B2427D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		C67979712A8A99180091BE25 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		C6AD3FBB2A8E1991008182BC /* SubmitAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAppView.swift; sourceTree = "<group>"; };
-		C6AD3FBC2A8E1991008182BC /* FormTextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextFieldView.swift; sourceTree = "<group>"; };
 		C6AD3FBD2A8E1991008182BC /* SubmitAppViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAppViewModel.swift; sourceTree = "<group>"; };
 		C6AD3FC12A8E19AC008182BC /* SubmitAppEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAppEndpoint.swift; sourceTree = "<group>"; };
 		C6AD3FC32A8E19CE008182BC /* SubmitApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitApp.swift; sourceTree = "<group>"; };
@@ -537,7 +535,6 @@
 			isa = PBXGroup;
 			children = (
 				C6AD3FBB2A8E1991008182BC /* SubmitAppView.swift */,
-				C6AD3FBC2A8E1991008182BC /* FormTextFieldView.swift */,
 				C6AD3FBD2A8E1991008182BC /* SubmitAppViewModel.swift */,
 			);
 			path = SubmitApp;
@@ -663,7 +660,6 @@
 				03FDA3182A8D0C1C003D192D /* ProductItemViewModel.swift in Sources */,
 				C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */,
 				C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */,
-				C6AD3FBF2A8E1991008182BC /* FormTextFieldView.swift in Sources */,
 				363A1BDF2A8C8DF500148CBB /* ProductsListViewModel.swift in Sources */,
 				117ED6F52A8B743400775CEC /* SystemApplication.swift in Sources */,
 				C604EB1C2A89316C00B18E0E /* ProductsListView.swift in Sources */,

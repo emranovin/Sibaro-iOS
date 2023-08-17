@@ -18,71 +18,51 @@ struct SubmitAppView: View {
     }
     
     var body: some View {
-            ScrollView {
-                VStack(spacing: 20) {
-                    FormTextFieldView(title: "Application Name", value: $viewModel.appName)
-                    FormTextFieldView(title: "Link", value: $viewModel.appLink)
-                    FormTextFieldView(title: "Description", value: $viewModel.appDescription)
-                            .frame(height: 150)
-                }
-                .padding()
-
-                if let status = viewModel.status {
-                    StatusToast(status: status)
-                        .transition(.opacity)
+        NavigationStack {
+            Form {
+                Section("Application Details") {
+                    TextField("Name", text: $viewModel.appName, prompt: Text("Application name"))
+                    TextField("Link", text: $viewModel.appLink, prompt: Text("Application Link"))
                 }
                 
-                ZStack {
-                    ProgressView()
-                        .opacity(viewModel.loading ? 1 : 0)
-                    
-                    Button(action: viewModel.submitApp) {
-                        Text("Submit")
-                            .font(.body)
-                            .fontWeight(.semibold)
-                            .frame(width: 250)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .cornerRadius(10)
-                    .controlSize(.large)
-                    .buttonStyle(.borderedProminent)
-                    .padding(.vertical)
-                    .opacity(viewModel.loading ? 0 : 1)
+                Section("Description") {
+                    TextEditor(text: $viewModel.appDescription)
+                        .frame(minHeight: 150)
                 }
             }
-            .navigationTitle("Desired App")
-    }
-}
-
-struct StatusToast: View {
-    
-    var status: SubmitStatus
-    
-    var body: some View {
-        Group {
-            switch status {
-            case .success(let message):
-                HStack {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundStyle(.green.gradient)
-                    
-                    Text(message)
-                        .font(.callout)
+            .formStyle(.grouped)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    ZStack {
+                        ProgressView()
+                            .opacity(viewModel.loading ? 1 : 0)
+                        
+                        Button(action: viewModel.submitApp) {
+                            Text("Submit")
+                                .font(.body)
+                                .fontWeight(.semibold)
+                        }
+                        .opacity(viewModel.loading ? 0 : 1)
+                    }
                 }
-            case .failed(let message):
-                HStack {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(.red.gradient)
-                    
-                    Text(message)
-                        .font(.callout)
+                
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Cancel")
+                    }
                 }
+            }
+            .alert(
+                viewModel.messageTitle,
+                isPresented: $viewModel.showMessage
+            ) {
+                Button("Ok", role: .cancel) {}
+            } message: {
+                Text(viewModel.messageSubtitle)
             }
         }
-        .padding()
-        .background(.thinMaterial)
-        .clipShape(Capsule())
-        .shadow(radius: 2)
     }
 }
 

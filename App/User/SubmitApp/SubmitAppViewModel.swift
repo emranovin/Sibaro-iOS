@@ -19,7 +19,9 @@ extension SubmitAppView {
         
         /// Status
         @Published var loading: Bool = false
-        @Published var status: SubmitStatus? = nil
+        @Published var messageTitle: String = ""
+        @Published var messageSubtitle: String = ""
+        @Published var showMessage: Bool = false
         
         func _submitApp() async {
             loading = true
@@ -30,26 +32,27 @@ extension SubmitAppView {
                     description: appDescription
                 )
                 
-                status = .success(message: "Submitted")
+                messageTitle = "Success"
+                messageSubtitle = "Your submition has been sent"
                 
             } catch {
                 if let error = error as? RequestError {
                     switch error {
                     case .badRequest(let data):
                         let decodedResponse = try? JSONDecoder().decode(SubmitAppError.self, from: data)
-                        status = .failed(message: decodedResponse?.link.first ?? "Failed to submit, try again")
+                        messageTitle = "Failed to submit"
+                        messageSubtitle = decodedResponse?.link.first ?? "Try again later"
                     default:
-                        status = .failed(message: error.description)
+                        messageTitle = "Failed to submit"
+                        messageSubtitle = error.description
                     }
                 } else {
-                    status = .failed(message: "Failed to submit, try again")
+                    messageTitle = "Failed to submit"
+                    messageSubtitle = "Try again later"
                 }
             }
             loading = false
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self.status = nil
-            }
+            showMessage = true
         }
         
         nonisolated func submitApp() {

@@ -26,14 +26,21 @@ struct ProfileView: View {
             }
             
             Section {
-                NavigationLink {
-                    SubmitAppView()
+                Button {
+                    viewModel.showAppsuggestion.toggle()
                 } label: {
                     SettingsItemView(
                         icon: "list.bullet.clipboard.fill",
                         color: .blue,
                         title: "Request New App"
                     )
+                }
+                .sheet(isPresented: $viewModel.showAppsuggestion) {
+                    SubmitAppView()
+                        .presentationDetents([.fraction(0.6), .large])
+                        #if os(macOS)
+                        .frame(minWidth: 400, minHeight: 350)
+                        #endif
                 }
                 
                 Button {
