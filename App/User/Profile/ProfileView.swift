@@ -16,7 +16,7 @@ struct ProfileView: View {
             Section {
                 HStack {
                     Image(systemName: "person.crop.circle.fill")
-                        .foregroundStyle(Color.accentColor.gradient)
+                        .foregroundStyle(.white, Color.accentColor.gradient)
                         .font(.largeTitle)
                     
                     Text(viewModel.userName)
