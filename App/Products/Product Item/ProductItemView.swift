@@ -117,74 +117,39 @@ struct ProductItemView: View {
             }
         }
         .shadow(radius: 1)
-        #if os(macOS)
-        .padding(.horizontal, 16)
         .frame(maxWidth: .infinity)
-        .aspectRatio(1.9, contentMode: .fit)
-        #endif
     }
     
-    #if os(iOS)
     @ViewBuilder func multiple(screenshots: ArraySlice<Screenshot>) -> some View {
-        SingleAxisGeometryReader(axis: .horizontal, alignment: .center) { width in
-            HStack(spacing: 5) {
-                ForEach(screenshots, id: \.image) { screenshot in
-                    LazyImage(url: URL(string: screenshot.image)) { state in
-                        if let image = state.image {
-                            image
-                                .resizable()
-                                .frame(maxWidth: .infinity)
-                                .aspectRatio(screenshot.aspectRatio, contentMode: .fill)
-                        } else {
-                            Rectangle()
-                                .frame(maxWidth: .infinity)
-                                .aspectRatio(screenshot.aspectRatio, contentMode: .fill)
-                        }
-                        
+        let ratio = screenshots[0].aspectRatio
+        HStack(spacing: 5) {
+            ForEach(screenshots, id: \.image) { screenshot in
+                LazyImage(url: URL(string: screenshot.image)) { state in
+                    if let image = state.image {
+                        image
+                            .resizable()
+                            .frame(maxWidth: .infinity)
+                            .aspectRatio(screenshot.aspectRatio, contentMode: .fit)
+                    } else {
+                        Rectangle()
+                            .frame(maxWidth: .infinity)
+                            .aspectRatio(screenshot.aspectRatio, contentMode: .fit)
                     }
-                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                    .shadow(radius: 1)
-                    .frame(width: width > 15 ? (width - 15) / 3 : 1, height: width > 15 ? (width - 15) / (3 * screenshot.aspectRatio) : 1)
+                    
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 5))
+                .shadow(radius: 1)
+            }
+            if screenshots.count < 3 {
+                ForEach(0..<(3 - screenshots.count), id: \.self) { _ in
+                    Rectangle()
+                        .fill(.clear)
+                        .frame(maxWidth: .infinity)
+                        .aspectRatio(ratio, contentMode: .fit)
                 }
             }
         }
     }
-    #else
-    @ViewBuilder func multiple(screenshots: ArraySlice<Screenshot>) -> some View {
-        ZStack {
-            let ratio = screenshots[0].aspectRatio
-            GeometryReader { proxy in
-                let width = proxy.size.width
-                HStack(spacing: 5) {
-                    Spacer()
-                    ForEach(screenshots, id: \.image) { screenshot in
-                        LazyImage(url: URL(string: screenshot.image)) { state in
-                            if let image = state.image {
-                                image
-                                    .resizable()
-                                    .frame(maxWidth: .infinity)
-                                    .aspectRatio(screenshot.aspectRatio, contentMode: .fit)
-                            } else {
-                                Rectangle()
-                                    .frame(maxWidth: .infinity)
-                                    .aspectRatio(screenshot.aspectRatio, contentMode: .fit)
-                            }
-                            
-                        }
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .shadow(radius: 1)
-                        .frame(width: width * ratio / 1.9)
-                        .frame(maxHeight: .infinity)
-                    }
-                    Spacer()
-                }
-                .frame(height: width / 1.9)
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .aspectRatio(1.9, contentMode: .fit)
-    }
-    #endif
     
     var screenshots: some View {
         ZStack {

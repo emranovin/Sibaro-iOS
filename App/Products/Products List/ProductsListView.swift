@@ -92,7 +92,7 @@ struct ProductsListView: View {
     
     var gridList: some View {
         ScrollView {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 360))]) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 360), alignment: .top)]) {
                 ForEach(viewModel.products, id: \.id) { product in
                     ProductItemView(product: product)
                         .onTapGesture {
