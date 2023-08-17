@@ -16,5 +16,8 @@ struct SibaroApp: App {
             MainView()
                 .environmentObject(i18n)
         }
+        #if os(macOS)
+        .defaultSize(width: 1000, height: 650)
+        #endif
     }
 }

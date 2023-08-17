@@ -27,6 +27,9 @@ struct Sidebar: View {
             NavigationStack(path: $path) {
                 selection?.view()
             }
+            #if os(macOS)
+            .frame(minWidth: 850)
+            #endif
         }
     }
 }
