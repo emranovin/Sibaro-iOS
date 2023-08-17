@@ -31,70 +31,176 @@ struct ProductItemView: View {
     }
     
     var body: some View {
-        HStack {
-            LazyImage(url: URL(string: viewModel.product.icon)) { state in
-                if let image = state.image {
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                } else {
-                    Rectangle()
+        VStack(spacing: 0) {
+            HStack {
+                LazyImage(url: URL(string: viewModel.product.icon)) { state in
+                    if let image = state.image {
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    } else {
+                        Rectangle()
+                    }
+                }
+                .frame(width: 60, height: 60)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+                .shadow(radius: 1)
+                
+                VStack {
+                    Text(viewModel.product.title)
+                        .font(.title3)
+                        .fontWeight(.regular)
+                        .foregroundStyle(.primary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text(viewModel.product.subtitle)
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                
+                Spacer()
+                
+                // MARK: - proceedApp button
+                ZStack {
+                    ProgressView()
+                        .opacity(viewModel.loading ? 1 : 0)
+                    
+                    Button(action: proceedApp) {
+                        Text(appStateTitle)
+                            .font(.body)
+                            #if os(macOS)
+                            .fontWeight(.medium)
+                            .foregroundStyle(Color.accentColor)
+                            .padding(.vertical, 2)
+                            .frame(minWidth: 64)
+                            #else
+                            .frame(minWidth: 60)
+                            .fontWeight(.bold)
+                            #endif
+                    }
+                    #if os(iOS)
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
+                    .controlSize(.mini)
+                    #elseif os(macOS)
+                    .buttonStyle(.plain)
+                    .tint(.white)
+                    .background(Color("ProductActionColor"))
+                    .clipShape(Capsule())
+                    #endif
+                    .opacity(viewModel.loading ? 0 : 1)
                 }
             }
-            .frame(width: 60, height: 60)
-            .clipShape(RoundedRectangle(cornerRadius: 15))
-            .shadow(radius: 1)
+            #if os(macOS)
+            .padding(.vertical, 4)
+            #endif
             
-            VStack {
-                Text(viewModel.product.title)
-                    .font(.title3)
-                    .fontWeight(.regular)
-                    .foregroundStyle(.primary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Text(viewModel.product.subtitle)
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            
-            Spacer()
-            
-            // MARK: - proceedApp button
-            ZStack {
-                ProgressView()
-                    .opacity(viewModel.loading ? 1 : 0)
-                
-                Button(action: proceedApp) {
-                    Text(appStateTitle)
-                        .font(.body)
-                        #if os(macOS)
-                        .fontWeight(.medium)
-                        .foregroundStyle(Color.accentColor)
-                        .padding(.vertical, 2)
-                        .frame(minWidth: 64)
-                        #else
-                        .frame(minWidth: 60)
-                        .fontWeight(.bold)
-                        #endif
-                }
-                #if os(iOS)
-                .buttonStyle(.bordered)
-                .buttonBorderShape(.capsule)
-                .controlSize(.mini)
-                #elseif os(macOS)
-                .buttonStyle(.plain)
-                .tint(.white)
-                .background(Color("ProductActionColor"))
-                .clipShape(Capsule())
-                #endif
-                .opacity(viewModel.loading ? 0 : 1)
+            screenshots
+        }
+    }
+    
+    @ViewBuilder func single(screenshot: Screenshot) -> some View {
+        LazyImage(url: URL(string: screenshot.image)) { state in
+            if let image = state.image {
+                image
+                    .resizable()
+                    .cornerRadius(5)
+                    .aspectRatio(screenshot.aspectRatio, contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+            } else {
+                Rectangle()
+                    .cornerRadius(5)
+                    .aspectRatio(screenshot.aspectRatio, contentMode: .fit)
+                    .frame(maxWidth: .infinity)
             }
         }
+        .shadow(radius: 1)
         #if os(macOS)
-        .padding(.vertical, 4)
+        .padding(.horizontal, 16)
+        .frame(maxWidth: .infinity)
+        .aspectRatio(1.9, contentMode: .fit)
         #endif
+    }
+    
+    #if os(iOS)
+    @ViewBuilder func multiple(screenshots: ArraySlice<Screenshot>) -> some View {
+        SingleAxisGeometryReader(axis: .horizontal, alignment: .center) { width in
+            HStack(spacing: 5) {
+                ForEach(screenshots, id: \.image) { screenshot in
+                    LazyImage(url: URL(string: screenshot.image)) { state in
+                        if let image = state.image {
+                            image
+                                .resizable()
+                                .frame(maxWidth: .infinity)
+                                .aspectRatio(screenshot.aspectRatio, contentMode: .fill)
+                        } else {
+                            Rectangle()
+                                .frame(maxWidth: .infinity)
+                                .aspectRatio(screenshot.aspectRatio, contentMode: .fill)
+                        }
+                        
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                    .shadow(radius: 1)
+                    .frame(width: width > 15 ? (width - 15) / 3 : 1, height: width > 15 ? (width - 15) / (3 * screenshot.aspectRatio) : 1)
+                }
+            }
+        }
+    }
+    #else
+    @ViewBuilder func multiple(screenshots: ArraySlice<Screenshot>) -> some View {
+        ZStack {
+            let ratio = screenshots[0].aspectRatio
+            GeometryReader { proxy in
+                let width = proxy.size.width
+                HStack(spacing: 5) {
+                    Spacer()
+                    ForEach(screenshots, id: \.image) { screenshot in
+                        LazyImage(url: URL(string: screenshot.image)) { state in
+                            if let image = state.image {
+                                image
+                                    .resizable()
+                                    .frame(maxWidth: .infinity)
+                                    .aspectRatio(screenshot.aspectRatio, contentMode: .fit)
+                            } else {
+                                Rectangle()
+                                    .frame(maxWidth: .infinity)
+                                    .aspectRatio(screenshot.aspectRatio, contentMode: .fit)
+                            }
+                            
+                        }
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .shadow(radius: 1)
+                        .frame(width: width * ratio / 1.9)
+                        .frame(maxHeight: .infinity)
+                    }
+                    Spacer()
+                }
+                .frame(height: width / 1.9)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .aspectRatio(1.9, contentMode: .fit)
+    }
+    #endif
+    
+    var screenshots: some View {
+        ZStack {
+            if let first = viewModel.product.screenshots.first {
+                if first.width >= first.height {
+                    single(screenshot: first)
+                        .padding(.top, 22)
+                } else {
+                    multiple(screenshots: viewModel.product.screenshots.prefix(3))
+                        .padding(.top, 22)
+                }
+                
+            } else {
+                EmptyView()
+            }
+        }
     }
     
     func proceedApp() {

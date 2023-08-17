@@ -46,6 +46,16 @@ struct ProductsListView: View {
                 }
                 #endif
             }
+            #if os(macOS)
+            ToolbarItem {
+                Button {
+                    viewModel.getList()
+                } label: {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                }
+                .disabled(viewModel.loading)
+            }
+            #endif
         }
         .sheet(item: $viewModel.selectedProduct) { product in
             ProductDetailsView(product: product)

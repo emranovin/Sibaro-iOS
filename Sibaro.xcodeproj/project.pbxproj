@@ -24,6 +24,7 @@
 		03FDA31F2A8D470F003D192D /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA31C2A8D470F003D192D /* Container.swift */; };
 		03FDA3202A8D470F003D192D /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA31D2A8D470F003D192D /* Factory.swift */; };
 		03FDA3222A8D5FE2003D192D /* Stored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA3212A8D5FE2003D192D /* Stored.swift */; };
+		03FDA3242A8DD4D3003D192D /* SingleAxisGeometryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FDA3232A8DD4D3003D192D /* SingleAxisGeometryReader.swift */; };
 		117ED6F32A8B743400775CEC /* DirectoryReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6EB2A8B743400775CEC /* DirectoryReader.m */; };
 		117ED6F42A8B743400775CEC /* ApplicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6ED2A8B743400775CEC /* ApplicationService.swift */; };
 		117ED6F52A8B743400775CEC /* SystemApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6EE2A8B743400775CEC /* SystemApplication.swift */; };
@@ -87,6 +88,7 @@
 		03FDA31C2A8D470F003D192D /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		03FDA31D2A8D470F003D192D /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		03FDA3212A8D5FE2003D192D /* Stored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stored.swift; sourceTree = "<group>"; };
+		03FDA3232A8DD4D3003D192D /* SingleAxisGeometryReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAxisGeometryReader.swift; sourceTree = "<group>"; };
 		117ED6E02A8B741E00775CEC /* Sibaro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sibaro-Bridging-Header.h"; sourceTree = "<group>"; };
 		117ED6EB2A8B743400775CEC /* DirectoryReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryReader.m; sourceTree = "<group>"; };
 		117ED6EC2A8B743400775CEC /* DirectoryReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryReader.h; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 				C604EB4F2A89546F00B18E0E /* EmptyStateView.swift */,
 				C6CF97692A8BDB090035210F /* HapticFeedback.swift */,
 				C604EB262A89337400B18E0E /* VisualEffectBlur.swift */,
+				03FDA3232A8DD4D3003D192D /* SingleAxisGeometryReader.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				C6CF976A2A8BDB090035210F /* HapticFeedback.swift in Sources */,
 				C604EB502A89546F00B18E0E /* EmptyStateView.swift in Sources */,
 				03FDA30A2A8C169A003D192D /* Locking.swift in Sources */,
+				03FDA3242A8DD4D3003D192D /* SingleAxisGeometryReader.swift in Sources */,
 				C604EB522A895EC000B18E0E /* ProductItemView.swift in Sources */,
 				C604EB222A8932FB00B18E0E /* ProfileView.swift in Sources */,
 				117ED6F32A8B743400775CEC /* DirectoryReader.m in Sources */,
