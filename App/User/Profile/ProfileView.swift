@@ -26,11 +26,12 @@ struct ProfileView: View {
             }
             
             Section {
+                /// App request
                 Button {
                     viewModel.showAppSuggestion.toggle()
                 } label: {
                     SettingsItemView(
-                        icon: "list.bullet.clipboard.fill",
+                        icon: "app.badge.checkmark.fill",
                         color: .blue,
                         title: "Request New App"
                     )
@@ -46,6 +47,29 @@ struct ProfileView: View {
                         #endif
                 }
                 
+                /// Feedback
+                Link(destination: URL(string: "https://github.com/emranovin/Sibaro-iOS/issues")!) {
+                    SettingsItemView(
+                        icon: "exclamationmark.bubble.fill",
+                        color: .purple,
+                        title: "Feedback",
+                        showAsLink: true
+                    )
+                }
+                
+                /// SourceCode
+                Link(destination: URL(string: "https://github.com/emranovin/Sibaro-iOS/")!) {
+                    SettingsItemView(
+                        icon: "curlybraces",
+                        color: .white,
+                        title: "Source code",
+                        showAsLink: true
+                    )
+                }
+            }
+            
+            Section {
+                /// Logout
                 Button {
                     viewModel.showLogoutDialog.toggle()
                 } label: {
