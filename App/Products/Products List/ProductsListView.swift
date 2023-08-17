@@ -24,10 +24,12 @@ struct ProductsListView: View {
     
     var body: some View {
         List(viewModel.products, id: \.id) { product in
-            ProductItemView(product: product)
-                .onTapGesture {
-                    viewModel.selectedProduct = product
-                }
+            Button {
+                viewModel.selectedProduct = product
+            } label: {
+                ProductItemView(product: product)
+            }
+                
         }
         .listStyle(.plain)
         .overlay(emptyState)
