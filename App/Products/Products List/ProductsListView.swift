@@ -22,37 +22,8 @@ struct ProductsListView: View {
         self._viewModel = StateObject(wrappedValue: ViewModel(type: type))
     }
     
-    var listView: some View {
-        #if os(iOS)
-        List(viewModel.products, id: \.id) { product in
-            Button {
-                viewModel.selectedProduct = product
-            } label: {
-                ProductItemView(product: product)
-            }
-        }
-        .listStyle(.plain)
-        #else
-        ScrollView {
-            LazyVGrid(columns: [
-                .init(.flexible(), spacing: 5.0),
-                .init(.flexible(), spacing: 5.0)
-            ]) {
-                ForEach(viewModel.products, id: \.id) { product in
-                    ProductItemView(product: product)
-                        .onTapGesture {
-                            viewModel.selectedProduct = product
-                        }
-                        .padding()
-                }
-            }
-            .padding()
-        }
-        #endif
-    }
-    
     var body: some View {
-        listView
+        list
         .overlay {
             emptyState
         }
@@ -82,6 +53,35 @@ struct ProductsListView: View {
                 .frame(minWidth: 350, idealWidth: 600, minHeight: 500, idealHeight: 650)
                 #endif
         }
+    }
+    
+    var list: some View {
+        #if os(iOS)
+        List(viewModel.products, id: \.id) { product in
+            Button {
+                viewModel.selectedProduct = product
+            } label: {
+                ProductItemView(product: product)
+            }
+        }
+        .listStyle(.plain)
+        #else
+        ScrollView {
+            LazyVGrid(columns: [
+                .init(.flexible(), spacing: 5.0),
+                .init(.flexible(), spacing: 5.0)
+            ]) {
+                ForEach(viewModel.products, id: \.id) { product in
+                    ProductItemView(product: product)
+                        .onTapGesture {
+                            viewModel.selectedProduct = product
+                        }
+                        .padding()
+                }
+            }
+            .padding()
+        }
+        #endif
     }
     
     var sortPicker: some View {
