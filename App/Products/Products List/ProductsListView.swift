@@ -18,12 +18,26 @@ struct ProductsListView: View {
     
     @StateObject var viewModel: ViewModel
     
+    #if os(iOS)
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    #endif
+    
     init(type: AppType) {
         self._viewModel = StateObject(wrappedValue: ViewModel(type: type))
     }
     
     var body: some View {
-        list
+        Group {
+            #if os(iOS)
+            if horizontalSizeClass == .compact {
+                normalList
+            } else {
+                gridList
+            }
+            #else
+            gridList
+            #endif
+        }
         .overlay {
             emptyState
         }
@@ -65,8 +79,7 @@ struct ProductsListView: View {
         }
     }
     
-    var list: some View {
-        #if os(iOS)
+    var normalList: some View {
         List(viewModel.products, id: \.id) { product in
             Button {
                 viewModel.selectedProduct = product
@@ -75,12 +88,11 @@ struct ProductsListView: View {
             }
         }
         .listStyle(.plain)
-        #else
+    }
+    
+    var gridList: some View {
         ScrollView {
-            LazyVGrid(columns: [
-                .init(.flexible(), spacing: 5.0),
-                .init(.flexible(), spacing: 5.0)
-            ]) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 360))]) {
                 ForEach(viewModel.products, id: \.id) { product in
                     ProductItemView(product: product)
                         .onTapGesture {
@@ -91,7 +103,6 @@ struct ProductsListView: View {
             }
             .padding()
         }
-        #endif
     }
     
     var sortPicker: some View {
