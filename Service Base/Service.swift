@@ -8,6 +8,6 @@
 import Foundation
 import Combine
 
-class BaseService: NSObject, ObservableObject {
+class BaseService: ObservableObject {
     var cancelBag: Set<AnyCancellable> = []
 }

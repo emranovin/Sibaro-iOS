@@ -41,13 +41,15 @@ extension Container {
 
 // MARK: - Functions
 extension Container {
-    var openURL: Factory<(_ url: URL) -> Bool> {
+    var openURL: Factory<(_ url: URL) -> ()> {
         Factory(self) {
-            #if os(iOS)
-            UIApplication.shared.openURL
-            #else
-            NSWorkspace.shared.open
-            #endif
+            { url in
+                #if os(iOS)
+                UIApplication.shared.open(url)
+                #else
+                NSWorkspace.shared.open(url)
+                #endif
+            }
         }
     }
 }

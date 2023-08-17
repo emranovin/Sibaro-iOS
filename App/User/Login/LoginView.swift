@@ -61,7 +61,9 @@ struct LoginView: View {
                             .disabled(viewModel.loading)
                             .padding()
                             .disableAutocorrection(true)
+                            #if os(iOS)
                             .autocapitalization(.none)
+                            #endif
                             .onSubmit {
                                 focusedField = .password
                             }

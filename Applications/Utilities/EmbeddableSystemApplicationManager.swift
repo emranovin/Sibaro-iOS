@@ -56,7 +56,7 @@ class EmbeddableSystemApplicationManager: NSObject {
     
     override init(){
         //Setup workspace
-        if let myClass =  LSApplicationWorkspace_class as? NSObjectProtocol {
+        if let myClass =  LSApplicationWorkspace_class as AnyObject as? NSObjectProtocol {
             if myClass.responds(to: ReversedCall.LSApplicationWorkspace.Selector.workspace) {
                 self.workspace = myClass.perform(ReversedCall.LSApplicationWorkspace.Selector.workspace).takeRetainedValue() as? NSObject
             }
