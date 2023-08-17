@@ -27,7 +27,7 @@ struct ProfileView: View {
             
             Section {
                 Button {
-                    viewModel.showAppsuggestion.toggle()
+                    viewModel.showAppSuggestion.toggle()
                 } label: {
                     SettingsItemView(
                         icon: "list.bullet.clipboard.fill",
