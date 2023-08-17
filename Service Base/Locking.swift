@@ -28,8 +28,8 @@ import Foundation
 
 // MARK: - Locking
 
-/// Master recursive lock
-var globalContainerRecursiveLock = RecursiveLock()
+// /// Master recursive lock
+// var globalContainerRecursiveLock = RecursiveLock()
 
 /// Custom recursive lock class
 final class RecursiveLock: NSLocking {

@@ -17,6 +17,10 @@ struct Injected<T> {
         self.dependency = Container.shared[keyPath: keyPath]()
     }
     
+    init<C: ManagedContainer>(_ keyPath: KeyPath<C, Factory<T>>, in container: C) {
+        self.dependency = container[keyPath: keyPath]()
+    }
+    
     var wrappedValue: T {
         get { return dependency! }
         mutating set { dependency = newValue }

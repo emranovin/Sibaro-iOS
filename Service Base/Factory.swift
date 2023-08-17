@@ -19,7 +19,7 @@ struct Factory<T> {
     }
     
     func register(factory: @escaping () -> T) {
-        container?.manager.register(key: key, factory: factory)
+        container?.manager.register(key: key, clear: true, factory: factory)
     }
     
     func callAsFunction() -> T? {

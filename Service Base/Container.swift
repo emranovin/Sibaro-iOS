@@ -7,17 +7,35 @@
 
 import Foundation
 
-final class Container {
+// MARK: - Protocols
+protocol ManagedContainer {
+    var manager: ContainerManager { get }
+}
+
+protocol ContainerManager {
+    func register<T>(
+        key: String,
+        clear: Bool,
+        factory: @escaping () -> T
+    )
+    
+    func resolve<T>(key: String) -> T?
+}
+
+
+// MARK: - Class Implementations
+final class Container: ManagedContainer {
     lazy var manager: ContainerManager = {
-        return ContainerManager(self)
+        return CachingContainerManager(self)
     }()
     static let shared: Container = Container()
 }
 
-final class ContainerManager {
+final class CachingContainerManager: ContainerManager {
     private weak var container: Container?
     private var registered: [String:AnyServiceFactoryContainer] = [:]
     private var registeredCached: [String:Any] = [:]
+    private let lock = RecursiveLock()
     
     init(_ container: Container) {
         self.container = container
@@ -25,22 +43,22 @@ final class ContainerManager {
     
     func register<T>(
         key: String,
-        clear: Bool = true,
+        clear: Bool,
         factory: @escaping () -> T
     ) {
-        globalContainerRecursiveLock.lock()
+        lock.lock()
         if clear || registered[key] == nil {
             registeredCached[key] = nil
             registered[key] = ServiceFactoryContainer(factory: factory)
         }
-        globalContainerRecursiveLock.unlock()
+        lock.unlock()
     }
     
     func resolve<T>(key: String) -> T? {
-        globalContainerRecursiveLock.lock()
+        lock.lock()
         let value = (registeredCached[key] as? T) ?? (registered[key] as? ServiceFactoryContainer<T>)?.factory()
         registeredCached[key] = value
-        globalContainerRecursiveLock.unlock()
+        lock.unlock()
         return value
     }
 }
