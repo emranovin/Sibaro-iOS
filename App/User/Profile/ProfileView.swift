@@ -26,18 +26,19 @@ struct ProfileView: View {
             }
             
             Section {
-                Button {
-                    viewModel.showLogoutDialog.toggle()
-                } label: {
-                    SettingsItemView(
-                        icon: "rectangle.portrait.and.arrow.forward",
-                        color: .red,
-                        title: "Logout"
-                    )
+                
+                ZStack(alignment: .leading) {
+                    NavigationLink {
+                        ChangePasswordView()
+                    } label: {
+                       EmptyView()
+                    }
+                    ProfileActionRow(icon: "key", color: .orange, title: "Change Password")
                 }
-                #if os(macOS)
-                .buttonStyle(.borderless)
-                #endif
+                
+                ProfileActionRow(action: {
+                    viewModel.showLogoutDialog.toggle()
+                }, icon: "rectangle.portrait.and.arrow.forward", color: .red, title: "Logout")
                 .alert(
                     "Are you sure you want to logout?",
                     isPresented: $viewModel.showLogoutDialog
@@ -47,10 +48,33 @@ struct ProfileView: View {
                     }
                     Button("Cancel", role: .cancel) {}
                 }
+                
             }
         }
     }
 
+}
+
+struct ProfileActionRow: View {
+    var action: (() -> ())? = nil
+    var icon: String
+    var color: Color
+    var title: LocalizedStringKey
+    
+    var body: some View {
+        Button {
+            action?()
+        } label: {
+            SettingsItemView(
+                icon: icon,
+                color: color,
+                title: title
+            )
+        }
+        #if os(macOS)
+        .buttonStyle(.borderless)
+        #endif
+    }
 }
 
 struct SettingsItemView: View {
