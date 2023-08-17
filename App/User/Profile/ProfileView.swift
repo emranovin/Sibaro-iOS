@@ -33,7 +33,8 @@ struct ProfileView: View {
                     SettingsItemView(
                         icon: "app.badge.checkmark.fill",
                         color: .blue,
-                        title: "Request New App"
+                        title: "Request New App",
+                        arrow: .action
                     )
                 }
                 #if os(macOS)
@@ -53,7 +54,7 @@ struct ProfileView: View {
                         icon: "exclamationmark.bubble.fill",
                         color: .purple,
                         title: "Feedback",
-                        showAsLink: true
+                        arrow: .link
                     )
                 }
                 
@@ -63,7 +64,7 @@ struct ProfileView: View {
                         icon: "curlybraces",
                         color: .white,
                         title: "Source code",
-                        showAsLink: true
+                        arrow: .link
                     )
                 }
             }
@@ -76,7 +77,8 @@ struct ProfileView: View {
                     SettingsItemView(
                         icon: "rectangle.portrait.and.arrow.forward",
                         color: .red,
-                        title: "Logout"
+                        title: "Logout",
+                        arrow: .action
                     )
                 }
                 #if os(macOS)
@@ -101,7 +103,12 @@ struct SettingsItemView: View {
     var color: Color
     var title: LocalizedStringKey
     var rotation: Double = 0
-    var showAsLink: Bool = false
+    var arrow: SettingsRowArrow? = nil
+    
+    enum SettingsRowArrow {
+        case link
+        case action
+    }
     
     var body: some View {
         HStack(spacing: 15) {
@@ -109,7 +116,7 @@ struct SettingsItemView: View {
                 Image(systemName: icon)
                     .rotationEffect(.degrees(rotation))
                     .font(Font.system(size: 14, weight: .medium))
-                    .foregroundColor(color == .white ? .blue : .white)
+                    .foregroundStyle(color == .white ? .blue : .white)
                     .shadow(radius: 2)
             }
             .frame(width: 28, height: 28)
@@ -120,12 +127,20 @@ struct SettingsItemView: View {
             Text(title)
                 .foregroundColor(.primary)
             
-            if showAsLink {
+            if let arrow {
                 Spacer()
-                Image(systemName: "arrow.up.forward")
-                    .font(Font.system(size: 14, weight: .semibold))
-                    .foregroundColor(.secondary)
-                    .opacity(0.55)
+                Group {
+                    switch arrow {
+                    case .link:
+                        Image(systemName: "arrow.up.forward")
+                    case .action:
+                        Image(systemName: "chevron.forward")
+                    }
+                }
+                .font(.footnote)
+                .fontWeight(.bold)
+                .foregroundStyle(.tertiary)
+                .tint(.primary)
             }
         }
         .contentShape(Rectangle())
