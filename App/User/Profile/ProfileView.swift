@@ -27,6 +27,26 @@ struct ProfileView: View {
             
             Section {
                 Button {
+                    viewModel.showAppSuggestion.toggle()
+                } label: {
+                    SettingsItemView(
+                        icon: "list.bullet.clipboard.fill",
+                        color: .blue,
+                        title: "Request New App"
+                    )
+                }
+                #if os(macOS)
+                .buttonStyle(.borderless)
+                #endif
+                .sheet(isPresented: $viewModel.showAppsuggestion) {
+                    SubmitAppView()
+                        .presentationDetents([.fraction(0.6), .large])
+                        #if os(macOS)
+                        .frame(minWidth: 400, minHeight: 350)
+                        #endif
+                }
+                
+                Button {
                     viewModel.showLogoutDialog.toggle()
                 } label: {
                     SettingsItemView(
@@ -50,7 +70,6 @@ struct ProfileView: View {
             }
         }
     }
-
 }
 
 struct SettingsItemView: View {

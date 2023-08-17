@@ -11,6 +11,7 @@ extension ProfileView {
     class ViewModel: BaseViewModel {
         @Injected(\.storage) private var storage
         
+        @Published var showAppSuggestion: Bool = false
         @Published var showLogoutDialog: Bool = false
         
         var userName: String {
