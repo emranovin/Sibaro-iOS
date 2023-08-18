@@ -10,3 +10,7 @@ import Foundation
 struct ChangePasswordResult: Codable {
     
 }
+
+struct VerifyPasswordResult: Codable {
+    
+}

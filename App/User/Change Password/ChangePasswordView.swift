@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ChangePasswordView: View {
+    @Environment(\.dismiss) var dismissAction
     
     @StateObject var viewModel: ViewModel = ViewModel()
     
     @FocusState private var focusedField: FocuseState?
+    @Binding var changedPassowrd: Bool
     
     private enum FocuseState: Hashable {
         case currentPassword, newPassword, confirmPassword
@@ -129,9 +131,14 @@ struct ChangePasswordView: View {
         } message: {
             Text(viewModel.message)
                 .font(.callout)
-                .foregroundColor(.red)
+                .tint(.red)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.horizontal)
+        }.onChange(of: viewModel.succesfullyChangedPassword) { newValue in
+            if newValue {
+                self.changedPassowrd = true
+                dismissAction()
+            }
         }
 
         Spacer()
@@ -142,6 +149,6 @@ struct ChangePasswordView: View {
 
 struct ChangePasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        ChangePasswordView()
+        ChangePasswordView(changedPassowrd: .constant(false))
     }
 }

@@ -10,7 +10,6 @@ import SwiftUI
 struct ProfileView: View {
     
     @StateObject var viewModel: ViewModel = ViewModel()
-    
     var body: some View {
         List {
             Section {
@@ -29,7 +28,7 @@ struct ProfileView: View {
                 
                 ZStack(alignment: .leading) {
                     NavigationLink {
-                        ChangePasswordView()
+                        ChangePasswordView(changedPassowrd: $viewModel.succusfullyChangedPassword)
                     } label: {
                         EmptyView()
                     }
@@ -103,7 +102,19 @@ struct ProfileView: View {
                     Button("Cancel", role: .cancel) {}
                 }
             }
+        }.onChange(of: viewModel.succusfullyChangedPassword) { succusfullyChangedPassword in
+            if succusfullyChangedPassword {
+                viewModel.showChangedPasswordAlert.toggle()
+            }
+        }.alert("Changed Password", isPresented: $viewModel.showChangedPasswordAlert) {
+            Button("Dismiss") {
+                viewModel.showChangedPasswordAlert.toggle()
+            }
+        } message: {
+            Text("Password successfully changed")
+                .font(.callout)
         }
+
     }
 }
 

@@ -26,5 +26,5 @@ struct ChangePasswordError: Codable {
 }
 
 struct VerifyPasswordError: Codable {
-    var password: [String]?
+    var password: [String]
 }

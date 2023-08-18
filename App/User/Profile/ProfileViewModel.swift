@@ -14,6 +14,14 @@ extension ProfileView {
         @Published var showAppSuggestion: Bool = false
         @Published var showLogoutDialog: Bool = false
         
+        @Published var succusfullyChangedPassword: Bool = false
+        @Published var showChangedPasswordAlert: Bool = false {
+            didSet {
+                if !showChangedPasswordAlert {
+                    succusfullyChangedPassword = false
+                }
+            }
+        }
         var userName: String {
             return storage.username ?? ""
         }
