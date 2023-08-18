@@ -53,7 +53,7 @@ struct ProductItemView: View {
                         .foregroundStyle(.primary)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Text(viewModel.product.subtitle)
+                    Text(viewModel.product.subtitle ?? "")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
