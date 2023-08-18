@@ -64,7 +64,9 @@ extension HTTPClient {
         case 400:
             throw RequestError.badRequest(data)
         case 401:
-            storage.logout()
+            if endpoint.needsToken {
+                storage.logout()
+            }
             throw RequestError.unauthorized(data)
         default:
             throw RequestError.unexpectedStatusCode(response.statusCode)
