@@ -11,6 +11,7 @@ public enum RequestError: Error {
     case decode
     case invalidURL
     case noResponse
+    case badRequest(Data)
     case unauthorized(Data)
     case unexpectedStatusCode(Int)
     case unknown(String)
@@ -25,6 +26,8 @@ extension RequestError: LocalizedError {
             return NSLocalizedString("Network error", comment: "Invalid URL")
         case .noResponse:
             return NSLocalizedString("Network error", comment: "no response")
+        case .badRequest:
+            return NSLocalizedString("Bad Request", comment: "")
         case .unauthorized:
             return NSLocalizedString("Session expired", comment: "no response")
         case .unexpectedStatusCode(let status):

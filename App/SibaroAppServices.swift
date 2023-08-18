@@ -37,6 +37,10 @@ extension Container {
     var productRepository: Factory<ProductsRepositoryType> {
         Factory(self) { ProductsRepository() }
     }
+    
+    var submitAppRepository: Factory<SubmitAppRepositoryType> {
+        Factory(self) { SubmitAppRepository() }
+    }
 }
 
 // MARK: - Functions

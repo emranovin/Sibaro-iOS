@@ -16,7 +16,7 @@ struct ProfileView: View {
             Section {
                 HStack {
                     Image(systemName: "person.crop.circle.fill")
-                        .foregroundStyle(Color.accentColor.gradient)
+                        .foregroundStyle(.white, Color.accentColor.gradient)
                         .font(.largeTitle)
                     
                     Text(viewModel.userName)
@@ -31,28 +31,68 @@ struct ProfileView: View {
                     NavigationLink {
                         ChangePasswordView()
                     } label: {
-                       EmptyView()
+                        EmptyView()
                     }
                     ProfileActionRow(icon: "key", color: .orange, title: "Change Password")
                 }
-                
-                ProfileActionRow(action: {
-                    viewModel.showLogoutDialog.toggle()
-                }, icon: "rectangle.portrait.and.arrow.forward", color: .red, title: "Logout")
-                .alert(
-                    "Are you sure you want to logout?",
-                    isPresented: $viewModel.showLogoutDialog
-                ) {
-                    Button("Logout", role: .destructive) {
-                        viewModel.logout()
-                    }
-                    Button("Cancel", role: .cancel) {}
+                /// App request
+                Button {
+                    viewModel.showAppSuggestion.toggle()
+                } label: {
+                    SettingsItemView(
+                        icon: "app.badge.checkmark.fill",
+                        color: .blue,
+                        title: "Request New App",
+                        arrow: .action
+                    )
+                }
+                #if os(macOS)
+                .buttonStyle(.borderless)
+                #endif
+                .sheet(isPresented: $viewModel.showAppSuggestion) {
+                    SubmitAppView()
+                        .presentationDetents([.fraction(0.6), .large])
+                        #if os(macOS)
+                        .frame(minWidth: 400, minHeight: 350)
+                        #endif
                 }
                 
+                /// Feedback
+                Link(destination: URL(string: "https://github.com/emranovin/Sibaro-iOS/issues")!) {
+                    SettingsItemView(
+                        icon: "exclamationmark.bubble.fill",
+                        color: .purple,
+                        title: "Feedback",
+                        arrow: .link
+                    )
+                }
+                
+                /// SourceCode
+                Link(destination: URL(string: "https://github.com/emranovin/Sibaro-iOS/")!) {
+                    SettingsItemView(
+                        icon: "curlybraces",
+                        color: .white,
+                        title: "Source code",
+                        arrow: .link
+                    )
+                }
+            }
+            
+            Section {
+                /// Logout
+                Button {
+                    viewModel.showLogoutDialog.toggle()
+                } label: {
+                    SettingsItemView(
+                        icon: "rectangle.portrait.and.arrow.forward",
+                        color: .red,
+                        title: "Logout",
+                        arrow: .action
+                    )
+                }
             }
         }
     }
-
 }
 
 struct ProfileActionRow: View {
@@ -82,7 +122,12 @@ struct SettingsItemView: View {
     var color: Color
     var title: LocalizedStringKey
     var rotation: Double = 0
-    var showAsLink: Bool = false
+    var arrow: SettingsRowArrow? = nil
+    
+    enum SettingsRowArrow {
+        case link
+        case action
+    }
     
     var body: some View {
         HStack(spacing: 15) {
@@ -90,7 +135,7 @@ struct SettingsItemView: View {
                 Image(systemName: icon)
                     .rotationEffect(.degrees(rotation))
                     .font(Font.system(size: 14, weight: .medium))
-                    .foregroundColor(color == .white ? .blue : .white)
+                    .foregroundStyle(color == .white ? .blue : .white)
                     .shadow(radius: 2)
             }
             .frame(width: 28, height: 28)
@@ -101,12 +146,20 @@ struct SettingsItemView: View {
             Text(title)
                 .foregroundColor(.primary)
             
-            if showAsLink {
+            if let arrow {
                 Spacer()
-                Image(systemName: "arrow.up.forward")
-                    .font(Font.system(size: 14, weight: .semibold))
-                    .foregroundColor(.secondary)
-                    .opacity(0.55)
+                Group {
+                    switch arrow {
+                    case .link:
+                        Image(systemName: "arrow.up.forward")
+                    case .action:
+                        Image(systemName: "chevron.forward")
+                    }
+                }
+                .font(.footnote)
+                .fontWeight(.bold)
+                .foregroundStyle(.tertiary)
+                .tint(.primary)
             }
         }
         .contentShape(Rectangle())
