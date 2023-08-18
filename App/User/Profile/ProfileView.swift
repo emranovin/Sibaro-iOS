@@ -90,6 +90,18 @@ struct ProfileView: View {
                         arrow: .action
                     )
                 }
+                #if os(macOS)
+                .buttonStyle(.borderless)
+                #endif
+                .alert(
+                    "Are you sure you want to logout?",
+                    isPresented: $viewModel.showLogoutDialog
+                ) {
+                    Button("Logout", role: .destructive) {
+                        viewModel.logout()
+                    }
+                    Button("Cancel", role: .cancel) {}
+                }
             }
         }
     }

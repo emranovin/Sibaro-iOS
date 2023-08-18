@@ -12,6 +12,11 @@ protocol AuthRepositoryType: BaseService {
         username: String,
         password: String
     ) async throws -> LoginResult
+    
+    func changePassword(
+        oldPassword: String,
+        newPassword: String
+    ) async throws -> ChangePasswordResult
 }
 
 class AuthRepository: BaseService, HTTPClient, AuthRepositoryType {
@@ -29,4 +34,18 @@ class AuthRepository: BaseService, HTTPClient, AuthRepositoryType {
             responseModel: LoginResult.self
         )
     }
+    
+    func changePassword(
+        oldPassword: String,
+        newPassword: String
+    ) async throws -> ChangePasswordResult {
+        return try await sendRequest(
+            endpoint: AuthEndpoint.changePassword(
+                oldPassword: oldPassword,
+                newPassword: newPassword
+            ),
+            responseModel: ChangePasswordResult.self
+        )
+    }
+    
 }

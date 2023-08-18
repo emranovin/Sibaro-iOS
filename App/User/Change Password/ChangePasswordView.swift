@@ -30,13 +30,13 @@ struct ChangePasswordView: View {
     
     @ViewBuilder func content() -> some View {
         VStack(alignment: .leading) {
-            Text("Change Pssword")
+            Text("Change Password")
                 .font(.title)
                 .fontWeight(.bold)
                 .padding(.horizontal)
             Divider().frame(maxWidth: .infinity)
             // MARK: - Fields
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: nil) {
                 
                 Label {
                     // MARK: - Password Field
@@ -45,7 +45,7 @@ struct ChangePasswordView: View {
                         .focused($focusedField, equals: .currentPassword)
                         .privacySensitive(true)
                         .disabled(viewModel.loading)
-                        .padding()
+                        .padding(.horizontal)
                         .onSubmit {
                             focusedField = .newPassword
                         }
@@ -64,7 +64,7 @@ struct ChangePasswordView: View {
                         .focused($focusedField, equals: .newPassword)
                         .privacySensitive(true)
                         .disabled(viewModel.loading)
-                        .padding()
+                        .padding(.horizontal)
                         .onSubmit {
                             focusedField = .confirmPassword
                         }
@@ -79,21 +79,26 @@ struct ChangePasswordView: View {
                     // MARK: - Password Field
                     SecureField("Confirm Password", text: $viewModel.confirmPassword)
                         .textContentType(.newPassword)
-                       .focused($focusedField, equals: .confirmPassword)
+                        .focused($focusedField, equals: .confirmPassword)
                         .privacySensitive(true)
                         .disabled(viewModel.loading)
-                        .padding()
+                        .padding(.horizontal)
                         .onSubmit(viewModel.changePassword)
                 } icon: {
                     Text("Confirm")
                         .frame(maxWidth: 80, alignment: .leading)
                         .multilineTextAlignment(.leading)
                 }.padding(.trailing, 16)
-            
+                
             }
             .padding(.leading)
             .textFieldStyle(.plain)
             Divider().frame(maxWidth: .infinity)
+            Text("New password must contain at least 8 characters including uppder and lowercase letters and and at least one number")
+                .font(.caption)
+                .foregroundColor(Color(red: 102/255, green: 102/255, blue: 102/255))
+                .multilineTextAlignment(.leading)
+                .padding()
             // MARK: - Change Password button
             ZStack {
                 ProgressView()
@@ -115,10 +120,20 @@ struct ChangePasswordView: View {
             }
             
             // MARK: - Response message
+            
+            
+        }.alert("Error while trying to change password", isPresented: $viewModel.showAlert) {
+            Button("Dismiss", role: .cancel) {
+                viewModel.showAlert = false
+            }
+        } message: {
             Text(viewModel.message)
                 .font(.callout)
                 .foregroundColor(.red)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.horizontal)
         }
+
         Spacer()
         
         
