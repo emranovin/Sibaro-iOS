@@ -4,7 +4,7 @@
 # Sibaro
 #### Client app for iOS and macOS
 
-> Sibaro is an store based on ad-hoc signing for apple platforms.
+> Sibaro is a store based on ad-hoc signing for apple platforms.
 
 ![SwiftUI](https://img.shields.io/badge/SwiftUI-black?logo=swift)
 ![Supported platforms](https://img.shields.io/badge/Platforms-iOS%2016.0+%20|%20macOS%2013.0-white?logo=apple)
