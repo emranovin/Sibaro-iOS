@@ -25,15 +25,17 @@ struct ProfileView: View {
             }
             
             Section {
-                
-                ZStack(alignment: .leading) {
-                    NavigationLink {
-                        ChangePasswordView(changedPassowrd: $viewModel.succusfullyChangedPassword)
-                    } label: {
-                        EmptyView()
-                    }
-                    ProfileActionRow(icon: "key", color: .orange, title: "Change Password")
+                /// Reset password
+                NavigationLink {
+                    ChangePasswordView(changedPassowrd: $viewModel.succusfullyChangedPassword)
+                } label: {
+                    SettingsItemView(
+                        icon: "key.fill",
+                        color: .orange,
+                        title: "Change Password"
+                    )
                 }
+                
                 /// App request
                 Button {
                     viewModel.showAppSuggestion.toggle()
@@ -118,34 +120,17 @@ struct ProfileView: View {
     }
 }
 
-struct ProfileActionRow: View {
-    var action: (() -> ())? = nil
-    var icon: String
-    var color: Color
-    var title: LocalizedStringKey
-    
-    var body: some View {
-        Button {
-            action?()
-        } label: {
-            SettingsItemView(
-                icon: icon,
-                color: color,
-                title: title
-            )
-        }
-        #if os(macOS)
-        .buttonStyle(.borderless)
-        #endif
-    }
-}
-
 struct SettingsItemView: View {
     var icon: String
     var color: Color
     var title: LocalizedStringKey
     var rotation: Double = 0
+    
+    #if os(iOS)
     var arrow: SettingsRowArrow? = nil
+    #else
+    var arrow: SettingsRowArrow? = .action
+    #endif
     
     enum SettingsRowArrow {
         case link
@@ -192,6 +177,8 @@ struct SettingsItemView: View {
 struct ProfileView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ProfileView()
+        NavigationStack {
+            ProfileView()
+        }
     }
 }
