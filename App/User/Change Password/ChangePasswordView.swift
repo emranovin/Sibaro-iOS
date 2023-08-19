@@ -62,7 +62,9 @@ struct ChangePasswordView: View {
                 Label {
                     // MARK: - Password Field
                     SecureField("New Password", text: $viewModel.newPassword)
+                        #if os(iOS)
                         .textContentType(.newPassword)
+                        #endif
                         .focused($focusedField, equals: .newPassword)
                         .privacySensitive(true)
                         .disabled(viewModel.loading)
@@ -80,7 +82,9 @@ struct ChangePasswordView: View {
                 Label {
                     // MARK: - Password Field
                     SecureField("Confirm Password", text: $viewModel.confirmPassword)
+                        #if os(iOS)
                         .textContentType(.newPassword)
+                        #endif
                         .focused($focusedField, equals: .confirmPassword)
                         .privacySensitive(true)
                         .disabled(viewModel.loading)
