@@ -24,33 +24,32 @@ enum AuthEndpoint {
 extension AuthEndpoint: Endpoint {
     var path: String {
         switch self {
-        case .login(_, _):
+        case .login:
             return "/api/token/"
-        case .changePassword(_, _):
+        case .changePassword:
             return "/api/password/change/"
-        case .verifyPassword(_):
+        case .verifyPassword:
             return "/api/password/verify/"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .login(_, _):
+        case .login:
             return .post
-        case .changePassword(_, _):
+        case .changePassword:
             return .post
-        case .verifyPassword(_):
+        case .verifyPassword:
             return .post
         }
     }
     
     var needsToken: Bool {
         switch self {
-        case .login(_, _):
+        case .login:
             return false
-        case .changePassword(_, _):
-            return true
-        case .verifyPassword(_):
+        case .changePassword,
+             .verifyPassword:
             return true
         }
     }
