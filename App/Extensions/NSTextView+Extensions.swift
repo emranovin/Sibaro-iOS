@@ -11,10 +11,9 @@ import AppKit
 extension NSTextView {
     open override var frame: CGRect {
         didSet {
-            backgroundColor = .clear //<<here clear
+            backgroundColor = .clear
             drawsBackground = true
         }
-
     }
 }
 #endif

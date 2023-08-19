@@ -88,15 +88,4 @@ extension ChangePasswordView {
             }
         }
     }
-    
-}
-
-extension String {
-    func matchs(regex: String) -> Bool {
-        if self.range(of: regex, options: .regularExpression) != nil {
-            return true
-        } else {
-            return false
-        }
-    }
 }

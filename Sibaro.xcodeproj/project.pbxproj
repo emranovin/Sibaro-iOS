@@ -465,10 +465,10 @@
 		C604EB202A8932E900B18E0E /* User */ = {
 			isa = PBXGroup;
 			children = (
-				C6AD3FBA2A8E1991008182BC /* SubmitApp */,
-				03FDA3152A8D0ACC003D192D /* Profile */,
-				03FDA3122A8C1D07003D192D /* Login */,
 				36FE9D032A8E4B9D00A71B12 /* Change Password */,
+				03FDA3122A8C1D07003D192D /* Login */,
+				03FDA3152A8D0ACC003D192D /* Profile */,
+				C6AD3FBA2A8E1991008182BC /* SubmitApp */,
 			);
 			path = User;
 			sourceTree = "<group>";
