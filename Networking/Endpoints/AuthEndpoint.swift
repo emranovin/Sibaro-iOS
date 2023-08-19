@@ -12,6 +12,13 @@ enum AuthEndpoint {
         username: String,
         password: String
     )
+    case changePassword(
+        oldPassword: String,
+        newPassword: String
+    )
+    case verifyPassword(
+        password: String
+    )
 }
 
 extension AuthEndpoint: Endpoint {
@@ -19,12 +26,20 @@ extension AuthEndpoint: Endpoint {
         switch self {
         case .login(_, _):
             return "/api/token/"
+        case .changePassword(_, _):
+            return "/api/password/change/"
+        case .verifyPassword(_):
+            return "/api/password/verify/"
         }
     }
     
     var method: HTTPMethod {
         switch self {
         case .login(_, _):
+            return .post
+        case .changePassword(_, _):
+            return .post
+        case .verifyPassword(_):
             return .post
         }
     }
@@ -33,6 +48,10 @@ extension AuthEndpoint: Endpoint {
         switch self {
         case .login(_, _):
             return false
+        case .changePassword(_, _):
+            return true
+        case .verifyPassword(_):
+            return true
         }
     }
     
@@ -49,6 +68,15 @@ extension AuthEndpoint: Endpoint {
         case .login(let username, let password):
             return [
                 "username": username,
+                "password": password
+            ]
+        case .changePassword(let oldPassword, let newPassword):
+            return [
+                "old_password": oldPassword,
+                "new_password": newPassword,
+            ]
+        case .verifyPassword(password: let password):
+            return [
                 "password": password
             ]
         }

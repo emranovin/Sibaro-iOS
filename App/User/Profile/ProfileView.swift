@@ -10,7 +10,6 @@ import SwiftUI
 struct ProfileView: View {
     
     @StateObject var viewModel: ViewModel = ViewModel()
-    
     var body: some View {
         List {
             Section {
@@ -26,6 +25,17 @@ struct ProfileView: View {
             }
             
             Section {
+                /// Reset password
+                NavigationLink {
+                    ChangePasswordView(changedPassowrd: $viewModel.succusfullyChangedPassword)
+                } label: {
+                    SettingsItemView(
+                        icon: "key.fill",
+                        color: .orange,
+                        title: "Change Password"
+                    )
+                }
+                
                 /// App request
                 Button {
                     viewModel.showAppSuggestion.toggle()
@@ -95,6 +105,19 @@ struct ProfileView: View {
                 }
             }
         }
+        .onChange(of: viewModel.succusfullyChangedPassword) { succusfullyChangedPassword in
+            if succusfullyChangedPassword {
+                viewModel.showChangedPasswordAlert.toggle()
+            }
+        }
+        .alert("Changed Password", isPresented: $viewModel.showChangedPasswordAlert) {
+            Button("Dismiss") {
+                viewModel.showChangedPasswordAlert.toggle()
+            }
+        } message: {
+            Text("Password successfully changed")
+                .font(.callout)
+        }
     }
 }
 
@@ -103,7 +126,12 @@ struct SettingsItemView: View {
     var color: Color
     var title: LocalizedStringKey
     var rotation: Double = 0
+    
+    #if os(iOS)
     var arrow: SettingsRowArrow? = nil
+    #else
+    var arrow: SettingsRowArrow? = .action
+    #endif
     
     enum SettingsRowArrow {
         case link
@@ -150,6 +178,8 @@ struct SettingsItemView: View {
 struct ProfileView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ProfileView()
+        NavigationStack {
+            ProfileView()
+        }
     }
 }

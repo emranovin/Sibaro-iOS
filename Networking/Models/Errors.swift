@@ -19,3 +19,12 @@ struct ProductError: Codable {
 struct Message: Codable {
     let tokenClass, tokenType, message: String
 }
+
+struct ChangePasswordError: Codable {
+    var oldPassword: [String]?
+    var newPassword: [String]?
+}
+
+struct VerifyPasswordError: Codable {
+    var password: [String]
+}
