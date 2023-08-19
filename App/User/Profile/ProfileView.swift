@@ -104,11 +104,13 @@ struct ProfileView: View {
                     Button("Cancel", role: .cancel) {}
                 }
             }
-        }.onChange(of: viewModel.succusfullyChangedPassword) { succusfullyChangedPassword in
+        }
+        .onChange(of: viewModel.succusfullyChangedPassword) { succusfullyChangedPassword in
             if succusfullyChangedPassword {
                 viewModel.showChangedPasswordAlert.toggle()
             }
-        }.alert("Changed Password", isPresented: $viewModel.showChangedPasswordAlert) {
+        }
+        .alert("Changed Password", isPresented: $viewModel.showChangedPasswordAlert) {
             Button("Dismiss") {
                 viewModel.showChangedPasswordAlert.toggle()
             }
@@ -116,7 +118,6 @@ struct ProfileView: View {
             Text("Password successfully changed")
                 .font(.callout)
         }
-
     }
 }
 
