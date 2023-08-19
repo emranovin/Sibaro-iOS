@@ -90,7 +90,7 @@ struct ProductDetailsView: View {
                     .minimumScaleFactor(0.8)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(viewModel.product.subtitle)
+                Text(viewModel.product.subtitle ?? "")
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.leading)

@@ -10,7 +10,9 @@ import Foundation
 struct Product: Codable, Identifiable {
     let id: Int
     let type: AppType
-    let title, subtitle, version, description: String
+    let title: String
+    let subtitle: String?
+    let version, description: String
     let ipaSize: String
     let icon: String
     let bundleIdentifier: String
