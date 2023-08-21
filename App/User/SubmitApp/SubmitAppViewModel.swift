@@ -62,8 +62,3 @@ extension SubmitAppView {
         }
     }
 }
-
-enum SubmitStatus: Equatable {
-    case success(message: String)
-    case failed(message: String)
-}

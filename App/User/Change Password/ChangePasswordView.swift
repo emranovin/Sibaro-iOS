@@ -6,134 +6,111 @@
 //
 
 import SwiftUI
+import LottieUI
 
 struct ChangePasswordView: View {
-    @Environment(\.dismiss) var dismissAction
+    @Environment(\.dismiss) var dismiss
+    
+    @State var currentPassword: String = ""
+    @State var newPassword: String = ""
+    @State var confirmPassword: String = ""
     
     @StateObject var viewModel: ViewModel = ViewModel()
     
     @FocusState private var focusedField: FocuseState?
-    @Binding var changedPassowrd: Bool
     
     private enum FocuseState: Hashable {
         case currentPassword, newPassword, confirmPassword
     }
     
     var body: some View {
-        ScrollView {
-            content
-                .frame(maxWidth: 700, alignment: .leading)
-                .padding()
-                .navigationTitle("Change Password")
-                .alert("Error while trying to change password", isPresented: $viewModel.showAlert) {
-                    Button("Dismiss", role: .cancel) {
-                        viewModel.showAlert = false
-                    }
-                } message: {
-                    Text(viewModel.message)
-                        .font(.callout)
-                        .tint(.red)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.horizontal)
+        NavigationStack {
+            Form {
+                Section {
+                    currentPassField
+                } header: {
+                    LottieView("lock")
+                        .loopMode(.playOnce)
+                        .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(.init())
                 }
-                .onChange(of: viewModel.succesfullyChangedPassword) { newValue in
-                    if newValue {
-                        self.changedPassowrd = true
-                        dismissAction()
-                    }
+                
+                Section {
+                    newPassField
+                    newPassConfirmField
+                } header: {
+                    Text("New Password")
+                } footer: {
+                    Text("New password must contain at least 8 characters including uppder and lowercase letters and and at least one number")
                 }
-        }
-        .frame(maxWidth: .infinity, alignment: .center)
-    }
-    
-    var content: some View {
-        VStack(alignment: .center) {
-            Divider().frame(maxWidth: .infinity)
-            
-            // MARK: - Fields
-            VStack(alignment: .leading, spacing: nil) {
-                Label {
-                    // MARK: - Password Field
-                    SecureField("Current Password", text: $viewModel.currentPassword)
-                        .textContentType(.password)
-                        .focused($focusedField, equals: .currentPassword)
-                        .privacySensitive(true)
-                        .disabled(viewModel.loading)
-                        .padding(.horizontal)
-                        .onSubmit {
-                            focusedField = .newPassword
-                        }
-                } icon: {
-                    Text("Password")
-                        .frame(maxWidth: 80, alignment: .leading)
-                        .multilineTextAlignment(.leading)
-                }
-                .padding(.trailing, 16)
-                
-                Divider()
-                
-                Label {
-                    // MARK: - Password Field
-                    SecureField("New Password", text: $viewModel.newPassword)
-                        #if os(iOS)
-                        .textContentType(.newPassword)
-                        #endif
-                        .focused($focusedField, equals: .newPassword)
-                        .privacySensitive(true)
-                        .disabled(viewModel.loading)
-                        .padding(.horizontal)
-                        .onSubmit {
-                            focusedField = .confirmPassword
-                        }
-                } icon: {
-                    Text("New")
-                        .frame(maxWidth: 80, alignment: .leading)
-                }
-                .padding(.trailing, 16)
-                
-                Divider().frame(maxWidth: .infinity)
-                
-                Label {
-                    // MARK: - Password Field
-                    SecureField("Confirm Password", text: $viewModel.confirmPassword)
-                        #if os(iOS)
-                        .textContentType(.newPassword)
-                        #endif
-                        .focused($focusedField, equals: .confirmPassword)
-                        .privacySensitive(true)
-                        .disabled(viewModel.loading)
-                        .padding(.horizontal)
-                        .onSubmit(viewModel.changePassword)
-                } icon: {
-                    Text("Confirm")
-                        .frame(maxWidth: 80, alignment: .leading)
-                        .multilineTextAlignment(.leading)
-                }.padding(.trailing, 16)
-                
             }
-            .padding(.leading)
-            .textFieldStyle(.plain)
-            
-            Divider().frame(maxWidth: .infinity)
-            
-            Text("New password must contain at least 8 characters including uppder and lowercase letters and and at least one number")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.leading)
-                .padding()
-            
-            // MARK: - Change Password button
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    submitButton
+                }
+                
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(action: {dismiss()}) {
+                        Text("Cancel")
+                    }
+                }
+            }
+            .alert(viewModel.alertStatus?.title ?? "", isPresented: $viewModel.showAlert) {
+                Button("Ok", role: .cancel) {
+                    if viewModel.alertStatus == .success {
+                        dismiss()
+                    }
+                }
+            } message: {
+                Text(viewModel.alertStatus?.message ?? "")
+                    .font(.callout)
+                    .tint(.red)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.horizontal)
+            }
+            .formStyle(.grouped)
+            .navigationTitle("Change Password")
             #if os(iOS)
-            submitButton
-                .frame(maxWidth: 400)
-            #else
-            HStack {
-                Spacer()
-                submitButton
-                    .frame(maxWidth: 150)
-            }
+            .navigationBarTitleDisplayMode(.inline)
             #endif
         }
+    }
+    
+    var currentPassField: some View {
+        SecureField("Current Password", text: $currentPassword, prompt: Text("Enter current password"))
+            .textContentType(.password)
+            .focused($focusedField, equals: .currentPassword)
+            .privacySensitive(true)
+            .disabled(viewModel.loading)
+            .onSubmit {
+                focusedField = .newPassword
+            }
+    }
+    
+    var newPassField: some View {
+        SecureField("New", text: $newPassword, prompt: Text("Enter new password"))
+            #if os(iOS)
+            .textContentType(.newPassword)
+            #endif
+            .focused($focusedField, equals: .newPassword)
+            .privacySensitive(true)
+            .disabled(viewModel.loading)
+            .onSubmit {
+                focusedField = .confirmPassword
+            }
+    }
+    
+    var newPassConfirmField: some View {
+        SecureField("Verify", text: $confirmPassword, prompt: Text("Re-enter password"))
+            #if os(iOS)
+            .textContentType(.newPassword)
+            #endif
+            .focused($focusedField, equals: .confirmPassword)
+            .privacySensitive(true)
+            .disabled(viewModel.loading)
+            .onSubmit(submit)
     }
     
     // MARK: - Change Password button
@@ -142,19 +119,20 @@ struct ChangePasswordView: View {
             ProgressView()
                 .opacity(viewModel.loading ? 1 : 0)
             
-            Button(action: viewModel.changePassword) {
-                Text("Change Password")
-                    .font(.body)
-                    .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity)
-            }
-            .controlSize(.large)
-            .buttonStyle(.borderedProminent)
-            #if os(iOS)
-            .buttonBorderShape(.capsule)
-            .padding()
-            #endif
-            .opacity(viewModel.loading ? 0 : 1)
+            Button("Submit", action: submit)
+                .opacity(viewModel.loading ? 0 : 1)
+        }
+    }
+}
+
+extension ChangePasswordView {
+    func submit() {
+        Task {
+            await viewModel.verifyAndChangePassword(
+                currentPassword: currentPassword,
+                newPassword: newPassword,
+                confirmPassword: confirmPassword
+            )
         }
     }
 }
@@ -162,7 +140,7 @@ struct ChangePasswordView: View {
 struct ChangePasswordView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ChangePasswordView(changedPassowrd: .constant(false))
+            ChangePasswordView()
         }
     }
 }

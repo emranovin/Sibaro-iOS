@@ -14,23 +14,15 @@ extension ChangePasswordView {
         
         @Injected(\.authRepository) var auth
         
-        @Published var currentPassword: String = ""
-        @Published var newPassword: String = ""
-        @Published var confirmPassword: String = ""
-        @Published var succesfullyChangedPassword: Bool = false
-        
         @Published var loading: Bool = false
-        @Published var message: String = "Bad Request"
-        @Published var showAlert: Bool = false {
-            didSet {
-                if !showAlert {
-                    message = ""
-                }
-            }
-        }
+        @Published var alertStatus: SubmitStatus? = nil
+        @Published var showAlert: Bool = false
         
-        
-        private func _validatePasswords() -> String? {
+        private func validatePasswords(
+            currentPassword: String,
+            newPassword: String,
+            confirmPassword: String
+        ) -> String? {
             if newPassword.isEmpty || currentPassword.isEmpty || confirmPassword.isEmpty {
                 return "New password and confirmation are not the same"
             } else if !newPassword.matchs(regex: ".{8}") {
@@ -47,44 +39,76 @@ extension ChangePasswordView {
             return nil
         }
         
-        private func _verifyAndChangePassword() async {
-            if let validationMessage = _validatePasswords() {
-                message = validationMessage
+        func verifyAndChangePassword(
+            currentPassword: String,
+            newPassword: String,
+            confirmPassword: String
+        ) async {
+            loading = true
+            if let validationMessage = validatePasswords(
+                currentPassword: currentPassword,
+                newPassword: newPassword,
+                confirmPassword: confirmPassword
+            ) {
+                alertStatus = .failed(message: validationMessage)
                 showAlert = true
+                loading = false
                 return
             }
             
             do {
                 try await auth.verifyPassword(password: currentPassword)
                 try await auth.changePassword(oldPassword: currentPassword, newPassword: newPassword)
-                succesfullyChangedPassword = true
+                alertStatus = .success
             } catch {
                 print(error)
                 if let error = error as? RequestError {
                     switch error {
-                    case .unauthorized(_):
-                        message = "Unauthorized"
                     case .badRequest(let data):
+                        /// Verify error
                         if let verifyPasswordError = try? SibaroJSONDecoder().decode(VerifyPasswordError.self, from: data) {
-                            message = verifyPasswordError.password.joined(separator: "\n")
+                            let message = verifyPasswordError.password.joined(separator: "\n")
+                            alertStatus = .failed(message: message)
+                        /// Change Error
                         } else if let changePsswordError = try? SibaroJSONDecoder().decode(ChangePasswordError.self, from: data) {
-                            message = (
+                            let message = (
                                 (changePsswordError.newPassword?.joined(separator: "\n") ?? "")
                                 +
                                 ( "\n" + (changePsswordError.oldPassword?.joined(separator: "\n") ?? "")))
+                            alertStatus = .failed(message: message)
                         }
                     default:
-                        message = error.description
+                        alertStatus = .failed(message: error.description)
                     }
-                    showAlert = true
+                    
+                } else {
+                    alertStatus = .failed(message: "Failed to change password, try again")
                 }
             }
+            showAlert = true
             loading = false
         }
+    }
+    
+    enum SubmitStatus: Equatable {
+        case success
+        case failed(message: String)
         
-        nonisolated func changePassword() {
-            Task {
-                await _verifyAndChangePassword()
+        var title: String {
+            switch self {
+            case .success:
+                "Success"
+            case .failed:
+                "Failed to change Password"
+            }
+        }
+        
+        var message: String {
+            switch self {
+            case .success:
+                return "Your password changed"
+            case .failed(let message):
+                return message
             }
         }
     }

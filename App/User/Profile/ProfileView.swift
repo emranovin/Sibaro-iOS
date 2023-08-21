@@ -26,14 +26,29 @@ struct ProfileView: View {
             
             Section {
                 /// Reset password
-                NavigationLink {
-                    ChangePasswordView(changedPassowrd: $viewModel.succusfullyChangedPassword)
+                Button {
+                    viewModel.showChangePass.toggle()
                 } label: {
                     SettingsItemView(
                         icon: "key.fill",
                         color: .orange,
-                        title: "Change Password"
+                        title: "Change Password",
+                        arrow: .action
                     )
+                }
+                #if os(macOS)
+                .buttonStyle(.borderless)
+                #endif
+                .sheet(isPresented: $viewModel.showChangePass) {
+                    ChangePasswordView()
+                        #if os(macOS)
+                        .frame(
+                            minWidth: 450,
+                            idealWidth: 450,
+                            minHeight: 450,
+                            idealHeight: 450
+                        )
+                        #endif
                 }
                 
                 /// App request
@@ -104,19 +119,6 @@ struct ProfileView: View {
                     Button("Cancel", role: .cancel) {}
                 }
             }
-        }
-        .onChange(of: viewModel.succusfullyChangedPassword) { succusfullyChangedPassword in
-            if succusfullyChangedPassword {
-                viewModel.showChangedPasswordAlert.toggle()
-            }
-        }
-        .alert("Changed Password", isPresented: $viewModel.showChangedPasswordAlert) {
-            Button("Dismiss") {
-                viewModel.showChangedPasswordAlert.toggle()
-            }
-        } message: {
-            Text("Password successfully changed")
-                .font(.callout)
         }
     }
 }
