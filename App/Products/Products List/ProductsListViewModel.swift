@@ -54,7 +54,10 @@ extension ProductsListView {
         
         func _getList() async {
             do {
-                rawProducts = try await productRepository.products()
+                let response = try await productRepository.filterProducts(search: "", ordering: .updatedAt, type: .app, cursor: "")
+                rawProducts = response.results
+                // getting all apps at once
+//                rawProducts = try await productRepository.products()
             } catch {
                 print(error)
                 if let error = error as? RequestError {

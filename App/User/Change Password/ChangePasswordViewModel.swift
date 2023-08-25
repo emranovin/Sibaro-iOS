@@ -97,9 +97,9 @@ extension ChangePasswordView {
         var title: String {
             switch self {
             case .success:
-                "Success"
+                return "Success"
             case .failed:
-                "Failed to change Password"
+                return "Failed to change Password"
             }
         }
         

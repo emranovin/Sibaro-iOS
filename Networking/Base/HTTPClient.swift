@@ -44,7 +44,9 @@ extension HTTPClient {
                 print("Failed to create body block")
             }
         }
-        
+        if let queryParameters = endpoint.urlParams {
+            request.url?.append(queryItems: queryParameters)
+        }
         let (data, response) = try await URLSession.shared.data(for: request, delegate: nil)
         guard let response = response as? HTTPURLResponse else {
             throw RequestError.noResponse
