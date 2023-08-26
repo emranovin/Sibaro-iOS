@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+#if !os(xrOS)
 import LottieUI
+#endif
 
 struct ChangePasswordView: View {
     @Environment(\.dismiss) var dismiss
@@ -29,12 +31,16 @@ struct ChangePasswordView: View {
                 Section {
                     currentPassField
                 } header: {
+                    #if os(xrOS)
+                    Text("Current Password")
+                    #else
                     LottieView("lock")
                         .loopMode(.playOnce)
                         .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.clear)
                         .listRowInsets(.init())
+                    #endif
                 }
                 
                 Section {

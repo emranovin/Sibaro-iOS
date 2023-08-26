@@ -7,7 +7,9 @@
 
 import NukeUI
 import SwiftUI
+#if !os(xrOS)
 import MarkdownUI
+#endif
 
 struct ProductDetailsView: View {
     
@@ -190,11 +192,17 @@ struct ProductDetailsView: View {
     }
     
     var description: some View {
-        
+        #if os(xrOS)
+        Text(viewModel.product.description)
+            .multilineTextAlignment(.leading)
+            .environment(\.layoutDirection, viewModel.product.description.isRTL ? .rightToLeft : .leftToRight)
+            .padding()
+        #else
         Markdown(viewModel.product.description)
             .multilineTextAlignment(.leading)
             .environment(\.layoutDirection, viewModel.product.description.isRTL ? .rightToLeft : .leftToRight)
             .padding()
+        #endif
     }
     
     func proceedApp() {

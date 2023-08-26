@@ -6,9 +6,9 @@
 //
 
 import Foundation
-#if os(iOS)
+#if os(iOS) || os(xrOS)
 import UIKit
-#else
+#elseif os(macOS)
 import Cocoa
 #endif
 
@@ -48,7 +48,7 @@ extension Container {
     var openURL: Factory<(_ url: URL) -> ()> {
         Factory(self) {
             { url in
-                #if os(iOS)
+                #if os(iOS) || os(xrOS)
                 UIApplication.shared.open(url)
                 #else
                 NSWorkspace.shared.open(url)

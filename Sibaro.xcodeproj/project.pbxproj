@@ -65,10 +65,10 @@
 		C604EB502A89546F00B18E0E /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB4F2A89546F00B18E0E /* EmptyStateView.swift */; };
 		C604EB522A895EC000B18E0E /* ProductItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB512A895EC000B18E0E /* ProductItemView.swift */; };
 		C61B1ADC2A8E805800F3AD27 /* NSTextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61B1ADB2A8E805800F3AD27 /* NSTextView+Extensions.swift */; };
-		C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = C62BF8002A8A3059002CFFF9 /* MarkdownUI */; };
+		C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, macos, ); productRef = C62BF8002A8A3059002CFFF9 /* MarkdownUI */; };
 		C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D22A897F1300B2427D /* ProductDetailsView.swift */; };
 		C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D52A89873400B2427D /* String+Extensions.swift */; };
-		C668C2EC2A9299D6009F7B50 /* LottieUI in Frameworks */ = {isa = PBXBuildFile; productRef = C668C2EB2A9299D6009F7B50 /* LottieUI */; };
+		C668C2EC2A9299D6009F7B50 /* LottieUI in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, macos, ); productRef = C668C2EB2A9299D6009F7B50 /* LottieUI */; };
 		C668C2EE2A929ADD009F7B50 /* lock.json in Resources */ = {isa = PBXBuildFile; fileRef = C668C2ED2A929ADD009F7B50 /* lock.json */; };
 		C67979752A8AA6E00091BE25 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C67979742A8AA6E00091BE25 /* Nuke */; };
 		C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C67979782A8AA6E00091BE25 /* NukeUI */; };
@@ -867,12 +867,13 @@
 				PRODUCT_NAME = "$(CONFIG_APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Sibaro-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Debug;
 		};
@@ -910,11 +911,12 @@
 				PRODUCT_NAME = "$(CONFIG_APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Sibaro-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Release;
 		};
@@ -971,7 +973,7 @@
 			repositoryURL = "https://github.com/kean/Nuke";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 12.1.5;
+				minimumVersion = 12.1.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
