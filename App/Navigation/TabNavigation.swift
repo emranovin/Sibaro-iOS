@@ -5,7 +5,7 @@
 //  Created by Armin on 8/13/23.
 //
 
-#if os(iOS)
+#if !os(macOS)
 import SwiftUI
 
 struct TabNavigation: View {

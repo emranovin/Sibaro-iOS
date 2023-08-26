@@ -18,7 +18,9 @@ struct MainView: View {
     var body: some View {
         ZStack {
             if viewModel.isAuthenticated {
-                #if os(iOS)
+                #if os(xrOS)
+                TabNavigation()
+                #elseif os(iOS)
                 if horizontalSizeClass == .compact {
                     TabNavigation()
                 } else {
