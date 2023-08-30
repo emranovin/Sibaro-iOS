@@ -10,7 +10,12 @@ import Foundation
 enum ProductsEndpoint {
     case applications
     case appManifest(id: Int)
-    case productPage(search: String, ordering: Product.OrderProperty, type: AppType, cursor: String)
+    case productPage(
+        search: String,
+        ordering: Product.OrderProperty,
+        type: AppType,
+        cursor: String
+    )
 }
 
 extension Product {
@@ -18,7 +23,6 @@ extension Product {
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case title = "title"
-        
     }
 }
 
@@ -54,7 +58,6 @@ extension ProductsEndpoint: Endpoint {
                 "Content-Type" : "application/json; charset=utf-8"
             ]
         }
-        
     }
     
     var urlParams: [URLQueryItem]? {
@@ -69,7 +72,6 @@ extension ProductsEndpoint: Endpoint {
         default:
             return nil
         }
-        return nil
     }
     
     var body: [String : Any]? {

@@ -10,7 +10,12 @@ import Foundation
 protocol ProductsRepositoryType {
     func products() async throws -> [Product]
     func getManifest(id: Int) async throws -> URL?
-    func filterProducts(search: String, ordering: Product.OrderProperty, type: AppType, cursor: String) async throws -> ProductsPage
+    func filterProducts(
+        search: String,
+        ordering: Product.OrderProperty,
+        type: AppType,
+        cursor: String
+    ) async throws -> ProductsPage
 }
 
 class ProductsRepository: BaseService, HTTPClient, ProductsRepositoryType {
@@ -33,9 +38,19 @@ class ProductsRepository: BaseService, HTTPClient, ProductsRepositoryType {
         return response.url
     }
     
-    func filterProducts(search: String, ordering: Product.OrderProperty, type: AppType, cursor: String) async throws -> ProductsPage {
+    func filterProducts(
+        search: String,
+        ordering: Product.OrderProperty,
+        type: AppType,
+        cursor: String
+    ) async throws -> ProductsPage {
         return try await sendRequest(
-            endpoint: ProductsEndpoint.productPage(search: search, ordering: ordering, type: type, cursor: cursor),
+            endpoint: ProductsEndpoint.productPage(
+                search: search,
+                ordering: ordering,
+                type: type,
+                cursor: cursor
+            ),
             responseModel: ProductsPage.self)
     }
 }

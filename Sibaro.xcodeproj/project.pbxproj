@@ -497,10 +497,10 @@
 		C604EB2A2A89396A00B18E0E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				C604EB2E2A8939BB00B18E0E /* Base */,
 				C604EB2B2A89398900B18E0E /* Endpoints */,
 				03E248D32A8A75DE00DDE525 /* Extensions */,
 				C604EB3B2A893A9300B18E0E /* Models */,
-				C604EB2E2A8939BB00B18E0E /* Base */,
 				C604EB452A89403800B18E0E /* Services */,
 				03E248D02A8A75A300DDE525 /* Utilities */,
 			);
@@ -520,11 +520,11 @@
 		C604EB2E2A8939BB00B18E0E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				C604EB332A8939BB00B18E0E /* Endpoint.swift */,
+				C604EB312A8939BB00B18E0E /* HTTPClient.swift */,
 				C604EB2F2A8939BB00B18E0E /* HTTPContentType.swift */,
 				C604EB302A8939BB00B18E0E /* HTTPMethod.swift */,
-				C604EB312A8939BB00B18E0E /* HTTPClient.swift */,
 				C604EB322A8939BB00B18E0E /* RequestError.swift */,
-				C604EB332A8939BB00B18E0E /* Endpoint.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -534,10 +534,10 @@
 			children = (
 				C604EB412A893B6600B18E0E /* Errors.swift */,
 				C604EB3C2A893A9E00B18E0E /* Login.swift */,
-				C604EB3E2A893ADB00B18E0E /* Product.swift */,
-				C6AD3FC32A8E19CE008182BC /* SubmitApp.swift */,
 				36B7CE952A8FCBE1000ABD7A /* Password.swift */,
+				C604EB3E2A893ADB00B18E0E /* Product.swift */,
 				368EB6322A97CEDC004E7954 /* ProductPage.swift */,
+				C6AD3FC32A8E19CE008182BC /* SubmitApp.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
