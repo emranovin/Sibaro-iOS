@@ -43,11 +43,7 @@ extension ProductsEndpoint: Endpoint {
     }
     
     var needsToken: Bool {
-        switch self {
-        case .applications,
-                .appManifest, .productPage:
-            return true
-        }
+        return true
     }
     
     var header: [String : String]? {
