@@ -21,10 +21,10 @@ struct Message: Codable {
 }
 
 struct ChangePasswordError: Codable {
-    var oldPassword: [String]?
-    var newPassword: [String]?
+    let oldPassword: [String]?
+    let newPassword: [String]?
 }
 
 struct VerifyPasswordError: Codable {
-    var password: [String]
+    let password: [String]
 }

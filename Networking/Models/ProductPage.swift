@@ -8,7 +8,7 @@
 import Foundation
 
 struct ProductsPage: Codable {
-    var next: String?
-    var previous: String?
-    var results: [Product]
+    let next: String?
+    let previous: String?
+    let results: [Product]
 }
