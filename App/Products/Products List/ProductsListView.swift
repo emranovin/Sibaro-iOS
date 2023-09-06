@@ -49,6 +49,21 @@ struct ProductsListView: View {
             viewModel.getList(changeLoadingState: false)
         }
         .toolbar {
+            #if os(macOS)
+            ToolbarItem {
+                Button {
+                    viewModel.getList()
+                } label: {
+                    if viewModel.loading && !viewModel.products.isEmpty {
+                        ProgressView()
+                            .scaleEffect(0.5)
+                    } else {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                    }
+                }
+                .disabled(viewModel.loading)
+            }
+            #endif
             ToolbarItem {
                 #if os(macOS)
                 sortPicker
@@ -60,16 +75,6 @@ struct ProductsListView: View {
                 }
                 #endif
             }
-            #if os(macOS)
-            ToolbarItem {
-                Button {
-                    viewModel.getList()
-                } label: {
-                    Image(systemName: "arrow.triangle.2.circlepath")
-                }
-                .disabled(viewModel.loading)
-            }
-            #endif
         }
         .sheet(item: $viewModel.selectedProduct) { product in
             ProductDetailsView(product: product)
