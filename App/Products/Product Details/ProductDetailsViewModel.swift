@@ -18,6 +18,9 @@ extension ProductDetailsView {
         
         @Published var loading: Bool = false
         
+        @Published var showPreview: Bool = false
+        @Published var previewURL: URL? = nil
+        
         var appState: InstallationState {
             applications.getAppState(product)
         }
