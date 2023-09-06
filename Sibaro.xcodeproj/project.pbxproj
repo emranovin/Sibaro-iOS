@@ -954,8 +954,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		C668C2EA2A9299D6009F7B50 /* XCRemoteSwiftPackageReference "LottieUI" */ = {
