@@ -87,8 +87,9 @@ struct ProductItemView: View {
                     #elseif os(macOS)
                     .buttonStyle(.plain)
                     .tint(.white)
-                    .background(Color("ProductActionColor"))
+                    .background(Color.white)
                     .clipShape(Capsule())
+                    .shadow(radius: 1)
                     #endif
                     .opacity(viewModel.loading ? 0 : 1)
                 }
