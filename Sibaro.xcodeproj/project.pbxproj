@@ -68,7 +68,7 @@
 		C60FFD762AA8ED6900A51D38 /* ScreenshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FFD752AA8ED6900A51D38 /* ScreenshotView.swift */; };
 		C60FFD782AA8EDBC00A51D38 /* ImagePreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FFD772AA8EDBC00A51D38 /* ImagePreviewerView.swift */; };
 		C61B1ADC2A8E805800F3AD27 /* NSTextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61B1ADB2A8E805800F3AD27 /* NSTextView+Extensions.swift */; };
-		C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, macos, ); productRef = C62BF8002A8A3059002CFFF9 /* MarkdownUI */; };
+		C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = C62BF8002A8A3059002CFFF9 /* MarkdownUI */; };
 		C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D22A897F1300B2427D /* ProductDetailsView.swift */; };
 		C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D52A89873400B2427D /* String+Extensions.swift */; };
 		C668C2EC2A9299D6009F7B50 /* LottieUI in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, macos, ); productRef = C668C2EB2A9299D6009F7B50 /* LottieUI */; };
