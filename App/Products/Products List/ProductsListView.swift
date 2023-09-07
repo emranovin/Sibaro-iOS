@@ -44,16 +44,18 @@ struct ProductsListView: View {
         }
         .searchable(text: $viewModel.search)
         .task {
-            viewModel.getList()
+            await viewModel.getList()
         }
         .refreshable {
-            viewModel.getList(changeLoadingState: false)
+            await viewModel.getList()
         }
         .toolbar {
             #if os(macOS)
             ToolbarItem {
                 Button {
-                    viewModel.getList()
+                    Task {
+                        await viewModel.getList()
+                    }
                 } label: {
                     if viewModel.loading && !viewModel.products.isEmpty {
                         ProgressView()
@@ -151,7 +153,9 @@ struct ProductsListView: View {
                     title: viewModel.message,
                     actionTitle: "Try again"
                 ) {
-                    viewModel.getList()
+                    Task {
+                        await viewModel.getList()
+                    }
                 }
             }
         }
