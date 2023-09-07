@@ -75,6 +75,7 @@
 		C668C2EE2A929ADD009F7B50 /* lock.json in Resources */ = {isa = PBXBuildFile; fileRef = C668C2ED2A929ADD009F7B50 /* lock.json */; };
 		C67979752A8AA6E00091BE25 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C67979742A8AA6E00091BE25 /* Nuke */; };
 		C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C67979782A8AA6E00091BE25 /* NukeUI */; };
+		C67EB29B2AAA125E003CFFB1 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = C67EB29A2AAA125E003CFFB1 /* Shimmer */; };
 		C6AD3FBE2A8E1991008182BC /* SubmitAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FBB2A8E1991008182BC /* SubmitAppView.swift */; };
 		C6AD3FC02A8E1991008182BC /* SubmitAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FBD2A8E1991008182BC /* SubmitAppViewModel.swift */; };
 		C6AD3FC22A8E19AC008182BC /* SubmitAppEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FC12A8E19AC008182BC /* SubmitAppEndpoint.swift */; };
@@ -176,6 +177,7 @@
 				C67979752A8AA6E00091BE25 /* Nuke in Frameworks */,
 				C668C2EC2A9299D6009F7B50 /* LottieUI in Frameworks */,
 				C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */,
+				C67EB29B2AAA125E003CFFB1 /* Shimmer in Frameworks */,
 				C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,6 +597,7 @@
 				C67979742A8AA6E00091BE25 /* Nuke */,
 				C67979782A8AA6E00091BE25 /* NukeUI */,
 				C668C2EB2A9299D6009F7B50 /* LottieUI */,
+				C67EB29A2AAA125E003CFFB1 /* Shimmer */,
 			);
 			productName = Sibaro;
 			productReference = C604EAFE2A892FDA00B18E0E /* Sibaro.app */;
@@ -630,6 +633,7 @@
 				C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */,
 				C668C2EA2A9299D6009F7B50 /* XCRemoteSwiftPackageReference "LottieUI" */,
+				C67EB2992AAA125E003CFFB1 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = C604EAFF2A892FDA00B18E0E /* Products */;
 			projectDirPath = "";
@@ -986,6 +990,14 @@
 				minimumVersion = 12.1.5;
 			};
 		};
+		C67EB2992AAA125E003CFFB1 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1013,6 +1025,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = NukeUI;
+		};
+		C67EB29A2AAA125E003CFFB1 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C67EB2992AAA125E003CFFB1 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

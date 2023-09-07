@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shimmer
 
 enum SortType: String, CaseIterable {
     case newest = "Newest"
@@ -85,12 +86,20 @@ struct ProductsListView: View {
     }
     
     var normalList: some View {
-        List(viewModel.products, id: \.id) { product in
+        List(
+            viewModel.products.isEmpty && viewModel.message == "" ?
+            viewModel.dummyProducts :
+            viewModel.products,
+            id: \.id
+        ) { product in
             Button {
                 viewModel.selectedProduct = product
             } label: {
                 ProductItemView(product: product)
+                    .redacted(reason: viewModel.products.isEmpty ? .placeholder : [])
+                    .shimmering(active: viewModel.products.isEmpty)
             }
+            .disabled(viewModel.products.isEmpty)
         }
         .listStyle(.plain)
     }
@@ -98,12 +107,21 @@ struct ProductsListView: View {
     var gridList: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 360), alignment: .top)]) {
-                ForEach(viewModel.products, id: \.id) { product in
+                ForEach(
+                    viewModel.products.isEmpty && viewModel.message == "" ?
+                    viewModel.dummyProducts :
+                    viewModel.products,
+                    id: \.id
+                ) { product in
                     ProductItemView(product: product)
-                        .onTapGesture {
-                            viewModel.selectedProduct = product
-                        }
                         .padding()
+                        .redacted(reason: viewModel.products.isEmpty ? .placeholder : [])
+                        .shimmering(active: viewModel.products.isEmpty)
+                        .onTapGesture {
+                            if !viewModel.products.isEmpty {
+                                viewModel.selectedProduct = product
+                            }
+                        }
                 }
             }
             .padding()
@@ -125,14 +143,6 @@ struct ProductsListView: View {
     
     var emptyState: some View {
         ZStack {
-            /// Loading Empty state
-            if viewModel.loading && viewModel.products.isEmpty {
-                EmptyStateView(
-                    isLoading: true,
-                    title: "Updating..."
-                )
-            }
-            
             /// Failed Empty state
             if !viewModel.loading && viewModel.products.isEmpty && viewModel.message != "" {
                 EmptyStateView(
@@ -146,7 +156,6 @@ struct ProductsListView: View {
             }
         }
     }
-    
 }
 
 struct ProductsListView_Previews: PreviewProvider {
