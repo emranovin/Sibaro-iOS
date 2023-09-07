@@ -16,7 +16,7 @@ extension ProductsListView {
         var type: AppType
         
         @Published var sortType: SortType = .updated
-        @Published var dummyProducts: [Product] = [.dummy(), .dummy(), .dummy(), .dummy()]
+        @Published var dummyProducts: [Product] = [.dummy(), .dummy(), .dummy(), .dummy(), .dummy(), .dummy()]
         @Published var rawProducts: [Product] = []
         @Published var search: String = ""
         

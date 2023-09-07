@@ -74,7 +74,7 @@ extension ScreenshotView: View {
     
     var closeButton: some View {
         Button(action: { dismiss() }) {
-            Image(systemName: "xmark.circle.fill")
+            Image(systemName: SFSymbols.closeButton)
                 .font(.title)
                 .tint(.gray)
                 .symbolRenderingMode(.hierarchical)

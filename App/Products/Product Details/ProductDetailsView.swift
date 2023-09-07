@@ -55,7 +55,7 @@ struct ProductDetailsView: View {
                     Button {
                         dismissAction()
                     } label: {
-                        Label("Close", systemImage: "xmark.circle.fill")
+                        Label("Close", systemImage: SFSymbols.closeButton)
                             .symbolRenderingMode(.hierarchical)
                     }
                     .tint(.secondary)
