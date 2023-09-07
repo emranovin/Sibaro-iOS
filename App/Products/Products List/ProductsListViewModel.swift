@@ -53,7 +53,8 @@ extension ProductsListView {
             }
         }
         
-        func _getList() async {
+        func getList() async {
+            loading = true
             do {
                 message = ""
                 rawProducts = try await productRepository.products()
@@ -74,16 +75,6 @@ extension ProductsListView {
                 }
             }
             loading = false
-        }
-        
-        func getList(changeLoadingState: Bool = true) {
-            if changeLoadingState {
-                loading = true
-            }
-            
-            Task {
-                await _getList()
-            }
         }
     }
 }
