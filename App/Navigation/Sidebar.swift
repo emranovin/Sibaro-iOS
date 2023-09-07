@@ -26,6 +26,7 @@ struct Sidebar: View {
         } detail: {
             NavigationStack(path: $path) {
                 selection?.view()
+                    .navigationTitle(selection?.title ?? "Sibaro")
             }
         }
         #if os(macOS)

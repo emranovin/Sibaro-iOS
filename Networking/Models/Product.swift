@@ -55,6 +55,28 @@ struct Product: Codable, Identifiable {
             ),
         ]
     )
+    
+    static func dummy() -> Product {
+        return Product(
+            id: UUID().hashValue,
+            type: .app,
+            title: String(repeating: "-", count: 5),
+            subtitle: String(repeating: "-", count: 8),
+            version: String(repeating: "-", count: 8),
+            description: String(repeating: "-", count: 42),
+            ipaSize: String(repeating: "-", count: 3),
+            icon: "",
+            bundleIdentifier: "",
+            createdAt: .now,
+            updatedAt: .now,
+            screenshots: [
+                .init(image: "", width: 392, height: 696),
+                .init(image: "", width: 392, height: 696),
+                .init(image: "", width: 392, height: 696),
+                .init(image: "", width: 392, height: 696),
+            ]
+        )
+    }
 }
 
 enum AppType: String, Codable {

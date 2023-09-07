@@ -40,6 +40,7 @@ struct ProductItemView: View {
                             .aspectRatio(contentMode: .fill)
                     } else {
                         Rectangle()
+                            .foregroundStyle(.secondary)
                     }
                 }
                 .frame(width: 60, height: 60)
@@ -87,8 +88,9 @@ struct ProductItemView: View {
                     #elseif os(macOS)
                     .buttonStyle(.plain)
                     .tint(.white)
-                    .background(Color("ProductActionColor"))
+                    .background(Color.white)
                     .clipShape(Capsule())
+                    .shadow(radius: 1)
                     #endif
                     .opacity(viewModel.loading ? 0 : 1)
                 }
@@ -111,6 +113,7 @@ struct ProductItemView: View {
                     .frame(maxWidth: .infinity)
             } else {
                 Rectangle()
+                    .foregroundStyle(.secondary)
                     .cornerRadius(5)
                     .aspectRatio(screenshot.aspectRatio, contentMode: .fit)
                     .frame(maxWidth: .infinity)
@@ -132,6 +135,7 @@ struct ProductItemView: View {
                             .aspectRatio(screenshot.aspectRatio, contentMode: .fit)
                     } else {
                         Rectangle()
+                            .foregroundStyle(.secondary)
                             .frame(maxWidth: .infinity)
                             .aspectRatio(screenshot.aspectRatio, contentMode: .fit)
                     }

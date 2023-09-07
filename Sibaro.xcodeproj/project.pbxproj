@@ -64,6 +64,9 @@
 		C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */ = {isa = PBXBuildFile; productRef = C604EB4D2A894AE400B18E0E /* SimpleKeychain */; };
 		C604EB502A89546F00B18E0E /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB4F2A89546F00B18E0E /* EmptyStateView.swift */; };
 		C604EB522A895EC000B18E0E /* ProductItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB512A895EC000B18E0E /* ProductItemView.swift */; };
+		C60FFD742AA8ECD400A51D38 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FFD732AA8ECD400A51D38 /* View+Extensions.swift */; };
+		C60FFD762AA8ED6900A51D38 /* ScreenshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FFD752AA8ED6900A51D38 /* ScreenshotView.swift */; };
+		C60FFD782AA8EDBC00A51D38 /* ImagePreviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FFD772AA8EDBC00A51D38 /* ImagePreviewerView.swift */; };
 		C61B1ADC2A8E805800F3AD27 /* NSTextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61B1ADB2A8E805800F3AD27 /* NSTextView+Extensions.swift */; };
 		C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, macos, ); productRef = C62BF8002A8A3059002CFFF9 /* MarkdownUI */; };
 		C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D22A897F1300B2427D /* ProductDetailsView.swift */; };
@@ -72,6 +75,7 @@
 		C668C2EE2A929ADD009F7B50 /* lock.json in Resources */ = {isa = PBXBuildFile; fileRef = C668C2ED2A929ADD009F7B50 /* lock.json */; };
 		C67979752A8AA6E00091BE25 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C67979742A8AA6E00091BE25 /* Nuke */; };
 		C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C67979782A8AA6E00091BE25 /* NukeUI */; };
+		C67EB29B2AAA125E003CFFB1 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = C67EB29A2AAA125E003CFFB1 /* Shimmer */; };
 		C6AD3FBE2A8E1991008182BC /* SubmitAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FBB2A8E1991008182BC /* SubmitAppView.swift */; };
 		C6AD3FC02A8E1991008182BC /* SubmitAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FBD2A8E1991008182BC /* SubmitAppViewModel.swift */; };
 		C6AD3FC22A8E19AC008182BC /* SubmitAppEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FC12A8E19AC008182BC /* SubmitAppEndpoint.swift */; };
@@ -147,6 +151,9 @@
 		C604EB482A89407D00B18E0E /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
 		C604EB4F2A89546F00B18E0E /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		C604EB512A895EC000B18E0E /* ProductItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemView.swift; sourceTree = "<group>"; };
+		C60FFD732AA8ECD400A51D38 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		C60FFD752AA8ED6900A51D38 /* ScreenshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotView.swift; sourceTree = "<group>"; };
+		C60FFD772AA8EDBC00A51D38 /* ImagePreviewerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewerView.swift; sourceTree = "<group>"; };
 		C61B1ADB2A8E805800F3AD27 /* NSTextView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Extensions.swift"; sourceTree = "<group>"; };
 		C667B4D22A897F1300B2427D /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 		C667B4D52A89873400B2427D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -170,6 +177,7 @@
 				C67979752A8AA6E00091BE25 /* Nuke in Frameworks */,
 				C668C2EC2A9299D6009F7B50 /* LottieUI in Frameworks */,
 				C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */,
+				C67EB29B2AAA125E003CFFB1 /* Shimmer in Frameworks */,
 				C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,6 +392,7 @@
 			children = (
 				C667B4D22A897F1300B2427D /* ProductDetailsView.swift */,
 				363A1BE52A8D25A300148CBB /* ProductDetailsViewModel.swift */,
+				C60FFD752AA8ED6900A51D38 /* ScreenshotView.swift */,
 			);
 			path = "Product Details";
 			sourceTree = "<group>";
@@ -483,8 +492,9 @@
 			children = (
 				C604EB4F2A89546F00B18E0E /* EmptyStateView.swift */,
 				C6CF97692A8BDB090035210F /* HapticFeedback.swift */,
-				C604EB262A89337400B18E0E /* VisualEffectBlur.swift */,
+				C60FFD772AA8EDBC00A51D38 /* ImagePreviewerView.swift */,
 				03FDA3232A8DD4D3003D192D /* SingleAxisGeometryReader.swift */,
+				C604EB262A89337400B18E0E /* VisualEffectBlur.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -551,6 +561,7 @@
 			children = (
 				C61B1ADB2A8E805800F3AD27 /* NSTextView+Extensions.swift */,
 				C667B4D52A89873400B2427D /* String+Extensions.swift */,
+				C60FFD732AA8ECD400A51D38 /* View+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -586,6 +597,7 @@
 				C67979742A8AA6E00091BE25 /* Nuke */,
 				C67979782A8AA6E00091BE25 /* NukeUI */,
 				C668C2EB2A9299D6009F7B50 /* LottieUI */,
+				C67EB29A2AAA125E003CFFB1 /* Shimmer */,
 			);
 			productName = Sibaro;
 			productReference = C604EAFE2A892FDA00B18E0E /* Sibaro.app */;
@@ -621,6 +633,7 @@
 				C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */,
 				C668C2EA2A9299D6009F7B50 /* XCRemoteSwiftPackageReference "LottieUI" */,
+				C67EB2992AAA125E003CFFB1 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = C604EAFF2A892FDA00B18E0E /* Products */;
 			projectDirPath = "";
@@ -676,6 +689,7 @@
 				36FE9D072A8E4BD000A71B12 /* ChangePasswordViewModel.swift in Sources */,
 				C604EB382A8939BB00B18E0E /* Endpoint.swift in Sources */,
 				03E248D52A8A75FE00DDE525 /* Date+DecodeString.swift in Sources */,
+				C60FFD742AA8ECD400A51D38 /* View+Extensions.swift in Sources */,
 				03FDA2F72A8C110A003D192D /* SibaroAppServices.swift in Sources */,
 				03FDA3112A8C1A48003D192D /* ViewModel.swift in Sources */,
 				C61B1ADC2A8E805800F3AD27 /* NSTextView+Extensions.swift in Sources */,
@@ -688,6 +702,7 @@
 				03FDA3182A8D0C1C003D192D /* ProductItemViewModel.swift in Sources */,
 				C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */,
 				C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */,
+				C60FFD762AA8ED6900A51D38 /* ScreenshotView.swift in Sources */,
 				363A1BDF2A8C8DF500148CBB /* ProductsListViewModel.swift in Sources */,
 				117ED6F52A8B743400775CEC /* SystemApplication.swift in Sources */,
 				C604EB1C2A89316C00B18E0E /* ProductsListView.swift in Sources */,
@@ -700,6 +715,7 @@
 				C604EB172A8930C400B18E0E /* Sidebar.swift in Sources */,
 				C604EB272A89337400B18E0E /* VisualEffectBlur.swift in Sources */,
 				C604EB352A8939BB00B18E0E /* HTTPMethod.swift in Sources */,
+				C60FFD782AA8EDBC00A51D38 /* ImagePreviewerView.swift in Sources */,
 				C604EB242A89333800B18E0E /* LoginView.swift in Sources */,
 				03E248DD2A8A9C4F00DDE525 /* I18nService.swift in Sources */,
 				03FDA3202A8D470F003D192D /* Factory.swift in Sources */,
@@ -956,8 +972,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		C668C2EA2A9299D6009F7B50 /* XCRemoteSwiftPackageReference "LottieUI" */ = {
@@ -974,6 +990,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 12.1.6;
+			};
+		};
+		C67EB2992AAA125E003CFFB1 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1003,6 +1027,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = NukeUI;
+		};
+		C67EB29A2AAA125E003CFFB1 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C67EB2992AAA125E003CFFB1 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
