@@ -38,12 +38,11 @@ struct ProductDetailsView: View {
         NavigationStack {
             ObservableScrollView(scrollOffset: $scrollOffset) { _ in
                 VStack {
-                    
-                        appPromotion
-                            .padding(.bottom, 12)
-                            #if os(macOS)
-                            .padding(.top, 24)
-                            #endif
+                    appPromotion
+                        .padding(.bottom, 12)
+                        #if os(macOS)
+                        .padding(.top, 24)
+                        #endif
                     
                     Divider()
                         .padding(.horizontal)
