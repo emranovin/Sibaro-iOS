@@ -19,7 +19,8 @@ extension ProductsListView {
         @Published var dummyProducts: [Product] = [.dummy(), .dummy(), .dummy(), .dummy()]
         @Published var rawProducts: [Product] = []
         @Published var search: String = ""
-        
+        private var nextPageCursor: String = ""
+        private var previousPageCursor: String = ""
         @Published var selectedProduct: Product? = nil
         
         /// Status
@@ -57,8 +58,11 @@ extension ProductsListView {
             loading = true
             do {
                 message = ""
-                let response = try await productRepository.filterProducts(search: "", ordering: .updatedAt, type: .app, cursor: "")
-                rawProducts = response.results
+                let response = try await productRepository.filterProducts(search: "", ordering: .updatedAt, type: .app, cursor: nextPageCursor)
+                rawProducts.append(contentsOf: response.results)
+                if let nextUrl = response.next, let cursor = URL(string: nextUrl)?.queryDictionary?["cursor"] {
+                    self.nextPageCursor = cursor
+                }
 //                rawProducts = try await productRepository.products()
             } catch {
                 #if DEBUG
@@ -78,5 +82,21 @@ extension ProductsListView {
             }
             loading = false
         }
+        
+        func rowDidAppear(withProduct product: Product) {
+            Task {
+                if product == self.products.last {
+                    await getList()
+                }
+            }
+        }
+        
+    }
+    
+}
+
+extension String {
+    func decodeUrl() -> String? {
+        return self.removingPercentEncoding
     }
 }

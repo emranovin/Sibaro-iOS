@@ -102,6 +102,9 @@ struct ProductsListView: View {
                     .shimmering(active: viewModel.products.isEmpty)
             }
             .disabled(viewModel.products.isEmpty)
+            .onAppear {
+                viewModel.rowDidAppear(withProduct: product)
+            }
         }
         .listStyle(.plain)
     }
@@ -123,6 +126,9 @@ struct ProductsListView: View {
                             if !viewModel.products.isEmpty {
                                 viewModel.selectedProduct = product
                             }
+                        }
+                        .onAppear {
+                            viewModel.rowDidAppear(withProduct: product)
                         }
                 }
             }

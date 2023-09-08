@@ -38,6 +38,7 @@
 		363A1BE62A8D25A300148CBB /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A1BE52A8D25A300148CBB /* ProductDetailsViewModel.swift */; };
 		368EB6332A97CEDC004E7954 /* ProductPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368EB6322A97CEDC004E7954 /* ProductPage.swift */; };
 		368EB6352A97F06B004E7954 /* String+snakeCased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368EB6342A97F06B004E7954 /* String+snakeCased.swift */; };
+		368EB6372A9FE512004E7954 /* URL+QueryDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368EB6362A9FE512004E7954 /* URL+QueryDictionary.swift */; };
 		36B7CE962A8FCBE1000ABD7A /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7CE952A8FCBE1000ABD7A /* Password.swift */; };
 		36FE9D052A8E4BC300A71B12 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FE9D042A8E4BC300A71B12 /* ChangePasswordView.swift */; };
 		36FE9D072A8E4BD000A71B12 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FE9D062A8E4BD000A71B12 /* ChangePasswordViewModel.swift */; };
@@ -126,6 +127,7 @@
 		363A1BE52A8D25A300148CBB /* ProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewModel.swift; sourceTree = "<group>"; };
 		368EB6322A97CEDC004E7954 /* ProductPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPage.swift; sourceTree = "<group>"; };
 		368EB6342A97F06B004E7954 /* String+snakeCased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+snakeCased.swift"; sourceTree = "<group>"; };
+		368EB6362A9FE512004E7954 /* URL+QueryDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+QueryDictionary.swift"; sourceTree = "<group>"; };
 		36B7CE952A8FCBE1000ABD7A /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		36FE9D042A8E4BC300A71B12 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		36FE9D062A8E4BD000A71B12 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				117ED7002A8B87D000775CEC /* String+VersionComparison.swift */,
 				11D5D8E42A8BBC6300A3C22B /* Dictionary+Apps.swift */,
 				368EB6342A97F06B004E7954 /* String+snakeCased.swift */,
+				368EB6362A9FE512004E7954 /* URL+QueryDictionary.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 				36FE9D052A8E4BC300A71B12 /* ChangePasswordView.swift in Sources */,
 				C604EB162A8930C400B18E0E /* Panel.swift in Sources */,
 				C6AD3FC62A8E19FE008182BC /* SubmitAppRepository.swift in Sources */,
+				368EB6372A9FE512004E7954 /* URL+QueryDictionary.swift in Sources */,
 				36B7CE962A8FCBE1000ABD7A /* Password.swift in Sources */,
 				03FDA3222A8D5FE2003D192D /* Stored.swift in Sources */,
 				C604EB3D2A893A9E00B18E0E /* Login.swift in Sources */,
