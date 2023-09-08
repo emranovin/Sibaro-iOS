@@ -172,25 +172,46 @@ struct ProductDetailsView: View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(viewModel.product.screenshots, id: \.id) { screenshot in
-                    LazyImage(url: screenshot.url) { state in
-                        if let image = state.image {
-                            image
-                                .resizable()
-                        } else {
-                            Rectangle()
+                    Button {
+                        viewModel.previewURL = screenshot.url
+                        #if os(macOS)
+                        ScreenshotView(imageAddress: viewModel.previewURL)
+                            .frame(minWidth: 512, minHeight: 512)
+                            .openInWindow(
+                                title: viewModel.product.title,
+                                sender: self,
+                                transparentTitlebar: true
+                            )
+                        #else
+                        viewModel.showPreview.toggle()
+                        #endif
+                        
+                    } label: {
+                        LazyImage(url: screenshot.url) { state in
+                            if let image = state.image {
+                                image
+                                    .resizable()
+                            } else {
+                                Rectangle()
+                            }
                         }
+                        .aspectRatio(screenshot.aspectRatio, contentMode: .fill)
+                        .frame(height: 250)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
-                    .aspectRatio(screenshot.aspectRatio, contentMode: .fill)
-                    .frame(height: 250)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .buttonStyle(.plain)
                 }
             }
             .padding(.horizontal)
+            #if os(iOS)
+            .fullScreenCover(isPresented: $viewModel.showPreview) {
+                ScreenshotView(imageAddress: viewModel.previewURL)
+            }
+            #endif
         }
     }
     
     var description: some View {
-        
         Markdown(viewModel.product.description)
             .multilineTextAlignment(.leading)
             .environment(\.layoutDirection, viewModel.product.description.isRTL ? .rightToLeft : .leftToRight)

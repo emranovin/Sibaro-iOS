@@ -16,6 +16,7 @@ extension ProductsListView {
         var type: AppType
         
         @Published var sortType: SortType = .updated
+        @Published var dummyProducts: [Product] = [.dummy(), .dummy(), .dummy(), .dummy()]
         @Published var rawProducts: [Product] = []
         @Published var search: String = ""
         
@@ -52,14 +53,17 @@ extension ProductsListView {
             }
         }
         
-        func _getList() async {
+        func getList() async {
+            loading = true
             do {
+                message = ""
                 let response = try await productRepository.filterProducts(search: "", ordering: .updatedAt, type: .app, cursor: "")
                 rawProducts = response.results
-                // getting all apps at once
 //                rawProducts = try await productRepository.products()
             } catch {
+                #if DEBUG
                 print(error)
+                #endif
                 if let error = error as? RequestError {
                     switch error {
                     case .unauthorized(let data):
@@ -68,19 +72,11 @@ extension ProductsListView {
                     default:
                         message = error.description
                     }
+                } else {
+                    message = error.localizedDescription
                 }
             }
             loading = false
-        }
-        
-        func getList(changeLoadingState: Bool = true) {
-            if changeLoadingState {
-                loading = true
-            }
-            
-            Task {
-                await _getList()
-            }
         }
     }
 }
