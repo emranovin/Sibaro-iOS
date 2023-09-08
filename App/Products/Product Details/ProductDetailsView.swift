@@ -13,7 +13,12 @@ struct ProductDetailsView: View {
     
     @StateObject var viewModel: ViewModel
     @Environment(\.dismiss) var dismissAction
-    
+    @State private var scrollOffset: CGFloat = .zero
+
+    private var hasScrolledAppPromotion: Bool {
+        scrollOffset > 135
+    }
+
     init(product: Product) {
         self._viewModel = StateObject(wrappedValue: ViewModel(product: product))
     }
@@ -31,13 +36,14 @@ struct ProductDetailsView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
+            ObservableScrollView(scrollOffset: $scrollOffset) { _ in
                 VStack {
-                    appPromotion
-                        .padding(.bottom, 12)
-                        #if os(macOS)
-                        .padding(.top, 24)
-                        #endif
+                    
+                        appPromotion
+                            .padding(.bottom, 12)
+                            #if os(macOS)
+                            .padding(.top, 24)
+                            #endif
                     
                     Divider()
                         .padding(.horizontal)
@@ -51,6 +57,9 @@ struct ProductDetailsView: View {
                 }
             }
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    navBarButton
+                }
                 ToolbarItem {
                     Button {
                         dismissAction()
@@ -61,10 +70,12 @@ struct ProductDetailsView: View {
                     .tint(.secondary)
                 }
             }
+            .navigationBarTitle(hasScrolledAppPromotion ? viewModel.product.title : "",
+                                        displayMode: .inline)
         }
     }
-    
-    var appPromotion: some View {
+
+    private var appPromotion: some View {
         HStack {
             LazyImage(url: URL(string: viewModel.product.icon)) { state in
                 if let image = state.image {
@@ -100,43 +111,47 @@ struct ProductDetailsView: View {
                 Spacer()
                 
                 // MARK: - Install button
-                ZStack(alignment: .leading) {
-                    ProgressView()
-                        .opacity(viewModel.loading ? 1 : 0)
-                    
-                    Button(action: proceedApp) {
-                        Text(appStateTitle)
-                            .font(.body)
-                            #if os(macOS)
-                            .fontWeight(.medium)
-                            .foregroundStyle(Color.accentColor)
-                            .padding(.vertical, 2)
-                            .frame(minWidth: 64)
-                            #else
-                            .frame(minWidth: 60)
-                            .fontWeight(.semibold)
-                            #endif
-                    }
-                    #if os(iOS)
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.capsule)
-                    .controlSize(.mini)
-                    #elseif os(macOS)
-                    .buttonStyle(.plain)
-                    .tint(.white)
-                    .background(Color("ProductActionColor"))
-                    .clipShape(Capsule())
-                    #endif
-                    .opacity(viewModel.loading ? 0 : 1)
-                }
+                installButton
             }
             .padding(.trailing, 12)
             .frame(maxWidth: .infinity)
         }
         .frame(maxHeight: 120)
     }
+
+    private var installButton: some View {
+        ZStack(alignment: .center) {
+            ProgressView()
+                .opacity(viewModel.loading ? 1 : 0)
+            
+            Button(action: proceedApp) {
+                Text(appStateTitle)
+                    .font(.body)
+                    #if os(macOS)
+                    .fontWeight(.medium)
+                    .foregroundStyle(Color.accentColor)
+                    .padding(.vertical, 2)
+                    .frame(minWidth: 64)
+                    #else
+                    .frame(minWidth: 60)
+                    .fontWeight(.semibold)
+                    #endif
+            }
+            #if os(iOS)
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.capsule)
+            .controlSize(.mini)
+            #elseif os(macOS)
+            .buttonStyle(.plain)
+            .tint(.white)
+            .background(Color("ProductActionColor"))
+            .clipShape(Capsule())
+            #endif
+            .opacity(viewModel.loading ? 0 : 1)
+        }
+    }
     
-    var appDetails: some View {
+    private var appDetails: some View {
         HStack(spacing: 15) {
             VStack {
                 Text("Size")
@@ -168,7 +183,7 @@ struct ProductDetailsView: View {
         }
     }
     
-    var screenshots: some View {
+    private var screenshots: some View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(viewModel.product.screenshots, id: \.id) { screenshot in
@@ -210,15 +225,23 @@ struct ProductDetailsView: View {
             #endif
         }
     }
-    
-    var description: some View {
+
+    private var description: some View {
         Markdown(viewModel.product.description)
             .multilineTextAlignment(.leading)
             .environment(\.layoutDirection, viewModel.product.description.isRTL ? .rightToLeft : .leftToRight)
             .padding()
     }
-    
-    func proceedApp() {
+
+    @ViewBuilder private var navBarButton: some View {
+        if hasScrolledAppPromotion {
+            installButton
+        } else {
+            EmptyView()
+        }
+    }
+
+    private func proceedApp() {
         #if os(iOS)
         HapticFeedback.shared.start(.success)
         #endif
