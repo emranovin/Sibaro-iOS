@@ -20,6 +20,12 @@
 
 
 
+### Contributing 🤝
+
+Please use branch `dev` as your starting point for any pull request.
+
+
+
 ### Copyright Notice 📝
 
-Licensed under the MIT license (see the LICENSE file).
+Licensed under the GNU Affero General Public License v3.0 (see the LICENSE file).
