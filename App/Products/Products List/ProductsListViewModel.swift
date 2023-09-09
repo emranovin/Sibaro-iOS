@@ -48,7 +48,7 @@ extension ProductsListView {
                 }
             } else {
                 return typeFilter.filter { product in
-                    product.title.contains(search)
+                    product.title.localizedCaseInsensitiveContains(search)
                 }
             }
         }
