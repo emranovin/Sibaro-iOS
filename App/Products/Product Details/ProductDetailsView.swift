@@ -56,9 +56,15 @@ struct ProductDetailsView: View {
                 }
             }
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
                     navBarButton
                 }
+                #elseif os(macOS)
+                ToolbarItem(placement: .automatic) {
+                    navBarButton
+                }
+                #endif
                 ToolbarItem {
                     Button {
                         dismissAction()
@@ -69,8 +75,13 @@ struct ProductDetailsView: View {
                     .tint(.secondary)
                 }
             }
+            #if os(iOS)
             .navigationBarTitle(hasScrolledAppPromotion ? viewModel.product.title : "",
                                         displayMode: .inline)
+            #elseif os(macOS)
+            .navigationTitle(hasScrolledAppPromotion ? viewModel.product.title : "")
+            #endif
+            
         }
     }
 
