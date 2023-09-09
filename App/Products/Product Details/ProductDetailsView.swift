@@ -12,7 +12,6 @@ import MarkdownUI
 struct ProductDetailsView: View {
     
     @StateObject var viewModel: ViewModel
-    @Environment(\.dismiss) var dismissAction
     @State private var scrollOffset: CGFloat = .zero
 
     private var hasScrolledAppPromotion: Bool {
@@ -56,26 +55,14 @@ struct ProductDetailsView: View {
                 }
             }
             .toolbar {
-                #if os(iOS)
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem {
                     navBarButton
                 }
-                #endif
-                ToolbarItem {
-                    Button {
-                        dismissAction()
-                    } label: {
-                        Label("Close", systemImage: "xmark.circle.fill")
-                            .symbolRenderingMode(.hierarchical)
-                    }
-                    .tint(.secondary)
-                }
             }
+            .navigationTitle(hasScrolledAppPromotion ? viewModel.product.title : "")
             #if os(iOS)
-            .navigationBarTitle(hasScrolledAppPromotion ? viewModel.product.title : "",
-                                        displayMode: .inline)
+            .navigationBarTitleDisplayMode(.inline)
             #endif
-            
         }
     }
 
@@ -148,7 +135,7 @@ struct ProductDetailsView: View {
             #elseif os(macOS)
             .buttonStyle(.plain)
             .tint(.white)
-            .background(Color("ProductActionColor"))
+            .background(Color.white)
             .clipShape(Capsule())
             #endif
             .opacity(viewModel.loading ? 0 : 1)
@@ -258,6 +245,8 @@ struct ProductDetailsView: View {
 
 struct ProductDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailsView(product: .mock)
+        NavigationStack {
+            ProductDetailsView(product: .mock)
+        }
     }
 }
