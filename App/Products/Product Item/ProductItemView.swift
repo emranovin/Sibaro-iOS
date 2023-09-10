@@ -13,6 +13,10 @@ struct ProductItemView: View {
     
     @StateObject var viewModel: ViewModel
     
+    #if os(iOS)
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    #endif
+    
     init(product: Product) {
         _viewModel = StateObject(
             wrappedValue: ViewModel(product: product)
@@ -100,7 +104,17 @@ struct ProductItemView: View {
             #endif
             
             screenshots
+            
+            Spacer()
+            
+            Divider()
+                .padding(.vertical, 12)
         }
+        #if os(iOS)
+        .padding(.horizontal, horizontalSizeClass != .compact ? 12 : 0)
+        #else
+        .padding(.horizontal)
+        #endif
     }
     
     @ViewBuilder func single(screenshot: Screenshot) -> some View {

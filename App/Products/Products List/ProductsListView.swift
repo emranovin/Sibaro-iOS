@@ -15,115 +15,91 @@ enum SortType: String, CaseIterable {
     case alphabetical = "Alphabetical"
 }
 
-struct ProductsListView: View {
+struct ProductsListView {
     
     @StateObject var viewModel: ViewModel
     
     #if os(iOS)
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    var layout: [GridItem] {
+        if horizontalSizeClass == .compact {
+            [GridItem(.flexible(), alignment: .top)]
+        } else {
+            [GridItem(.adaptive(minimum: 360), alignment: .top)]
+        }
+    }
+    #else
+    var layout = [GridItem(.adaptive(minimum: 360), alignment: .top)]
     #endif
     
     init(type: AppType) {
         self._viewModel = StateObject(wrappedValue: ViewModel(type: type))
     }
+}
     
+extension ProductsListView: View {
     var body: some View {
-        Group {
-            #if os(iOS)
-            if horizontalSizeClass == .compact {
-                normalList
-            } else {
-                gridList
+        content
+            .searchable(text: $viewModel.search)
+            .overlay {
+                emptyState
             }
-            #else
-            gridList
-            #endif
-        }
-        .overlay {
-            emptyState
-        }
-        .searchable(text: $viewModel.search)
-        .task {
-            await viewModel.getList()
-        }
-        .refreshable {
-            await viewModel.getList()
-        }
-        .toolbar {
-            #if os(macOS)
-            ToolbarItem {
-                Button {
-                    Task {
-                        await viewModel.getList()
-                    }
-                } label: {
-                    if viewModel.loading && !viewModel.products.isEmpty {
-                        ProgressView()
-                            .scaleEffect(0.5)
-                    } else {
-                        Image(systemName: "arrow.triangle.2.circlepath")
-                    }
-                }
-                .disabled(viewModel.loading)
+            .task {
+                await viewModel.getList()
             }
-            #endif
-            ToolbarItem {
+            .refreshable {
+                await viewModel.getList()
+            }
+            .toolbar {
                 #if os(macOS)
-                sortPicker
-                #elseif os(iOS)
-                Menu {
+                ToolbarItem {
+                    Button {
+                        Task {
+                            await viewModel.getList()
+                        }
+                    } label: {
+                        if viewModel.loading && !viewModel.products.isEmpty {
+                            ProgressView()
+                                .scaleEffect(0.5)
+                        } else {
+                            Image(systemName: "arrow.triangle.2.circlepath")
+                        }
+                    }
+                    .disabled(viewModel.loading)
+                }
+                #endif
+                ToolbarItem {
+                    #if os(macOS)
                     sortPicker
-                } label: {
-                    Label("Sort by", systemImage: "slider.horizontal.3")
+                    #elseif os(iOS)
+                    Menu {
+                        sortPicker
+                    } label: {
+                        Label("Sort by", systemImage: "slider.horizontal.3")
+                    }
+                    #endif
                 }
-                #endif
             }
-        }
-        .sheet(item: $viewModel.selectedProduct) { product in
-            ProductDetailsView(product: product)
-                #if os(macOS)
-                .frame(minWidth: 350, idealWidth: 600, minHeight: 500, idealHeight: 650)
-                #endif
-        }
     }
     
-    var normalList: some View {
-        List(
-            viewModel.products.isEmpty && viewModel.message == "" ?
-            viewModel.dummyProducts :
-            viewModel.products,
-            id: \.id
-        ) { product in
-            Button {
-                viewModel.selectedProduct = product
-            } label: {
-                ProductItemView(product: product)
-                    .redacted(reason: viewModel.products.isEmpty ? .placeholder : [])
-                    .shimmering(active: viewModel.products.isEmpty)
-            }
-            .disabled(viewModel.products.isEmpty)
-        }
-        .listStyle(.plain)
-    }
-    
-    var gridList: some View {
+    var content: some View {
         ScrollView {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 360), alignment: .top)]) {
+            LazyVGrid(columns: layout) {
                 ForEach(
                     viewModel.products.isEmpty && viewModel.message == "" ?
                     viewModel.dummyProducts :
                     viewModel.products,
                     id: \.id
                 ) { product in
-                    ProductItemView(product: product)
-                        .padding()
-                        .redacted(reason: viewModel.products.isEmpty ? .placeholder : [])
-                        .shimmering(active: viewModel.products.isEmpty)
-                        .onTapGesture {
-                            if !viewModel.products.isEmpty {
-                                viewModel.selectedProduct = product
-                            }
-                        }
+                    NavigationLink {
+                        ProductDetailsView(product: product)
+                    } label: {
+                        ProductItemView(product: product)
+                            .redacted(reason: viewModel.products.isEmpty ? .placeholder : [])
+                            .shimmering(active: viewModel.products.isEmpty)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
             .padding()

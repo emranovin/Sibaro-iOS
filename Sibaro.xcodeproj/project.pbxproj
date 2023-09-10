@@ -39,6 +39,7 @@
 		36B7CE962A8FCBE1000ABD7A /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7CE952A8FCBE1000ABD7A /* Password.swift */; };
 		36FE9D052A8E4BC300A71B12 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FE9D042A8E4BC300A71B12 /* ChangePasswordView.swift */; };
 		36FE9D072A8E4BD000A71B12 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FE9D062A8E4BD000A71B12 /* ChangePasswordViewModel.swift */; };
+		474D63722AAC4FD60003AF6D /* ObservableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474D63712AAC4FD60003AF6D /* ObservableScrollView.swift */; };
 		C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB012A892FDA00B18E0E /* SibaroApp.swift */; };
 		C604EB062A892FDD00B18E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C604EB052A892FDD00B18E0E /* Assets.xcassets */; };
 		C604EB162A8930C400B18E0E /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB122A8930C400B18E0E /* Panel.swift */; };
@@ -126,6 +127,7 @@
 		36B7CE952A8FCBE1000ABD7A /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		36FE9D042A8E4BC300A71B12 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		36FE9D062A8E4BD000A71B12 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		474D63712AAC4FD60003AF6D /* ObservableScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableScrollView.swift; sourceTree = "<group>"; };
 		C604EAFE2A892FDA00B18E0E /* Sibaro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sibaro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C604EB012A892FDA00B18E0E /* SibaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibaroApp.swift; sourceTree = "<group>"; };
 		C604EB052A892FDD00B18E0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 				C605B13A2AAA22CC004BD4F8 /* SFSymbols.swift */,
 				03FDA3232A8DD4D3003D192D /* SingleAxisGeometryReader.swift */,
 				C604EB262A89337400B18E0E /* VisualEffectBlur.swift */,
+				474D63712AAC4FD60003AF6D /* ObservableScrollView.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				363A1BDF2A8C8DF500148CBB /* ProductsListViewModel.swift in Sources */,
 				117ED6F52A8B743400775CEC /* SystemApplication.swift in Sources */,
 				C604EB1C2A89316C00B18E0E /* ProductsListView.swift in Sources */,
+				474D63722AAC4FD60003AF6D /* ObservableScrollView.swift in Sources */,
 				C604EB182A8930C400B18E0E /* TabNavigation.swift in Sources */,
 				363A1BE32A8CA8E700148CBB /* ProfileViewModel.swift in Sources */,
 				03FDA31E2A8D470F003D192D /* Injections.swift in Sources */,
