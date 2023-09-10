@@ -100,6 +100,7 @@ extension ProductsListView: View {
                             .shimmering(active: viewModel.products.isEmpty)
                     }
                     .buttonStyle(.plain)
+                    .disabled(viewModel.products.isEmpty)
                 }
             }
             .padding()
