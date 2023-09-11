@@ -14,6 +14,10 @@ struct ProductDetailsView: View {
     @StateObject var viewModel: ViewModel
     @State private var scrollOffset: CGFloat = .zero
 
+    #if os(iOS)
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    #endif
+    
     private var hasScrolledAppPromotion: Bool {
         scrollOffset > 135
     }
@@ -58,6 +62,16 @@ struct ProductDetailsView: View {
                 ToolbarItem {
                     navBarButton
                 }
+                
+                ToolbarItem {
+                    #if os(iOS)
+                    if horizontalSizeClass != .compact {
+                        shareButton
+                    }
+                    #else
+                    shareButton
+                    #endif
+                }
             }
             .navigationTitle(hasScrolledAppPromotion ? viewModel.product.title : "")
             #if os(iOS)
@@ -101,8 +115,21 @@ struct ProductDetailsView: View {
                 
                 Spacer()
                 
-                // MARK: - Install button
-                installButton
+                HStack {
+                    // MARK: - Install button
+                    installButton
+                    
+                    Spacer()
+                    
+                    // MARK: - Share button
+                    #if os(iOS)
+                    if horizontalSizeClass == .compact {
+                        shareButton
+                            .labelStyle(.iconOnly)
+                            .padding(.horizontal)
+                    }
+                    #endif
+                }
             }
             .padding(.trailing, 12)
             .frame(maxWidth: .infinity)
@@ -140,6 +167,13 @@ struct ProductDetailsView: View {
             #endif
             .opacity(viewModel.loading ? 0 : 1)
         }
+    }
+    
+    private var shareButton: some View {
+        ShareLink(
+            item: viewModel.product.shareURL,
+            preview: .init(viewModel.product.title)
+        )
     }
     
     private var appDetails: some View {
