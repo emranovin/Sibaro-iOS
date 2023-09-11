@@ -88,23 +88,29 @@ struct ProductsListView: View {
     }
     
     var normalList: some View {
-        List(
-            viewModel.products.isEmpty && viewModel.message == "" ?
-            viewModel.dummyProducts :
-            viewModel.products,
-            id: \.id
-        ) { product in
-            Button {
-                viewModel.selectedProduct = product
-            } label: {
-                ProductItemView(product: product)
-                    .redacted(reason: viewModel.products.isEmpty ? .placeholder : [])
-                    .shimmering(active: viewModel.products.isEmpty)
+        List() {
+            ForEach(
+                viewModel.products.isEmpty && viewModel.message == "" ?
+                viewModel.dummyProducts :
+                    viewModel.products,
+                id: \.id
+            ) { product in
+                Button {
+                    viewModel.selectedProduct = product
+                } label: {
+                    ProductItemView(product: product)
+                        .redacted(reason: viewModel.products.isEmpty ? .placeholder : [])
+                        .shimmering(active: viewModel.products.isEmpty)
+                }
+                .disabled(viewModel.products.isEmpty)
+                .onAppear {
+                    viewModel.rowDidAppear(withProduct: product)
+                }
             }
-            .disabled(viewModel.products.isEmpty)
-            .onAppear {
-                viewModel.rowDidAppear(withProduct: product)
+            if !viewModel.products.isEmpty {
+                infiniteListFooterView
             }
+                
         }
         .listStyle(.plain)
     }
@@ -131,6 +137,7 @@ struct ProductsListView: View {
                             viewModel.rowDidAppear(withProduct: product)
                         }
                 }
+                
             }
             .padding()
         }
@@ -165,6 +172,38 @@ struct ProductsListView: View {
                 }
             }
         }
+    }
+    
+    var infiniteListFooterView: some View {
+        VStack(spacing: 0) {
+            if viewModel.loading {
+                HStack {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .scaleEffect(0.8)
+                        .frame(alignment: .center)
+                }.frame(maxWidth: .infinity)
+            } else {
+                VStack(spacing: 0) {
+                    Group {
+                        Text("loading failed")
+                        #if os(macOS)
+                        Text("click to retry")
+                        #else
+                        Text("tap to retry")
+                        #endif
+                    }.frame(maxWidth: .infinity, alignment: .center)
+                        .font(.caption2)
+                        .foregroundColor(.gray.opacity(0.8))
+                }.clipped()
+                    .onTapGesture {
+                    viewModel.retryLoadingPage()
+                }
+            }
+        }.id(UUID())
+            .listRowSeparator(.hidden)
+            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+        
     }
 }
 

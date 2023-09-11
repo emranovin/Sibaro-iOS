@@ -63,7 +63,6 @@ extension ProductsListView {
                 if let nextUrl = response.next, let cursor = URL(string: nextUrl)?.queryDictionary?["cursor"] {
                     self.nextPageCursor = cursor
                 }
-//                rawProducts = try await productRepository.products()
             } catch {
                 #if DEBUG
                 print(error)
@@ -88,6 +87,12 @@ extension ProductsListView {
                 if product == self.products.last {
                     await getList()
                 }
+            }
+        }
+        
+        func retryLoadingPage() {
+            Task {
+                await getList()
             }
         }
         
