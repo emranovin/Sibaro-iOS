@@ -27,7 +27,9 @@ struct SubmitAppView: View {
                         text: $viewModel.appName,
                         prompt: Text("Application name")
                     )
+                    #if os(iOS)
                     .keyboardType(.default)
+                    #endif
                     
                     /// App Link
                     TextField(
@@ -35,8 +37,10 @@ struct SubmitAppView: View {
                         text: $viewModel.appLink,
                         prompt: Text("Application Link")
                     )
+                    #if os(iOS)
                     .keyboardType(.URL)
                     .textInputAutocapitalization(.never)
+                    #endif
                 } header: {
                     VStack {
                         Image(systemName: "app.badge.checkmark.fill")
