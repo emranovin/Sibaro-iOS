@@ -21,8 +21,22 @@ struct SubmitAppView: View {
         NavigationStack {
             Form {
                 Section {
-                    TextField("Name", text: $viewModel.appName, prompt: Text("Application name"))
-                    TextField("Link", text: $viewModel.appLink, prompt: Text("Application Link"))
+                    /// App name
+                    TextField(
+                        "Name",
+                        text: $viewModel.appName,
+                        prompt: Text("Application name")
+                    )
+                    .keyboardType(.default)
+                    
+                    /// App Link
+                    TextField(
+                        "Link",
+                        text: $viewModel.appLink,
+                        prompt: Text("Application Link")
+                    )
+                    .keyboardType(.URL)
+                    .textInputAutocapitalization(.never)
                 } header: {
                     VStack {
                         Image(systemName: "app.badge.checkmark.fill")
@@ -50,6 +64,7 @@ struct SubmitAppView: View {
                 }
                 
                 Section("Description") {
+                    /// App Description
                     TextEditor(text: $viewModel.appDescription)
                         .frame(minHeight: 150)
                 }
@@ -82,7 +97,11 @@ struct SubmitAppView: View {
                 viewModel.messageTitle,
                 isPresented: $viewModel.showMessage
             ) {
-                Button("Ok", role: .cancel) {}
+                Button("Ok", role: .cancel) {
+                    if viewModel.isSent {
+                        dismiss()
+                    }
+                }
             } message: {
                 Text(viewModel.messageSubtitle)
             }
