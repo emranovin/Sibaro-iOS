@@ -38,46 +38,44 @@ struct ProductDetailsView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            ObservableScrollView(scrollOffset: $scrollOffset) { _ in
-                VStack {
-                    appPromotion
-                        .padding(.bottom, 12)
-                        #if os(macOS)
-                        .padding(.top, 24)
-                        #endif
-                    
-                    Divider()
-                        .padding(.horizontal)
-                    
-                    appDetails
-                        .padding()
-                    
-                    screenshots
-                    
-                    description
-                }
-            }
-            .toolbar {
-                ToolbarItem {
-                    navBarButton
-                }
-                
-                ToolbarItem {
-                    #if os(iOS)
-                    if horizontalSizeClass != .compact {
-                        shareButton
-                    }
-                    #else
-                    shareButton
+        ObservableScrollView(scrollOffset: $scrollOffset) { _ in
+            VStack {
+                appPromotion
+                    .padding(.bottom, 12)
+                    #if os(macOS)
+                    .padding(.top, 24)
                     #endif
-                }
+                
+                Divider()
+                    .padding(.horizontal)
+                
+                appDetails
+                    .padding()
+                
+                screenshots
+                
+                description
             }
-            .navigationTitle(hasScrolledAppPromotion ? viewModel.product.title : "")
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.inline)
-            #endif
         }
+        .toolbar {
+            ToolbarItem {
+                navBarButton
+            }
+            
+            ToolbarItem {
+                #if os(iOS)
+                if horizontalSizeClass != .compact {
+                    shareButton
+                }
+                #else
+                shareButton
+                #endif
+            }
+        }
+        .navigationTitle(hasScrolledAppPromotion ? viewModel.product.title : "")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 
     private var appPromotion: some View {
@@ -144,15 +142,14 @@ struct ProductDetailsView: View {
             
             Button(action: proceedApp) {
                 Text(appStateTitle)
-                    .font(.body)
                     #if os(macOS)
-                    .fontWeight(.medium)
+                    .font(.body.weight(.medium))
                     .foregroundStyle(Color.accentColor)
                     .padding(.vertical, 2)
                     .frame(minWidth: 64)
                     #else
                     .frame(minWidth: 60)
-                    .fontWeight(.semibold)
+                    .font(.body.weight(.semibold))
                     #endif
             }
             #if os(iOS)
@@ -170,10 +167,16 @@ struct ProductDetailsView: View {
     }
     
     private var shareButton: some View {
-        ShareLink(
-            item: viewModel.product.shareURL,
-            preview: .init(viewModel.product.title)
-        )
+        Group {
+            if #available(iOS 16.0, macOS 13.0, *) {
+                ShareLink(
+                    item: viewModel.product.shareURL,
+                    preview: .init(viewModel.product.title)
+                )
+            } else {
+                Spacer()
+            }
+        }
     }
     
     private var appDetails: some View {
@@ -279,8 +282,6 @@ struct ProductDetailsView: View {
 
 struct ProductDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            ProductDetailsView(product: .mock)
-        }
+        ProductDetailsView(product: .mock)
     }
 }
