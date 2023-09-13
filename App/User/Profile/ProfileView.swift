@@ -10,18 +10,25 @@ import SwiftUI
 struct ProfileView: View {
     
     @StateObject var viewModel: ViewModel = ViewModel()
+    
     var body: some View {
         List {
             Section {
                 HStack {
-                    Image(systemName: "person.crop.circle.fill")
-                        .foregroundStyle(.white, Color.accentColor.gradient)
-                        .font(.largeTitle)
+                    if #available(iOS 16.0, macOS 13.0, *) {
+                        Image(systemName: "person.crop.circle.fill")
+                            .foregroundStyle(.white, Color.accentColor.gradient)
+                            .font(.largeTitle)
+                            .fontWeight(.medium)
+                    } else {
+                        Image(systemName: "person.crop.circle.fill")
+                            .foregroundStyle(.white, Color.accentColor)
+                            .font(.largeTitle.weight(.medium))
+                    }
                     
                     Text(viewModel.userName)
-                        .font(.title)
+                        .font(.title.weight(.medium))
                 }
-                .fontWeight(.medium)
             }
             
             Section {
@@ -100,6 +107,7 @@ struct ProfileView: View {
                 } label: {
                     SettingsItemView(
                         icon: "rectangle.portrait.and.arrow.forward",
+                        altIcon: "rectangle.portrait.and.arrow.right",
                         color: .red,
                         title: "Logout",
                         arrow: .action
@@ -124,6 +132,7 @@ struct ProfileView: View {
 
 struct SettingsItemView: View {
     var icon: String
+    var altIcon: String? = nil
     var color: Color
     var title: LocalizedStringKey
     var rotation: Double = 0
@@ -141,17 +150,11 @@ struct SettingsItemView: View {
     
     var body: some View {
         HStack(spacing: 15) {
-            ZStack {
-                Image(systemName: icon)
-                    .rotationEffect(.degrees(rotation))
-                    .font(Font.system(size: 14, weight: .medium))
-                    .foregroundStyle(color == .white ? .blue : .white)
-                    .shadow(radius: 2)
-            }
-            .frame(width: 28, height: 28)
-            .background(color.gradient)
-            .cornerRadius(6)
-            .shadow(radius: 0.5)
+            SettingsSymbolView(
+                icon: icon,
+                altIcon: altIcon,
+                color: color
+            )
             
             Text(title)
                 .foregroundColor(.primary)
@@ -166,8 +169,7 @@ struct SettingsItemView: View {
                         Image(systemName: "chevron.forward")
                     }
                 }
-                .font(.footnote)
-                .fontWeight(.bold)
+                .font(.footnote.weight(.bold))
                 .foregroundStyle(.tertiary)
                 .tint(.primary)
             }
@@ -179,8 +181,6 @@ struct SettingsItemView: View {
 struct ProfileView_Previews: PreviewProvider {
     
     static var previews: some View {
-        NavigationStack {
-            ProfileView()
-        }
+        ProfileView()
     }
 }
