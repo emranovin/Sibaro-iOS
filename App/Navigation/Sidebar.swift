@@ -10,28 +10,59 @@ import SwiftUI
 struct Sidebar: View {
     
     @State var selection: Panel? = .apps
-    @State private var path = NavigationPath()
     
     var body: some View {
-        NavigationSplitView {
-            List(selection: $selection) {
-                ForEach(Panel.allCases, id: \.self) { item in
-                    NavigationLink(value: item) {
-                        Label(item.title, systemImage: item.icon)
+        Group {
+            if #available(iOS 16.0, macOS 13.0, *) {
+                NavigationSplitView {
+                    sidebarList
+                } detail: {
+                    NavigationStack {
+                        selection?.view()
+                            .navigationTitle(selection?.title ?? "Sibaro")
                     }
                 }
+            } else {
+                NavigationView {
+                    sidebarList
+                        .listStyle(.sidebar)
+                        .navigationTitle("Sibaro")
+                    
+                    Label("Select a tab from menu", systemImage: "sidebar.leading")
+                        .foregroundStyle(.secondary)
+                }
             }
-            .listStyle(.sidebar)
-            .navigationTitle("Sibaro")
-        } detail: {
-            NavigationStack(path: $path) {
-                selection?.view()
-                    .navigationTitle(selection?.title ?? "Sibaro")
-            }
+            
         }
         #if os(macOS)
         .frame(minWidth: 1000)
         #endif
+    }
+    
+    var sidebarList: some View {
+        List(selection: $selection) {
+            ForEach(Panel.allCases, id: \.self) { item in
+                Group {
+                    if #available(iOS 16.0, *) {
+                        NavigationLink(value: item) {
+                            Label(item.title, systemImage: item.icon)
+                        }
+                    } else {
+                        NavigationLink(
+                            tag: item,
+                            selection: $selection
+                        ) {
+                            item.view()
+                                .navigationTitle(selection?.title ?? "Sibaro")
+                        } label: {
+                            Label(item.title, systemImage: item.icon)
+                        }
+                    }
+                }
+            }
+        }
+        .listStyle(.sidebar)
+        .navigationTitle("Sibaro")
     }
 }
 
