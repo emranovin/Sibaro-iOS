@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import LottieUI
 
 struct ChangePasswordView: View {
     @Environment(\.dismiss) var dismiss
@@ -29,12 +28,29 @@ struct ChangePasswordView: View {
                 Section {
                     currentPassField
                 } header: {
-                    LottieView("lock")
-                        .loopMode(.playOnce)
-                        .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)
-                        .listRowSeparator(.hidden)
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(.init())
+                    VStack {
+                        Image(systemName: "key.fill")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(.init())
+                            .background(in: .circle.inset(by: -20))
+                            .backgroundStyle(.orange.gradient)
+                            .foregroundStyle(.white)
+                            .padding(.bottom, 20)
+                            #if os(macOS)
+                            .padding(.top, 20)
+                            #endif
+                        
+                        Text("Change Password")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 10)
+                    }
+                    .foregroundStyle(.primary)
+                    .textCase(nil)
+                    .frame(maxWidth: .infinity)
                 }
                 
                 Section {
@@ -71,7 +87,6 @@ struct ChangePasswordView: View {
                     .padding(.horizontal)
             }
             .formStyle(.grouped)
-            .navigationTitle("Change Password")
             #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
             #endif

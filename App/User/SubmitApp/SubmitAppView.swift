@@ -20,9 +20,33 @@ struct SubmitAppView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Application Details") {
+                Section {
                     TextField("Name", text: $viewModel.appName, prompt: Text("Application name"))
                     TextField("Link", text: $viewModel.appLink, prompt: Text("Application Link"))
+                } header: {
+                    VStack {
+                        Image(systemName: "app.badge.checkmark.fill")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(.init())
+                            .background(in: .circle.inset(by: -20))
+                            .backgroundStyle(.blue.gradient)
+                            .foregroundStyle(.white)
+                            .padding(.bottom, 20)
+                            #if os(macOS)
+                            .padding(.top, 20)
+                            #endif
+                        
+                        Text("Request New App")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 10)
+                    }
+                    .foregroundStyle(.primary)
+                    .textCase(nil)
+                    .frame(maxWidth: .infinity)
                 }
                 
                 Section("Description") {
