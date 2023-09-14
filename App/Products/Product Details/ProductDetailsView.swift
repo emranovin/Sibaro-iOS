@@ -174,7 +174,7 @@ struct ProductDetailsView: View {
                     preview: .init(viewModel.product.title)
                 )
             } else {
-                Spacer()
+                EmptyView()
             }
         }
     }
