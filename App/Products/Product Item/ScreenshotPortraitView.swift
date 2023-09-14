@@ -13,7 +13,7 @@ struct ScreenshotPortraitView: View {
     var screenshots: [Screenshot]
     
     var body: some View {
-        HStack(spacing: 5) {
+        HStack(alignment: .top, spacing: 5) {
             ForEach(screenshots, id: \.id) { screenshot in
                 LazyImage(url: URL(string: screenshot.image)) { state in
                     if let image = state.image {
@@ -27,6 +27,16 @@ struct ScreenshotPortraitView: View {
                 .aspectRatio(screenshot.aspectRatio, contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
                 .shadow(radius: 1)
+            }
+            
+            /// Empty space for products that their screenshots are less than 3
+            if screenshots.count < 3, let ratio = screenshots.first?.aspectRatio {
+                ForEach(0..<(3 - screenshots.count), id: \.self) { _ in
+                    Rectangle()
+                        .fill(.clear)
+                        .frame(maxWidth: .infinity)
+                        .aspectRatio(ratio, contentMode: .fit)
+                }
             }
         }
     }
