@@ -23,73 +23,81 @@ struct ChangePasswordView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    currentPassField
-                } header: {
-                    VStack {
-                        Image(systemName: "key.fill")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
-                            .listRowInsets(.init())
-                            .background(in: .circle.inset(by: -20))
-                            .backgroundStyle(.orange.gradient)
-                            .foregroundStyle(.white)
-                            .padding(.bottom, 20)
-                            #if os(macOS)
-                            .padding(.top, 20)
-                            #endif
-                        
-                        Text("Change Password")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .padding(.bottom, 10)
-                    }
-                    .foregroundStyle(.primary)
-                    .textCase(nil)
-                    .frame(maxWidth: .infinity)
+        if #available(iOS 16.0, macOS 13.0, *) {
+            NavigationStack {
+                content
+                    .formStyle(.grouped)
+            }
+        } else {
+            NavigationView {
+                content
+                    #if os(iOS)
+                    .navigationBarTitleDisplayMode(.inline)
+                    #endif
+            }
+        }
+    }
+    
+    var content: some View {
+        Form {
+            Section {
+                currentPassField
+            } header: {
+                VStack {
+                    SymbolView(
+                        icon: "key.fill",
+                        color: .orange
+                    )
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                    .listRowInsets(.init())
+                    .padding(.bottom, 20)
+                    #if os(macOS)
+                    .padding(.top, 20)
+                    #endif
+                    
+                    Text("Change Password")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 10)
                 }
-                
-                Section {
-                    newPassField
-                    newPassConfirmField
-                } header: {
-                    Text("New Password")
-                } footer: {
-                    Text("New password must contain at least 8 characters including uppder and lowercase letters and and at least one number")
+                .foregroundStyle(.primary)
+                .textCase(nil)
+                .frame(maxWidth: .infinity)
+            }
+            
+            Section {
+                newPassField
+                newPassConfirmField
+            } header: {
+                Text("New Password")
+            } footer: {
+                Text("New password must contain at least 8 characters including uppder and lowercase letters and and at least one number")
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                submitButton
+            }
+            
+            ToolbarItem(placement: .cancellationAction) {
+                Button(action: {dismiss()}) {
+                    Text("Cancel")
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    submitButton
-                }
-                
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(action: {dismiss()}) {
-                        Text("Cancel")
-                    }
+        }
+        .alert(viewModel.alertStatus?.title ?? "", isPresented: $viewModel.showAlert) {
+            Button("Ok", role: .cancel) {
+                if viewModel.alertStatus == .success {
+                    dismiss()
                 }
             }
-            .alert(viewModel.alertStatus?.title ?? "", isPresented: $viewModel.showAlert) {
-                Button("Ok", role: .cancel) {
-                    if viewModel.alertStatus == .success {
-                        dismiss()
-                    }
-                }
-            } message: {
-                Text(viewModel.alertStatus?.message ?? "")
-                    .font(.callout)
-                    .tint(.red)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.horizontal)
-            }
-            .formStyle(.grouped)
-            #if os(iOS)
-            .navigationBarTitleDisplayMode(.inline)
-            #endif
+        } message: {
+            Text(viewModel.alertStatus?.message ?? "")
+                .font(.callout)
+                .tint(.red)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.horizontal)
         }
     }
     
@@ -154,8 +162,6 @@ extension ChangePasswordView {
 
 struct ChangePasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            ChangePasswordView()
-        }
+        ChangePasswordView()
     }
 }

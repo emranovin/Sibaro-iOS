@@ -5,11 +5,10 @@
 //  Created by Armin on 8/13/23.
 //
 
-import SwiftUI
 import NukeUI
+import SwiftUI
 
 struct ProductItemView: View {
-    
     
     @StateObject var viewModel: ViewModel
     
@@ -74,15 +73,14 @@ struct ProductItemView: View {
                     
                     Button(action: proceedApp) {
                         Text(appStateTitle)
-                            .font(.body)
                             #if os(macOS)
-                            .fontWeight(.medium)
+                            .font(.body.weight(.medium))
                             .foregroundStyle(Color.accentColor)
                             .padding(.vertical, 2)
                             .frame(minWidth: 64)
                             #else
+                            .font(.body.weight(.bold))
                             .frame(minWidth: 60)
-                            .fontWeight(.bold)
                             #endif
                     }
                     #if os(iOS)
