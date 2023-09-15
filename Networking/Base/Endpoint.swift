@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct SibaroAPI {
+    static let url: String = "sibaro.mahsa.me"
+}
+
 public protocol Endpoint {
     var baseURL:    String            { get }
     var path:       String            { get }
@@ -20,7 +24,7 @@ public protocol Endpoint {
 
 extension Endpoint {
     var baseURL: String {
-        return "https://api.sibaro.mahsa.me"
+        return "https://api.\(SibaroAPI.url)"
     }
     
     var baseHeader: [String: String] {

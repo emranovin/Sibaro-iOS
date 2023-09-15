@@ -42,6 +42,7 @@
 		36B7CE962A8FCBE1000ABD7A /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7CE952A8FCBE1000ABD7A /* Password.swift */; };
 		36FE9D052A8E4BC300A71B12 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FE9D042A8E4BC300A71B12 /* ChangePasswordView.swift */; };
 		36FE9D072A8E4BD000A71B12 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FE9D062A8E4BD000A71B12 /* ChangePasswordViewModel.swift */; };
+		474D63722AAC4FD60003AF6D /* ObservableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474D63712AAC4FD60003AF6D /* ObservableScrollView.swift */; };
 		C604EB022A892FDA00B18E0E /* SibaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB012A892FDA00B18E0E /* SibaroApp.swift */; };
 		C604EB062A892FDD00B18E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C604EB052A892FDD00B18E0E /* Assets.xcassets */; };
 		C604EB162A8930C400B18E0E /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604EB122A8930C400B18E0E /* Panel.swift */; };
@@ -74,8 +75,6 @@
 		C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = C62BF8002A8A3059002CFFF9 /* MarkdownUI */; };
 		C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D22A897F1300B2427D /* ProductDetailsView.swift */; };
 		C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D52A89873400B2427D /* String+Extensions.swift */; };
-		C668C2EC2A9299D6009F7B50 /* LottieUI in Frameworks */ = {isa = PBXBuildFile; productRef = C668C2EB2A9299D6009F7B50 /* LottieUI */; };
-		C668C2EE2A929ADD009F7B50 /* lock.json in Resources */ = {isa = PBXBuildFile; fileRef = C668C2ED2A929ADD009F7B50 /* lock.json */; };
 		C67979752A8AA6E00091BE25 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C67979742A8AA6E00091BE25 /* Nuke */; };
 		C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C67979782A8AA6E00091BE25 /* NukeUI */; };
 		C67EB29B2AAA125E003CFFB1 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = C67EB29A2AAA125E003CFFB1 /* Shimmer */; };
@@ -131,6 +130,7 @@
 		36B7CE952A8FCBE1000ABD7A /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		36FE9D042A8E4BC300A71B12 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		36FE9D062A8E4BD000A71B12 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		474D63712AAC4FD60003AF6D /* ObservableScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableScrollView.swift; sourceTree = "<group>"; };
 		C604EAFE2A892FDA00B18E0E /* Sibaro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sibaro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C604EB012A892FDA00B18E0E /* SibaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibaroApp.swift; sourceTree = "<group>"; };
 		C604EB052A892FDD00B18E0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -163,7 +163,6 @@
 		C61B1ADB2A8E805800F3AD27 /* NSTextView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Extensions.swift"; sourceTree = "<group>"; };
 		C667B4D22A897F1300B2427D /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 		C667B4D52A89873400B2427D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		C668C2ED2A929ADD009F7B50 /* lock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lock.json; sourceTree = "<group>"; };
 		C67979712A8A99180091BE25 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		C6AD3FBB2A8E1991008182BC /* SubmitAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAppView.swift; sourceTree = "<group>"; };
 		C6AD3FBD2A8E1991008182BC /* SubmitAppViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAppViewModel.swift; sourceTree = "<group>"; };
@@ -181,7 +180,6 @@
 				117ED6FA2A8B74FE00775CEC /* MobileCoreServices.framework in Frameworks */,
 				C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */,
 				C67979752A8AA6E00091BE25 /* Nuke in Frameworks */,
-				C668C2EC2A9299D6009F7B50 /* LottieUI in Frameworks */,
 				C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */,
 				C67EB29B2AAA125E003CFFB1 /* Shimmer in Frameworks */,
 				C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */,
@@ -457,7 +455,6 @@
 			isa = PBXGroup;
 			children = (
 				C604EB052A892FDD00B18E0E /* Assets.xcassets */,
-				C668C2ED2A929ADD009F7B50 /* lock.json */,
 				C604EB072A892FDD00B18E0E /* Sibaro.entitlements */,
 			);
 			path = Resources;
@@ -503,6 +500,7 @@
 				C60FFD772AA8EDBC00A51D38 /* ImagePreviewerView.swift */,
 				03FDA3232A8DD4D3003D192D /* SingleAxisGeometryReader.swift */,
 				C604EB262A89337400B18E0E /* VisualEffectBlur.swift */,
+				474D63712AAC4FD60003AF6D /* ObservableScrollView.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -605,7 +603,6 @@
 				C62BF8002A8A3059002CFFF9 /* MarkdownUI */,
 				C67979742A8AA6E00091BE25 /* Nuke */,
 				C67979782A8AA6E00091BE25 /* NukeUI */,
-				C668C2EB2A9299D6009F7B50 /* LottieUI */,
 				C67EB29A2AAA125E003CFFB1 /* Shimmer */,
 			);
 			productName = Sibaro;
@@ -641,7 +638,6 @@
 				C604EB4C2A894AE400B18E0E /* XCRemoteSwiftPackageReference "SimpleKeychain" */,
 				C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */,
-				C668C2EA2A9299D6009F7B50 /* XCRemoteSwiftPackageReference "LottieUI" */,
 				C67EB2992AAA125E003CFFB1 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = C604EAFF2A892FDA00B18E0E /* Products */;
@@ -659,7 +655,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C604EB062A892FDD00B18E0E /* Assets.xcassets in Resources */,
-				C668C2EE2A929ADD009F7B50 /* lock.json in Resources */,
 				03E248DA2A8A9C2600DDE525 /* en.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -717,6 +712,7 @@
 				363A1BDF2A8C8DF500148CBB /* ProductsListViewModel.swift in Sources */,
 				117ED6F52A8B743400775CEC /* SystemApplication.swift in Sources */,
 				C604EB1C2A89316C00B18E0E /* ProductsListView.swift in Sources */,
+				474D63722AAC4FD60003AF6D /* ObservableScrollView.swift in Sources */,
 				C604EB182A8930C400B18E0E /* TabNavigation.swift in Sources */,
 				363A1BE32A8CA8E700148CBB /* ProfileViewModel.swift in Sources */,
 				03FDA31E2A8D470F003D192D /* Injections.swift in Sources */,
@@ -982,16 +978,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
 			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		C668C2EA2A9299D6009F7B50 /* XCRemoteSwiftPackageReference "LottieUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tfmart/LottieUI";
-			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.1;
+				minimumVersion = 2.2.0;
 			};
 		};
 		C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */ = {
@@ -1022,11 +1010,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
 			productName = MarkdownUI;
-		};
-		C668C2EB2A9299D6009F7B50 /* LottieUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C668C2EA2A9299D6009F7B50 /* XCRemoteSwiftPackageReference "LottieUI" */;
-			productName = LottieUI;
 		};
 		C67979742A8AA6E00091BE25 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;

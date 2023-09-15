@@ -20,6 +20,10 @@ struct Product: Codable, Identifiable {
     let updatedAt: Date
     let screenshots: [Screenshot]
     
+    var shareURL: URL {
+        URL(string: "https://\(SibaroAPI.url)/tabs/item/\(id)")!
+    }
+    
     static let mock = Product(
         id: 32,
         type: .app,

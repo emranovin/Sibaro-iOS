@@ -1,21 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "lottie-spm",
+      "identity" : "networkimage",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/airbnb/lottie-spm.git",
+      "location" : "https://github.com/gonzalezreal/NetworkImage",
       "state" : {
-        "revision" : "60ea4f82fba8b4cb21a75665a889e86ed4d81c6e",
-        "version" : "4.2.0"
-      }
-    },
-    {
-      "identity" : "lottieui",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/tfmart/LottieUI",
-      "state" : {
-        "revision" : "dd5b2f16213f89ab996a55fc2f51b56236da4bbe",
-        "version" : "1.3.3"
+        "revision" : "7aff8d1b31148d32c5933d75557d42f6323ee3d1",
+        "version" : "6.0.0"
       }
     },
     {
@@ -41,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/gonzalezreal/swift-markdown-ui",
       "state" : {
-        "branch" : "main",
-        "revision" : "f28a72601d5ea7f60e65e9143aca1f4d131e092b"
+        "revision" : "5df8a4adedd6ae4eb2455ef60ff75183984daeb8",
+        "version" : "2.2.0"
       }
     },
     {

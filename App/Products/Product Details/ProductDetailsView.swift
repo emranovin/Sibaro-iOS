@@ -12,8 +12,16 @@ import MarkdownUI
 struct ProductDetailsView: View {
     
     @StateObject var viewModel: ViewModel
-    @Environment(\.dismiss) var dismissAction
+    @State private var scrollOffset: CGFloat = .zero
+
+    #if os(iOS)
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    #endif
     
+    private var hasScrolledAppPromotion: Bool {
+        scrollOffset > 135
+    }
+
     init(product: Product) {
         self._viewModel = StateObject(wrappedValue: ViewModel(product: product))
     }
@@ -31,7 +39,7 @@ struct ProductDetailsView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
+            ObservableScrollView(scrollOffset: $scrollOffset) { _ in
                 VStack {
                     appPromotion
                         .padding(.bottom, 12)
@@ -52,19 +60,27 @@ struct ProductDetailsView: View {
             }
             .toolbar {
                 ToolbarItem {
-                    Button {
-                        dismissAction()
-                    } label: {
-                        Label("Close", systemImage: "xmark.circle.fill")
-                            .symbolRenderingMode(.hierarchical)
+                    navBarButton
+                }
+                
+                ToolbarItem {
+                    #if os(iOS)
+                    if horizontalSizeClass != .compact {
+                        shareButton
                     }
-                    .tint(.secondary)
+                    #else
+                    shareButton
+                    #endif
                 }
             }
+            .navigationTitle(hasScrolledAppPromotion ? viewModel.product.title : "")
+            #if os(iOS)
+            .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
     }
-    
-    var appPromotion: some View {
+
+    private var appPromotion: some View {
         HStack {
             LazyImage(url: URL(string: viewModel.product.icon)) { state in
                 if let image = state.image {
@@ -99,35 +115,20 @@ struct ProductDetailsView: View {
                 
                 Spacer()
                 
-                // MARK: - Install button
-                ZStack(alignment: .leading) {
-                    ProgressView()
-                        .opacity(viewModel.loading ? 1 : 0)
+                HStack {
+                    // MARK: - Install button
+                    installButton
                     
-                    Button(action: proceedApp) {
-                        Text(appStateTitle)
-                            .font(.body)
-                            #if os(macOS)
-                            .fontWeight(.medium)
-                            .foregroundStyle(Color.accentColor)
-                            .padding(.vertical, 2)
-                            .frame(minWidth: 64)
-                            #else
-                            .frame(minWidth: 60)
-                            .fontWeight(.semibold)
-                            #endif
-                    }
+                    Spacer()
+                    
+                    // MARK: - Share button
                     #if os(iOS)
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.capsule)
-                    .controlSize(.mini)
-                    #elseif os(macOS)
-                    .buttonStyle(.plain)
-                    .tint(.white)
-                    .background(Color("ProductActionColor"))
-                    .clipShape(Capsule())
+                    if horizontalSizeClass == .compact {
+                        shareButton
+                            .labelStyle(.iconOnly)
+                            .padding(.horizontal)
+                    }
                     #endif
-                    .opacity(viewModel.loading ? 0 : 1)
                 }
             }
             .padding(.trailing, 12)
@@ -135,8 +136,47 @@ struct ProductDetailsView: View {
         }
         .frame(maxHeight: 120)
     }
+
+    private var installButton: some View {
+        ZStack(alignment: .center) {
+            ProgressView()
+                .opacity(viewModel.loading ? 1 : 0)
+            
+            Button(action: proceedApp) {
+                Text(appStateTitle)
+                    .font(.body)
+                    #if os(macOS)
+                    .fontWeight(.medium)
+                    .foregroundStyle(Color.accentColor)
+                    .padding(.vertical, 2)
+                    .frame(minWidth: 64)
+                    #else
+                    .frame(minWidth: 60)
+                    .fontWeight(.semibold)
+                    #endif
+            }
+            #if os(iOS)
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.capsule)
+            .controlSize(.mini)
+            #elseif os(macOS)
+            .buttonStyle(.plain)
+            .tint(.white)
+            .background(Color.white)
+            .clipShape(Capsule())
+            #endif
+            .opacity(viewModel.loading ? 0 : 1)
+        }
+    }
     
-    var appDetails: some View {
+    private var shareButton: some View {
+        ShareLink(
+            item: viewModel.product.shareURL,
+            preview: .init(viewModel.product.title)
+        )
+    }
+    
+    private var appDetails: some View {
         HStack(spacing: 15) {
             VStack {
                 Text("Size")
@@ -168,7 +208,7 @@ struct ProductDetailsView: View {
         }
     }
     
-    var screenshots: some View {
+    private var screenshots: some View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(viewModel.product.screenshots, id: \.id) { screenshot in
@@ -210,15 +250,23 @@ struct ProductDetailsView: View {
             #endif
         }
     }
-    
-    var description: some View {
+
+    private var description: some View {
         Markdown(viewModel.product.description)
             .multilineTextAlignment(.leading)
             .environment(\.layoutDirection, viewModel.product.description.isRTL ? .rightToLeft : .leftToRight)
             .padding()
     }
-    
-    func proceedApp() {
+
+    @ViewBuilder private var navBarButton: some View {
+        if hasScrolledAppPromotion {
+            installButton
+        } else {
+            EmptyView()
+        }
+    }
+
+    private func proceedApp() {
         #if os(iOS)
         HapticFeedback.shared.start(.success)
         #endif
@@ -231,6 +279,8 @@ struct ProductDetailsView: View {
 
 struct ProductDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailsView(product: .mock)
+        NavigationStack {
+            ProductDetailsView(product: .mock)
+        }
     }
 }

@@ -20,12 +20,51 @@ struct SubmitAppView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Application Details") {
-                    TextField("Name", text: $viewModel.appName, prompt: Text("Application name"))
-                    TextField("Link", text: $viewModel.appLink, prompt: Text("Application Link"))
+                Section {
+                    /// App name
+                    TextField(
+                        "Name",
+                        text: $viewModel.appName,
+                        prompt: Text("Application name")
+                    )
+                    .keyboardType(.default)
+                    
+                    /// App Link
+                    TextField(
+                        "Link",
+                        text: $viewModel.appLink,
+                        prompt: Text("Application Link")
+                    )
+                    .keyboardType(.URL)
+                    .textInputAutocapitalization(.never)
+                } header: {
+                    VStack {
+                        Image(systemName: "app.badge.checkmark.fill")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(.init())
+                            .background(in: Circle().inset(by: -20))
+                            .backgroundStyle(.blue.gradient)
+                            .foregroundStyle(.white)
+                            .padding(.bottom, 20)
+                            #if os(macOS)
+                            .padding(.top, 20)
+                            #endif
+                        
+                        Text("Request New App")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 10)
+                    }
+                    .foregroundStyle(.primary)
+                    .textCase(nil)
+                    .frame(maxWidth: .infinity)
                 }
                 
                 Section("Description") {
+                    /// App Description
                     TextEditor(text: $viewModel.appDescription)
                         .frame(minHeight: 150)
                 }
@@ -58,7 +97,11 @@ struct SubmitAppView: View {
                 viewModel.messageTitle,
                 isPresented: $viewModel.showMessage
             ) {
-                Button("Ok", role: .cancel) {}
+                Button("Ok", role: .cancel) {
+                    if viewModel.isSent {
+                        dismiss()
+                    }
+                }
             } message: {
                 Text(viewModel.messageSubtitle)
             }

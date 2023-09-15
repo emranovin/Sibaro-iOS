@@ -67,7 +67,6 @@ struct ProfileView: View {
                 #endif
                 .sheet(isPresented: $viewModel.showAppSuggestion) {
                     SubmitAppView()
-                        .presentationDetents([.fraction(0.6), .large])
                         #if os(macOS)
                         .frame(minWidth: 400, minHeight: 350)
                         #endif

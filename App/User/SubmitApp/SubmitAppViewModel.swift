@@ -22,6 +22,7 @@ extension SubmitAppView {
         @Published var messageTitle: String = ""
         @Published var messageSubtitle: String = ""
         @Published var showMessage: Bool = false
+        @Published var isSent: Bool = false
         
         func _submitApp() async {
             loading = true
@@ -34,7 +35,10 @@ extension SubmitAppView {
                 
                 messageTitle = "Success"
                 messageSubtitle = "Your submition has been sent"
-                
+                isSent = true
+                #if os(iOS)
+                HapticFeedback.shared.start(.success)
+                #endif
             } catch {
                 if let error = error as? RequestError {
                     switch error {
@@ -50,6 +54,9 @@ extension SubmitAppView {
                     messageTitle = "Failed to submit"
                     messageSubtitle = "Try again later"
                 }
+                #if os(iOS)
+                HapticFeedback.shared.start(.error)
+                #endif
             }
             loading = false
             showMessage = true
