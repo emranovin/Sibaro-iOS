@@ -5,11 +5,10 @@
 //  Created by Armin on 8/13/23.
 //
 
-import SwiftUI
 import NukeUI
+import SwiftUI
 
 struct ProductItemView: View {
-    
     
     @StateObject var viewModel: ViewModel
     
@@ -74,15 +73,14 @@ struct ProductItemView: View {
                     
                     Button(action: proceedApp) {
                         Text(appStateTitle)
-                            .font(.body)
                             #if os(macOS)
-                            .fontWeight(.medium)
+                            .font(.body.weight(.medium))
                             .foregroundStyle(Color.accentColor)
                             .padding(.vertical, 2)
                             .frame(minWidth: 64)
                             #else
+                            .font(.body.weight(.bold))
                             .frame(minWidth: 60)
-                            .fontWeight(.bold)
                             #endif
                     }
                     #if os(iOS)
@@ -172,16 +170,15 @@ struct ProductItemView: View {
     var screenshots: some View {
         ZStack {
             if let first = viewModel.product.screenshots.first {
-                if first.width >= first.height {
-                    single(screenshot: first)
-                        .padding(.top, 22)
-                } else {
-                    multiple(screenshots: viewModel.product.screenshots.prefix(3))
-                        .padding(.top, 22)
+                Group {
+                    if first.width >= first.height {
+                        ScreenshotLandscapeView(screenshot: first)
+                    } else {
+                        let filteredScreenshots = viewModel.product.screenshots.prefix(3)
+                        ScreenshotPortraitView(screenshots: Array(filteredScreenshots))
+                    }
                 }
-                
-            } else {
-                EmptyView()
+                .padding(.top, 22)
             }
         }
     }
@@ -199,11 +196,13 @@ struct ProductItemView: View {
 
 struct ProductItemView_Previews: PreviewProvider {
     static var previews: some View {
-        List {
-            ProductItemView(product: .mock)
-            ProductItemView(product: .mock)
-            ProductItemView(product: .mock)
+        ScrollView {
+            LazyVStack {
+                ProductItemView(product: .mock)
+                ProductItemView(product: .mock)
+                ProductItemView(product: .mock)
+            }
+            .padding()
         }
-        .listStyle(.plain)
     }
 }

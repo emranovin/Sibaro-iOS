@@ -109,6 +109,26 @@ struct Screenshot: Codable {
     var aspectRatio: CGFloat {
         CGFloat(width)/CGFloat(height)
     }
+    
+    static var mocks: [Screenshot] {
+        return [
+            .init(
+                image: "https://api.sibaro.mahsa.me/media/screenshots/09b288d5-1c60-4c9f-bfcb-67933cd53de1.jpeg",
+                width: 1080,
+                height: 2152
+            ),
+            .init(
+                image: "https://api.sibaro.mahsa.me/media/screenshots/d1170849-ee9d-4002-8f2b-099c4ea63fe7.jpeg",
+                width: 1080,
+                height: 1990
+            ),
+            .init(
+                image: "https://api.sibaro.mahsa.me/media/screenshots/96480465-2ce0-46f4-936b-b427f5d1e4d3.jpeg",
+                width: 1080,
+                height: 2157
+            ),
+        ]
+    }
 }
 
 struct AppManifest: Codable {

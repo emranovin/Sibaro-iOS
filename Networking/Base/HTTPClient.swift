@@ -45,7 +45,17 @@ extension HTTPClient {
             }
         }
         if let queryParameters = endpoint.urlParams {
-            request.url?.append(queryItems: queryParameters)
+            if #available(iOS 16.0, *) {
+                request.url?.append(queryItems: queryParameters)
+            } else {
+                if let url = request.url, let urlComponents = NSURLComponents.init(url: url, resolvingAgainstBaseURL: false) {
+                    if (urlComponents.queryItems == nil) {
+                        urlComponents.queryItems = []
+                    }
+                    urlComponents.queryItems!.append(contentsOf: queryParameters);
+                    request.url = url
+                }
+            }
         }
         let (data, response) = try await URLSession.shared.data(for: request, delegate: nil)
         guard let response = response as? HTTPURLResponse else {

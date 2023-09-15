@@ -200,10 +200,8 @@ struct ProductsListView_Previews: PreviewProvider {
     @ObservedObject static var i18n = I18nService()
     
     static var previews: some View {
-        NavigationStack {
-            ProductsListView(type: .app)
-                .environmentObject(i18n)
-                .navigationTitle("Apps")
-        }
+        ProductsListView(type: .app)
+            .environmentObject(i18n)
+            .navigationTitle("Apps")
     }
 }

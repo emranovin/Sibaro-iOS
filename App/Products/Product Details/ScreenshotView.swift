@@ -10,8 +10,23 @@ import SwiftUI
 
 struct ScreenshotView {
     @State var imageAddress: URL?
-    @GestureState var scale: CGFloat = 1.0
+    @State var scale: CGFloat = 1.0
+    
     @Environment(\.dismiss) var dismiss
+    
+    var magnification: some Gesture {
+        if #available(iOS 17.0, macOS 14.0, *) {
+            return MagnifyGesture()
+                .onChanged{ gesture in
+                    self.scale = max(gesture.magnification, 1.0)
+                }
+        } else {
+            return MagnificationGesture()
+                .onChanged{ value in
+                    self.scale = max(value, 1.0)
+                }
+        }
+    }
 }
 
 @MainActor
@@ -64,12 +79,7 @@ extension ScreenshotView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .scaleEffect(scale)
-        .gesture(
-            MagnificationGesture()
-                .updating($scale) { (value, scale, trans) in
-                    scale = max(value.magnitude, 1.0)
-                }
-        )
+        .gesture(magnification)
     }
     
     var closeButton: some View {
