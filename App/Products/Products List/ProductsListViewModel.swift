@@ -63,14 +63,16 @@ extension ProductsListView {
                 message = ""
                 let response = try await productRepository.filterProducts(search: search, ordering: sortType.asProductOrderProperty(), type: type, cursor: search.isEmpty ? nextPageCursor: nextSeachCursor)
                 if search.isEmpty {
-                    rawProducts.append(contentsOf: response.results)
+                    
                     if let nextUrl = response.next, let cursor = URL(string: nextUrl)?.queryDictionary?["cursor"] {
                         self.nextPageCursor = cursor
+                        rawProducts.append(contentsOf: response.results)
                     }
                 } else {
-                    searchResults.append(contentsOf: response.results)
+                    
                     if let nextUrl = response.next, let cursor = URL(string: nextUrl)?.queryDictionary?["cursor"] {
                         self.nextSeachCursor = cursor
+                        searchResults.append(contentsOf: response.results)
                     }
                 }
                 

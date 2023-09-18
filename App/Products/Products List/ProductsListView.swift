@@ -173,20 +173,22 @@ extension ProductsListView: View {
                         .frame(alignment: .center)
                 }.frame(maxWidth: .infinity)
             } else {
-                VStack(spacing: 0) {
-                    Group {
-                        Text("loading failed")
-                        #if os(macOS)
-                        Text("click to retry")
-                        #else
-                        Text("tap to retry")
-                        #endif
-                    }.frame(maxWidth: .infinity, alignment: .center)
-                        .font(.caption2)
-                        .foregroundColor(.gray.opacity(0.8))
-                }.clipped()
-                    .onTapGesture {
-                    viewModel.retryLoadingPage()
+                if !viewModel.message.isEmpty {
+                    VStack(spacing: 0) {
+                        Group {
+                            Text("loading failed")
+                            #if os(macOS)
+                            Text("click to retry")
+                            #else
+                            Text("tap to retry")
+                            #endif
+                        }.frame(maxWidth: .infinity, alignment: .center)
+                            .font(.caption2)
+                            .foregroundColor(.gray.opacity(0.8))
+                    }.clipped()
+                        .onTapGesture {
+                            viewModel.retryLoadingPage()
+                        }
                 }
             }
         }.id(UUID())
