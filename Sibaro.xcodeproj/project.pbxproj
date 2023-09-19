@@ -130,7 +130,7 @@
 		36FE9D042A8E4BC300A71B12 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		36FE9D062A8E4BD000A71B12 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		474D63712AAC4FD60003AF6D /* ObservableScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableScrollView.swift; sourceTree = "<group>"; };
-		C604EAFE2A892FDA00B18E0E /* Sibaro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sibaro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C604EAFE2A892FDA00B18E0E /* Seebaro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seebaro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C604EB012A892FDA00B18E0E /* SibaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibaroApp.swift; sourceTree = "<group>"; };
 		C604EB052A892FDD00B18E0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C604EB072A892FDD00B18E0E /* Sibaro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sibaro.entitlements; sourceTree = "<group>"; };
@@ -437,7 +437,7 @@
 		C604EAFF2A892FDA00B18E0E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C604EAFE2A892FDA00B18E0E /* Sibaro.app */,
+				C604EAFE2A892FDA00B18E0E /* Seebaro.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -612,7 +612,7 @@
 				C67EB29A2AAA125E003CFFB1 /* Shimmer */,
 			);
 			productName = Sibaro;
-			productReference = C604EAFE2A892FDA00B18E0E /* Sibaro.app */;
+			productReference = C604EAFE2A892FDA00B18E0E /* Seebaro.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
