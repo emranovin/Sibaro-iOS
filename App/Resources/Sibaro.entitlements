@@ -5,6 +5,9 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>webcredentials:sibaro.mahsa.me</string>
+		<string>webcredentials:mahsa.me</string>
+		<string>applinks:sibaro.mahsa.me</string>
+		<string>applinks:mahsa.me</string>
 	</array>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
