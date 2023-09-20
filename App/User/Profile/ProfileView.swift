@@ -11,6 +11,14 @@ struct ProfileView: View {
     
     @StateObject var viewModel: ViewModel = ViewModel()
     
+    var appName: String? {
+        Bundle.main.infoDictionary?["CFBundleName"] as? String
+    }
+    
+    var appVersion: String? {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+    
     var body: some View {
         List {
             Section {
@@ -78,7 +86,9 @@ struct ProfileView: View {
                         .frame(minWidth: 400, minHeight: 350)
                         #endif
                 }
-                
+            }
+            
+            Section {
                 /// Feedback
                 Link(destination: URL(string: "https://github.com/emranovin/Sibaro-iOS/issues")!) {
                     SettingsItemView(
@@ -126,6 +136,32 @@ struct ProfileView: View {
                     Button("Cancel", role: .cancel) {}
                 }
             }
+            
+            #if !os(macOS)
+            Section {
+                VStack {
+                    HStack {
+                        Image("iTroyPure")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundStyle(.blue)
+                            .frame(maxHeight: 36)
+                        if let appName {
+                            Text(appName)
+                                .font(.title2.weight(.bold))
+                        }
+                    }
+                    
+                    if let appVersion {
+                        Text("v\(appVersion)")
+                            .foregroundStyle(.secondary)
+                            .font(.footnote)
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .listRowBackground(Color.clear)
+            }
+            #endif
         }
     }
 }
