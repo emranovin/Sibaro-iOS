@@ -79,7 +79,7 @@
 		C667B4D62A89873400B2427D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C667B4D52A89873400B2427D /* String+Extensions.swift */; };
 		C67979752A8AA6E00091BE25 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C67979742A8AA6E00091BE25 /* Nuke */; };
 		C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = C67979782A8AA6E00091BE25 /* NukeUI */; };
-		C67EB29B2AAA125E003CFFB1 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = C67EB29A2AAA125E003CFFB1 /* Shimmer */; };
+		C67E59A12ABB5964009FCC86 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67E59A02ABB5964009FCC86 /* Shimmer.swift */; };
 		C6AD3FBE2A8E1991008182BC /* SubmitAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FBB2A8E1991008182BC /* SubmitAppView.swift */; };
 		C6AD3FC02A8E1991008182BC /* SubmitAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FBD2A8E1991008182BC /* SubmitAppViewModel.swift */; };
 		C6AD3FC22A8E19AC008182BC /* SubmitAppEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD3FC12A8E19AC008182BC /* SubmitAppEndpoint.swift */; };
@@ -168,6 +168,7 @@
 		C667B4D22A897F1300B2427D /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 		C667B4D52A89873400B2427D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		C67979712A8A99180091BE25 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		C67E59A02ABB5964009FCC86 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		C6AD3FBB2A8E1991008182BC /* SubmitAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAppView.swift; sourceTree = "<group>"; };
 		C6AD3FBD2A8E1991008182BC /* SubmitAppViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAppViewModel.swift; sourceTree = "<group>"; };
 		C6AD3FC12A8E19AC008182BC /* SubmitAppEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitAppEndpoint.swift; sourceTree = "<group>"; };
@@ -185,7 +186,6 @@
 				C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */,
 				C67979752A8AA6E00091BE25 /* Nuke in Frameworks */,
 				C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */,
-				C67EB29B2AAA125E003CFFB1 /* Shimmer in Frameworks */,
 				C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,6 +505,7 @@
 				C6CF97692A8BDB090035210F /* HapticFeedback.swift */,
 				C60FFD772AA8EDBC00A51D38 /* ImagePreviewerView.swift */,
 				474D63712AAC4FD60003AF6D /* ObservableScrollView.swift */,
+				C67E59A02ABB5964009FCC86 /* Shimmer.swift */,
 				03FDA3232A8DD4D3003D192D /* SingleAxisGeometryReader.swift */,
 				C65C6C502AB2464C008705D6 /* SymbolView.swift */,
 				C604EB262A89337400B18E0E /* VisualEffectBlur.swift */,
@@ -609,7 +610,6 @@
 				C62BF8002A8A3059002CFFF9 /* MarkdownUI */,
 				C67979742A8AA6E00091BE25 /* Nuke */,
 				C67979782A8AA6E00091BE25 /* NukeUI */,
-				C67EB29A2AAA125E003CFFB1 /* Shimmer */,
 			);
 			productName = Sibaro;
 			productReference = C604EAFE2A892FDA00B18E0E /* Seebaro.app */;
@@ -644,7 +644,6 @@
 				C604EB4C2A894AE400B18E0E /* XCRemoteSwiftPackageReference "SimpleKeychain" */,
 				C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */,
-				C67EB2992AAA125E003CFFB1 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = C604EAFF2A892FDA00B18E0E /* Products */;
 			projectDirPath = "";
@@ -685,6 +684,7 @@
 				C604EB492A89407D00B18E0E /* ProductsRepository.swift in Sources */,
 				C6AD3FC22A8E19AC008182BC /* SubmitAppEndpoint.swift in Sources */,
 				03E248D22A8A75BD00DDE525 /* SibaroJSONDecoder.swift in Sources */,
+				C67E59A12ABB5964009FCC86 /* Shimmer.swift in Sources */,
 				117ED6F42A8B743400775CEC /* ApplicationService.swift in Sources */,
 				C604EB442A893D3500B18E0E /* ProductsEndpoint.swift in Sources */,
 				03FDA31F2A8D470F003D192D /* Container.swift in Sources */,
@@ -998,14 +998,6 @@
 				minimumVersion = 12.1.5;
 			};
 		};
-		C67EB2992AAA125E003CFFB1 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer/";
-			requirement = {
-				kind = exactVersion;
-				version = 1.3.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1028,11 +1020,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = NukeUI;
-		};
-		C67EB29A2AAA125E003CFFB1 /* Shimmer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C67EB2992AAA125E003CFFB1 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
-			productName = Shimmer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

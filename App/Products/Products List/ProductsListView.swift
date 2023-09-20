@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Shimmer
 
 enum SortType: String, CaseIterable {
     case newest = "Newest"
