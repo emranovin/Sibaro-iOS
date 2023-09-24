@@ -9,6 +9,7 @@ import Foundation
 
 struct SibaroAPI {
     static let url: String = "sibaro.mahsa.me"
+    static let appVersion: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.1"
 }
 
 public protocol Endpoint {
@@ -28,6 +29,6 @@ extension Endpoint {
     }
     
     var baseHeader: [String: String] {
-        return [:]
+        return ["X-Application-Version": SibaroAPI.appVersion]
     }
 }
