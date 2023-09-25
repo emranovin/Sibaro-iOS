@@ -86,9 +86,7 @@ public struct Shimmer: ViewModifier {
             .mask(LinearGradient(gradient: gradient, startPoint: startPoint, endPoint: endPoint))
             .animation(animation, value: isInitialState)
             .onAppear {
-                withAnimation(animation) {
-                    isInitialState = false
-                }
+                isInitialState = false
             }
     }
 }
