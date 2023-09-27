@@ -33,6 +33,12 @@
 		117ED6FA2A8B74FE00775CEC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117ED6F92A8B74FE00775CEC /* MobileCoreServices.framework */; platformFilter = ios; };
 		117ED7012A8B87D000775CEC /* String+VersionComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117ED7002A8B87D000775CEC /* String+VersionComparison.swift */; };
 		11D5D8E52A8BBC6300A3C22B /* Dictionary+Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D5D8E42A8BBC6300A3C22B /* Dictionary+Apps.swift */; };
+		11DC23CB2AC495ED00692DBC /* SigningCredentialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC23CA2AC495ED00692DBC /* SigningCredentialService.swift */; };
+		11DC23CD2AC4966D00692DBC /* String+DER.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC23CC2AC4966D00692DBC /* String+DER.swift */; };
+		11DC23D02AC49AD200692DBC /* SigningError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC23CF2AC49AD200692DBC /* SigningError.swift */; };
+		11DC23D32AC4A28500692DBC /* SigningCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC23D22AC4A28500692DBC /* SigningCredentials.swift */; };
+		11DC23D82AC4ADCF00692DBC /* ZSignApple in Frameworks */ = {isa = PBXBuildFile; productRef = 11DC23D72AC4ADCF00692DBC /* ZSignApple */; };
+		11DC23DB2AC4AE1C00692DBC /* DHWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 11DC23DA2AC4AE1C00692DBC /* DHWrapper.c */; };
 		363A1BDF2A8C8DF500148CBB /* ProductsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A1BDE2A8C8DF500148CBB /* ProductsListViewModel.swift */; };
 		363A1BE32A8CA8E700148CBB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A1BE22A8CA8E700148CBB /* ProfileViewModel.swift */; };
 		363A1BE62A8D25A300148CBB /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A1BE52A8D25A300148CBB /* ProductDetailsViewModel.swift */; };
@@ -123,6 +129,12 @@
 		117ED6FF2A8B755E00775CEC /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
 		117ED7002A8B87D000775CEC /* String+VersionComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+VersionComparison.swift"; sourceTree = "<group>"; };
 		11D5D8E42A8BBC6300A3C22B /* Dictionary+Apps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Apps.swift"; sourceTree = "<group>"; };
+		11DC23CA2AC495ED00692DBC /* SigningCredentialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigningCredentialService.swift; sourceTree = "<group>"; };
+		11DC23CC2AC4966D00692DBC /* String+DER.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DER.swift"; sourceTree = "<group>"; };
+		11DC23CF2AC49AD200692DBC /* SigningError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningError.swift; sourceTree = "<group>"; };
+		11DC23D22AC4A28500692DBC /* SigningCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningCredentials.swift; sourceTree = "<group>"; };
+		11DC23D92AC4AE1C00692DBC /* DHWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHWrapper.h; sourceTree = "<group>"; };
+		11DC23DA2AC4AE1C00692DBC /* DHWrapper.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = DHWrapper.c; sourceTree = "<group>"; };
 		363A1BDE2A8C8DF500148CBB /* ProductsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListViewModel.swift; sourceTree = "<group>"; };
 		363A1BE22A8CA8E700148CBB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		363A1BE52A8D25A300148CBB /* ProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -187,6 +199,7 @@
 				C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */,
 				C67EB29B2AAA125E003CFFB1 /* Shimmer in Frameworks */,
 				C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */,
+				11DC23D82AC4ADCF00692DBC /* ZSignApple in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +394,42 @@
 			path = Applications;
 			sourceTree = "<group>";
 		};
+		11DC23C82AC495ED00692DBC /* Signing */ = {
+			isa = PBXGroup;
+			children = (
+				11DC23C92AC495ED00692DBC /* Services */,
+				11DC23CE2AC4967000692DBC /* Utitlities */,
+				11DC23D12AC49AD500692DBC /* Base */,
+			);
+			path = Signing;
+			sourceTree = "<group>";
+		};
+		11DC23C92AC495ED00692DBC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				11DC23CA2AC495ED00692DBC /* SigningCredentialService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		11DC23CE2AC4967000692DBC /* Utitlities */ = {
+			isa = PBXGroup;
+			children = (
+				11DC23D92AC4AE1C00692DBC /* DHWrapper.h */,
+				11DC23DA2AC4AE1C00692DBC /* DHWrapper.c */,
+				11DC23CC2AC4966D00692DBC /* String+DER.swift */,
+			);
+			path = Utitlities;
+			sourceTree = "<group>";
+		};
+		11DC23D12AC49AD500692DBC /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				11DC23CF2AC49AD200692DBC /* SigningError.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		363A1BE02A8C909900148CBB /* Products List */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,6 +477,7 @@
 				03E248D72A8A9C0300DDE525 /* Localization */,
 				11D5D8E62A8BBD3F00A3C22B /* Applications */,
 				03E248DE2A8A9C6E00DDE525 /* Storage */,
+				11DC23C82AC495ED00692DBC /* Signing */,
 				117ED6E02A8B741E00775CEC /* Sibaro-Bridging-Header.h */,
 				C604EAFF2A892FDA00B18E0E /* Products */,
 				117ED6F82A8B74FE00775CEC /* Frameworks */,
@@ -555,6 +605,7 @@
 				C604EB3E2A893ADB00B18E0E /* Product.swift */,
 				C6AD3FC32A8E19CE008182BC /* SubmitApp.swift */,
 				36B7CE952A8FCBE1000ABD7A /* Password.swift */,
+				11DC23D22AC4A28500692DBC /* SigningCredentials.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -610,6 +661,7 @@
 				C67979742A8AA6E00091BE25 /* Nuke */,
 				C67979782A8AA6E00091BE25 /* NukeUI */,
 				C67EB29A2AAA125E003CFFB1 /* Shimmer */,
+				11DC23D72AC4ADCF00692DBC /* ZSignApple */,
 			);
 			productName = Sibaro;
 			productReference = C604EAFE2A892FDA00B18E0E /* Seebaro.app */;
@@ -645,6 +697,7 @@
 				C62BF7FF2A8A3059002CFFF9 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */,
 				C67EB2992AAA125E003CFFB1 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				11DC23D62AC4ADCF00692DBC /* XCRemoteSwiftPackageReference "ZSignApple" */,
 			);
 			productRefGroup = C604EAFF2A892FDA00B18E0E /* Products */;
 			projectDirPath = "";
@@ -673,6 +726,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				117ED6F72A8B743400775CEC /* Invocator.m in Sources */,
+				11DC23CD2AC4966D00692DBC /* String+DER.swift in Sources */,
+				11DC23D02AC49AD200692DBC /* SigningError.swift in Sources */,
 				C604EB372A8939BB00B18E0E /* RequestError.swift in Sources */,
 				C6CF976A2A8BDB090035210F /* HapticFeedback.swift in Sources */,
 				C604EB502A89546F00B18E0E /* EmptyStateView.swift in Sources */,
@@ -699,6 +754,7 @@
 				36FE9D072A8E4BD000A71B12 /* ChangePasswordViewModel.swift in Sources */,
 				C604EB382A8939BB00B18E0E /* Endpoint.swift in Sources */,
 				03E248D52A8A75FE00DDE525 /* Date+DecodeString.swift in Sources */,
+				11DC23D32AC4A28500692DBC /* SigningCredentials.swift in Sources */,
 				C60FFD742AA8ECD400A51D38 /* View+Extensions.swift in Sources */,
 				03FDA2F72A8C110A003D192D /* SibaroAppServices.swift in Sources */,
 				03FDA3112A8C1A48003D192D /* ViewModel.swift in Sources */,
@@ -716,6 +772,7 @@
 				C667B4D32A897F1300B2427D /* ProductDetailsView.swift in Sources */,
 				C60FFD762AA8ED6900A51D38 /* ScreenshotView.swift in Sources */,
 				C662A5542AB3008F001A8FEE /* ScreenshotLandscapeView.swift in Sources */,
+				11DC23CB2AC495ED00692DBC /* SigningCredentialService.swift in Sources */,
 				363A1BDF2A8C8DF500148CBB /* ProductsListViewModel.swift in Sources */,
 				117ED6F52A8B743400775CEC /* SystemApplication.swift in Sources */,
 				C604EB1C2A89316C00B18E0E /* ProductsListView.swift in Sources */,
@@ -741,6 +798,7 @@
 				03FDA3222A8D5FE2003D192D /* Stored.swift in Sources */,
 				C604EB3D2A893A9E00B18E0E /* Login.swift in Sources */,
 				C64E69292AB255520057A8F7 /* SettingsSymbolView.swift in Sources */,
+				11DC23DB2AC4AE1C00692DBC /* DHWrapper.c in Sources */,
 				03E248E22A8A9D4100DDE525 /* Languages.swift in Sources */,
 				C65C6C512AB2464C008705D6 /* SymbolView.swift in Sources */,
 			);
@@ -974,6 +1032,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		11DC23D62AC4ADCF00692DBC /* XCRemoteSwiftPackageReference "ZSignApple" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/EbrahimTahernejad/ZSignApple.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		C604EB4C2A894AE400B18E0E /* XCRemoteSwiftPackageReference "SimpleKeychain" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/auth0/SimpleKeychain";
@@ -1009,6 +1075,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		11DC23D72AC4ADCF00692DBC /* ZSignApple */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11DC23D62AC4ADCF00692DBC /* XCRemoteSwiftPackageReference "ZSignApple" */;
+			productName = ZSignApple;
+		};
 		C604EB4D2A894AE400B18E0E /* SimpleKeychain */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C604EB4C2A894AE400B18E0E /* XCRemoteSwiftPackageReference "SimpleKeychain" */;

@@ -9,14 +9,27 @@ import Combine
 extension MainView {
     class ViewModel: BaseViewModel {
         @Injected(\.storage) var storage
+        @Injected(\.signingCredentials) var signingCredentials
         
         override init() {
             super.init()
+            if isAuthenticated {
+                blah()
+            }
         }
         
         var isAuthenticated: Bool {
             storage.token != nil
         }
         
+        private func blah() {
+            Task {
+                do {
+                    try await signingCredentials.getCredentials()
+                } catch {
+                    print(error)
+                }
+            }
+        }
     }
 }

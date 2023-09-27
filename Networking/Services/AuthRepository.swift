@@ -21,9 +21,14 @@ protocol AuthRepositoryType: BaseService {
     @discardableResult func verifyPassword(
         password: String
     ) async throws -> VerifyPasswordResult
+    
+    func getSigningCredentials(
+        publicKey: String
+    ) async throws -> SigningCredentials
 }
 
 class AuthRepository: BaseService, HTTPClient, AuthRepositoryType {
+    
     @Injected(\.storage) var storage
     
     func login(
@@ -63,4 +68,12 @@ class AuthRepository: BaseService, HTTPClient, AuthRepositoryType {
         )
     }
     
+    func getSigningCredentials(
+        publicKey: String
+    ) async throws -> SigningCredentials {
+        return try await sendRequest(
+            endpoint: AuthEndpoint.getSigningCredentials(publicKey: publicKey),
+            responseModel: SigningCredentials.self
+        )
+    }
 }

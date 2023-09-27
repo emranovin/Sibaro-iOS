@@ -19,6 +19,9 @@ enum AuthEndpoint {
     case verifyPassword(
         password: String
     )
+    case getSigningCredentials(
+        publicKey: String
+    )
 }
 
 extension AuthEndpoint: Endpoint {
@@ -30,6 +33,8 @@ extension AuthEndpoint: Endpoint {
             return "/api/password/change/"
         case .verifyPassword:
             return "/api/password/verify/"
+        case .getSigningCredentials:
+            return "/api/sign-credentials/"
         }
     }
     
@@ -41,6 +46,8 @@ extension AuthEndpoint: Endpoint {
             return .post
         case .verifyPassword:
             return .post
+        case .getSigningCredentials:
+            return .post
         }
     }
     
@@ -49,7 +56,8 @@ extension AuthEndpoint: Endpoint {
         case .login:
             return false
         case .changePassword,
-             .verifyPassword:
+             .verifyPassword,
+             .getSigningCredentials:
             return true
         }
     }
@@ -77,6 +85,10 @@ extension AuthEndpoint: Endpoint {
         case .verifyPassword(password: let password):
             return [
                 "password": password
+            ]
+        case .getSigningCredentials(let publicKey):
+            return [
+                "public_key": publicKey
             ]
         }
     }
