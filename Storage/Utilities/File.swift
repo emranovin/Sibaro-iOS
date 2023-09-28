@@ -19,20 +19,48 @@ enum Directory {
     }
 }
 
-@propertyWrapper
-struct File {
+struct FileContainer {
     let directory: Directory
     let name: String
-    var wrappedValue: Data? {
-        willSet {  // Before modifying wrappedValue
-            let defaultDirectory = directory.url.appendingPathComponent(name)
-            guard let newValue else {
-                try? FileManager.default.removeItem(at: defaultDirectory)
-                return
+    
+    private let `default`: Data?
+    
+    var url: URL {
+        directory.url.appendingPathComponent(name)
+    }
+    
+    init(name: String, directory: Directory, with data: Data? = nil) {
+        self.name = name
+        self.directory = directory
+        `default` = data
+        if let data {
+            if !FileManager.default.fileExists(atPath: url.path) {
+                save(data: data)
             }
-            try? newValue.write(to: defaultDirectory, options: .atomic)
         }
     }
+    
+    mutating func delete() {
+        try? FileManager.default.removeItem(at: url)
+    }
+    
+    mutating func save(data: Data?) {
+        guard let data else {
+            delete()
+            return
+        }
+        try? data.write(to: url, options: .atomic)
+    }
+    
+    var data: Data? {
+        let url = directory.url.appendingPathComponent(name)
+        return (try? Data(contentsOf: url)) ?? `default`
+    }
+}
+
+@propertyWrapper
+struct File {
+    var wrappedValue: FileContainer
     
     var projectedValue: Publisher {
         publisher
@@ -40,9 +68,9 @@ struct File {
     
     private var publisher: Publisher
     struct Publisher: Combine.Publisher {
-        typealias Output = Data?
+        typealias Output = FileContainer
         typealias Failure = Never
-        var subject: CurrentValueSubject<Data?, Never> // PassthroughSubject will lack the call of initial assignment
+        var subject: CurrentValueSubject<FileContainer, Never> // PassthroughSubject will lack the call of initial assignment
         func receive<S>(subscriber: S) where S: Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
             subject.subscribe(subscriber)
         }
@@ -52,19 +80,16 @@ struct File {
     }
     
     init(wrappedValue: Data? = nil, name: String, in directory: Directory) {
-        self.directory = directory
-        self.name = name
-        let url = directory.url.appendingPathComponent(name)
-        let data = (try? Data(contentsOf: url)) ?? wrappedValue
-        self.wrappedValue = data
-        publisher = Publisher(data)
+        let container = FileContainer(name: name, directory: directory, with: wrappedValue)
+        self.wrappedValue = container
+        publisher = Publisher(container)
     }
     
     static subscript<OuterSelf: ObservableObject>(
         _enclosingInstance observed: OuterSelf,
-        wrapped wrappedKeyPath: ReferenceWritableKeyPath<OuterSelf, Data?>,
+        wrapped wrappedKeyPath: ReferenceWritableKeyPath<OuterSelf, FileContainer>,
         storage storageKeyPath: ReferenceWritableKeyPath<OuterSelf, Self>
-    ) -> Data? {
+    ) -> FileContainer {
         get {
             observed[keyPath: storageKeyPath].wrappedValue
         }

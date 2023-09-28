@@ -11,15 +11,16 @@ import Combine
 protocol StorageServicable: BaseService {
     var token: String? { get set }
     var username: String? { get set }
-    var publicKey: String? { get set }
-    var privateKey: String? { get set }
-    var p12: Data? { get set }
-    var cert: Data? { get set }
-    var profile: Data? { get set }
+    var authenticationStateChanged: AnyPublisher<Bool, Never> { get }
     func logout()
     
     var language: Language { get set }
-    var authenticationStateChanged: AnyPublisher<Bool, Never> { get }
+    
+    var publicKey: String? { get set }
+    var privateKey: String? { get set }
+    var p12: FileContainer { get set }
+    var cert: FileContainer { get set }
+    var profile: FileContainer { get set }
 }
 
 class StorageService: BaseService, StorageServicable {

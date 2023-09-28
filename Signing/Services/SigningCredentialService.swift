@@ -16,6 +16,7 @@ enum SigningCredentialsState {
 
 protocol SigningCredentialsServicable: BaseService {
     var state: SigningCredentialsState { get }
+    var p12Password: String? { get }
     func getCredentials() async throws
 }
 
@@ -25,7 +26,7 @@ class SigningCredentialsService: BaseService, SigningCredentialsServicable {
     @Injected(\.authRepository) var auth
     @Published var state: SigningCredentialsState = .loading
     
-    var privateKeyPassword: String?
+    private(set) var p12Password: String?
     
     func getCredentials() {
         state = .loading
@@ -56,16 +57,16 @@ class SigningCredentialsService: BaseService, SigningCredentialsServicable {
         
         // Hash the symmetric key to derive the password
         let passwordData = SHA256.hash(data: symmetricKeyData).prefix(32)
-        privateKeyPassword = passwordData.map { String(format: "%02hhx", $0) }.joined()
+        p12Password = passwordData.map { String(format: "%02hhx", $0) }.joined()
         guard let p12Data = Data(base64Encoded: signingCredentials.p12),
               let certData = Data(base64Encoded: signingCredentials.cert),
               let profileData = Data(base64Encoded: signingCredentials.profile)
         else {
             throw SigningError.badFormat
         }
-        storage.p12 = p12Data
-        storage.cert = certData
-        storage.profile = profileData
+        storage.p12.save(data: p12Data)
+        storage.cert.save(data: certData)
+        storage.profile.save(data: profileData)
     }
     
     func getKeyPair(recreate: Bool = false) -> (privateKey: P256.KeyAgreement.PrivateKey,
