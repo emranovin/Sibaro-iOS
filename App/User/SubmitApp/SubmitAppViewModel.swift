@@ -48,7 +48,7 @@ extension SubmitAppView {
                         messageSubtitle = decodedResponse?.link.first ?? "Try again later"
                     default:
                         messageTitle = "Failed to submit"
-                        messageSubtitle = error.description
+                        messageSubtitle = error.errorDescription ?? i18n.Global_UnknownError
                     }
                 } else {
                     messageTitle = "Failed to submit"

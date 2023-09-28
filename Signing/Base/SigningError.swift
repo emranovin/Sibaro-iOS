@@ -9,4 +9,5 @@ import Foundation
 
 enum SigningError: Error {
     case generateKeyPair
+    case badFormat
 }

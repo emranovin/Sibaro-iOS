@@ -32,6 +32,7 @@
 		117ED6F72A8B743400775CEC /* Invocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 117ED6F22A8B743400775CEC /* Invocator.m */; };
 		117ED6FA2A8B74FE00775CEC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117ED6F92A8B74FE00775CEC /* MobileCoreServices.framework */; platformFilter = ios; };
 		117ED7012A8B87D000775CEC /* String+VersionComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117ED7002A8B87D000775CEC /* String+VersionComparison.swift */; };
+		11B3791A2AC6101E00C30816 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B379192AC6101E00C30816 /* File.swift */; };
 		11D5D8E52A8BBC6300A3C22B /* Dictionary+Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D5D8E42A8BBC6300A3C22B /* Dictionary+Apps.swift */; };
 		11DC23CB2AC495ED00692DBC /* SigningCredentialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC23CA2AC495ED00692DBC /* SigningCredentialService.swift */; };
 		11DC23CD2AC4966D00692DBC /* String+DER.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC23CC2AC4966D00692DBC /* String+DER.swift */; };
@@ -128,6 +129,7 @@
 		117ED6FE2A8B755E00775CEC /* LSResourceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSResourceProxy.h; sourceTree = "<group>"; };
 		117ED6FF2A8B755E00775CEC /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
 		117ED7002A8B87D000775CEC /* String+VersionComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+VersionComparison.swift"; sourceTree = "<group>"; };
+		11B379192AC6101E00C30816 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		11D5D8E42A8BBC6300A3C22B /* Dictionary+Apps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Apps.swift"; sourceTree = "<group>"; };
 		11DC23CA2AC495ED00692DBC /* SigningCredentialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigningCredentialService.swift; sourceTree = "<group>"; };
 		11DC23CC2AC4966D00692DBC /* String+DER.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DER.swift"; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				03FDA3212A8D5FE2003D192D /* Stored.swift */,
+				11B379192AC6101E00C30816 /* File.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				03FDA30A2A8C169A003D192D /* Locking.swift in Sources */,
 				03FDA3242A8DD4D3003D192D /* SingleAxisGeometryReader.swift in Sources */,
 				C604EB522A895EC000B18E0E /* ProductItemView.swift in Sources */,
+				11B3791A2AC6101E00C30816 /* File.swift in Sources */,
 				C604EB222A8932FB00B18E0E /* ProfileView.swift in Sources */,
 				117ED6F32A8B743400775CEC /* DirectoryReader.m in Sources */,
 				C6AD3FBE2A8E1991008182BC /* SubmitAppView.swift in Sources */,

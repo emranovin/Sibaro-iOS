@@ -78,7 +78,7 @@ extension ChangePasswordView {
                             alertStatus = .failed(message: message)
                         }
                     default:
-                        alertStatus = .failed(message: error.description)
+                        alertStatus = .failed(message: error.errorDescription ?? i18n.Global_UnknownError)
                     }
                     
                 } else {

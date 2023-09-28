@@ -10,4 +10,6 @@ import Foundation
 struct SigningCredentials: Decodable {
     let publicKey: String
     let p12: String
+    let cert: String
+    let profile: String
 }

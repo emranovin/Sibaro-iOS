@@ -68,7 +68,7 @@ extension ProductsListView {
                         let decodedResponse = try? JSONDecoder().decode(ProductError.self, from: data)
                         message = decodedResponse?.detail ?? "Failed to get products"
                     default:
-                        message = error.description
+                        message = error.errorDescription ?? i18n.Global_UnknownError
                     }
                 } else {
                     message = error.localizedDescription

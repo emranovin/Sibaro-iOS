@@ -38,7 +38,7 @@ extension LoginView {
                     let decodedResponse = try? JSONDecoder().decode(LoginMessage.self, from: data)
                     message = decodedResponse?.detail ?? ""
                 default:
-                    message = error.description
+                    message = error.errorDescription ?? i18n.Global_UnknownError
                 }
             }
         }

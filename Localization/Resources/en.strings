@@ -6,6 +6,8 @@
   
 */
 
+"Global_UnknownError" = "An unkown error has occurred";
+
 "Product_Open" = "Open";
 "Product_Install" = "Get";
 "Product_Update" = "Update";

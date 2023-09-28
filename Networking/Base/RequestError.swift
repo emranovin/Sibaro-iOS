@@ -18,7 +18,7 @@ public enum RequestError: Error {
 }
 
 extension RequestError: LocalizedError {
-    public var description: String {
+    public var errorDescription: String? {
         switch self {
         case .decode:
             return NSLocalizedString("Parsing error", comment: "")
