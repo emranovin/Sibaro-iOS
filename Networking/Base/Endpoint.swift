@@ -8,7 +8,7 @@
 import Foundation
 
 struct SibaroAPI {
-    static let url: String = "100f-5-112-247-97.ngrok-free.app"
+    static let url: String = "api.seebaro.ir"
 }
 
 public protocol Endpoint {
