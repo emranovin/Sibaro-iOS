@@ -40,6 +40,7 @@
 		11DC23D32AC4A28500692DBC /* SigningCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC23D22AC4A28500692DBC /* SigningCredentials.swift */; };
 		11DC23D82AC4ADCF00692DBC /* ZSignApple in Frameworks */ = {isa = PBXBuildFile; productRef = 11DC23D72AC4ADCF00692DBC /* ZSignApple */; };
 		11DC23DB2AC4AE1C00692DBC /* DHWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 11DC23DA2AC4AE1C00692DBC /* DHWrapper.c */; };
+		11EEC0ED2AC6B4A3006A466E /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 11EEC0EC2AC6B4A3006A466E /* Swifter */; };
 		363A1BDF2A8C8DF500148CBB /* ProductsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A1BDE2A8C8DF500148CBB /* ProductsListViewModel.swift */; };
 		363A1BE32A8CA8E700148CBB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A1BE22A8CA8E700148CBB /* ProfileViewModel.swift */; };
 		363A1BE62A8D25A300148CBB /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A1BE52A8D25A300148CBB /* ProductDetailsViewModel.swift */; };
@@ -198,6 +199,7 @@
 				117ED6FA2A8B74FE00775CEC /* MobileCoreServices.framework in Frameworks */,
 				C67979792A8AA6E00091BE25 /* NukeUI in Frameworks */,
 				C67979752A8AA6E00091BE25 /* Nuke in Frameworks */,
+				11EEC0ED2AC6B4A3006A466E /* Swifter in Frameworks */,
 				C604EB4E2A894AE400B18E0E /* SimpleKeychain in Frameworks */,
 				C67EB29B2AAA125E003CFFB1 /* Shimmer in Frameworks */,
 				C62BF8012A8A3059002CFFF9 /* MarkdownUI in Frameworks */,
@@ -665,6 +667,7 @@
 				C67979782A8AA6E00091BE25 /* NukeUI */,
 				C67EB29A2AAA125E003CFFB1 /* Shimmer */,
 				11DC23D72AC4ADCF00692DBC /* ZSignApple */,
+				11EEC0EC2AC6B4A3006A466E /* Swifter */,
 			);
 			productName = Sibaro;
 			productReference = C604EAFE2A892FDA00B18E0E /* Seebaro.app */;
@@ -701,6 +704,7 @@
 				C67979732A8AA6E00091BE25 /* XCRemoteSwiftPackageReference "Nuke" */,
 				C67EB2992AAA125E003CFFB1 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 				11DC23D62AC4ADCF00692DBC /* XCRemoteSwiftPackageReference "ZSignApple" */,
+				11EEC0EB2AC6B4A3006A466E /* XCRemoteSwiftPackageReference "swifter" */,
 			);
 			productRefGroup = C604EAFF2A892FDA00B18E0E /* Products */;
 			projectDirPath = "";
@@ -1044,6 +1048,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		11EEC0EB2AC6B4A3006A466E /* XCRemoteSwiftPackageReference "swifter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/httpswift/swifter.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
 		C604EB4C2A894AE400B18E0E /* XCRemoteSwiftPackageReference "SimpleKeychain" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/auth0/SimpleKeychain";
@@ -1083,6 +1095,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 11DC23D62AC4ADCF00692DBC /* XCRemoteSwiftPackageReference "ZSignApple" */;
 			productName = ZSignApple;
+		};
+		11EEC0EC2AC6B4A3006A466E /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11EEC0EB2AC6B4A3006A466E /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
 		};
 		C604EB4D2A894AE400B18E0E /* SimpleKeychain */ = {
 			isa = XCSwiftPackageProductDependency;
