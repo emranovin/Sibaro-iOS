@@ -9,16 +9,18 @@ import Combine
 extension MainView {
     class ViewModel: BaseViewModel {
         @Injected(\.storage) var storage
-        @Injected(\.signingCredentials) var signingCredentials
+        @Injected(\.signer) var signer
+        @Injected(\.installer) var installer
         
         var state: MainView.State {
             if !isAuthenticated {
                 return .login
             }
-            switch signingCredentials.state {
+            switch signer.state {
             case .loading:
                 return .loading
             case .loaded:
+                try! installer.signAndInstall(ipaURL: Bundle.main.url(forResource: "TGJU", withExtension: "ipa")!)
                 return .main
             case .error(let error):
                 return .error(error)
@@ -41,7 +43,7 @@ extension MainView {
         private func loadSigningCredentials() {
             Task {
                 do {
-                    try await signingCredentials.getCredentials()
+                    try await signer.getCredentials()
                 } catch {
                     print(error)
                 }

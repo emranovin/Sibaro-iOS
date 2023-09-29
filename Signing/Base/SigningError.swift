@@ -2,12 +2,13 @@
 //  SigningError.swift
 //  Sibaro
 //
-//  Created by Emran Novin on 9/27/23.
+//  Created by Emran Novin on 9/29/23.
 //
 
 import Foundation
 
 enum SigningError: Error {
-    case generateKeyPair
-    case badFormat
+    case resign
+    case appFolderMissing
+    case invalidInfoPlist
 }

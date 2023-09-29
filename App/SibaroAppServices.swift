@@ -26,8 +26,12 @@ extension Container {
         Factory(self) { ApplicationService() }
     } 
     
-    var signingCredentials: Factory<SigningCredentialsServicable> {
-        Factory(self) { SigningCredentialsService() }
+    var signer: Factory<SignerServicable> {
+        Factory(self) { SignerService() }
+    }
+    
+    var installer: Factory<InstallerService> {
+        Factory(self) { InstallerService() }
     }
 }
 

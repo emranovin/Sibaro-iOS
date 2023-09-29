@@ -10,11 +10,23 @@ import Combine
 
 enum Directory {
     case signing
+    case installing
+    case temp
     
     var url: URL {
         switch self {
         case .signing:
             return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+                .appendingPathComponent("Signing", isDirectory: true)
+                .creatingDirectories()
+        case .installing:
+            return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+                .appendingPathComponent("Installing", isDirectory: true)
+                .creatingDirectories()
+        case .temp:
+            return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+                .appendingPathComponent("temp", isDirectory: true)
+                .creatingDirectories()
         }
     }
 }

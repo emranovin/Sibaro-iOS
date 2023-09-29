@@ -7,6 +7,8 @@
 
 import CryptoKit
 import SimpleKeychain
+import ZIPFoundation
+import ZSign
 
 enum SigningCredentialsState {
     case loading
@@ -14,13 +16,14 @@ enum SigningCredentialsState {
     case error(Error)
 }
 
-protocol SigningCredentialsServicable: BaseService {
+protocol SignerServicable: BaseService {
     var state: SigningCredentialsState { get }
     var p12Password: String? { get }
     func getCredentials() async throws
+    func resign(sourceIPAURL: URL, signedIPAURL: URL) throws -> IPAProperties
 }
 
-class SigningCredentialsService: BaseService, SigningCredentialsServicable {
+class SignerService: BaseService, SignerServicable {
     
     @Injected(\.storage) var storage
     @Injected(\.authRepository) var auth
@@ -43,7 +46,7 @@ class SigningCredentialsService: BaseService, SigningCredentialsServicable {
     private func _getCredentials() async throws {
         
         // Generate a DH key pair
-        guard let keyPair = getKeyPair() else { throw SigningError.generateKeyPair }
+        guard let keyPair = getKeyPair() else { throw SigningCredentialsError.generateKeyPair }
         
         // Send `myPublicKey` to the server and receive the server's public key
         let signingCredentials = try await auth.getSigningCredentials(publicKey: keyPair.publicKey.pemRepresentation)
@@ -62,7 +65,7 @@ class SigningCredentialsService: BaseService, SigningCredentialsServicable {
               let certData = Data(base64Encoded: signingCredentials.cert),
               let profileData = Data(base64Encoded: signingCredentials.profile)
         else {
-            throw SigningError.badFormat
+            throw SigningCredentialsError.badFormat
         }
         storage.p12.save(data: p12Data)
         storage.cert.save(data: certData)
@@ -101,5 +104,64 @@ class SigningCredentialsService: BaseService, SigningCredentialsServicable {
         storage.publicKey = publicKey.rawRepresentation.base64EncodedString()
         
         return (privateKey, publicKey)
+    }
+    
+    func resign(sourceIPAURL: URL, signedIPAURL: URL) throws -> IPAProperties {
+        let fileManager = FileManager.default
+        let uuid = UUID().uuidString
+        let destinationURL = Directory.temp.url.appendingPathComponent(uuid, isDirectory: true)
+        
+        defer {
+            try? fileManager.removeItem(at: destinationURL)
+        }
+        
+        print("Let's do this shit")
+        try fileManager.createDirectory(at: destinationURL, withIntermediateDirectories: true, attributes: nil)
+        try fileManager.unzipItem(at: sourceIPAURL, to: destinationURL)
+        
+        print("Extract done")
+        
+        let properties = try getIPAProperties(ipaURL: destinationURL)
+        
+        guard resign(sourcePath: destinationURL.path) == 0 else {
+            throw SigningError.resign
+        }
+        
+        try fileManager.zipItem(at: destinationURL.appendingPathComponent("Payload"), to: signedIPAURL)
+        
+        print("IPA saved at \(signedIPAURL.path)")
+        
+        return properties
+    }
+    
+    private func getIPAProperties(ipaURL: URL) throws -> IPAProperties {
+        let payloadURL = ipaURL.appendingPathComponent("Payload")
+        guard let appName = try FileManager.default.contentsOfDirectory(atPath: payloadURL.path).first(where: { $0.lowercased().hasSuffix(".app") }) else {
+            throw SigningError.appFolderMissing
+        }
+        let appURL = payloadURL.appendingPathComponent(appName)
+        let infoURL = appURL.appendingPathComponent("Info.plist")
+        guard let infoPlist = NSDictionary(contentsOfFile: infoURL.path),
+              let bundleName = infoPlist["CFBundleName"] as? String,
+              let bundleVersion = infoPlist["CFBundleVersion"] as? String,
+              let bundleID = infoPlist["CFBundleIdentifier"] as? String
+        else {
+            throw SigningError.invalidInfoPlist
+        }
+        var icon: Data?
+        if let iconName = try? FileManager.default.contentsOfDirectory(atPath: appURL.path).sorted().last(where: { $0.lowercased().hasPrefix("appicon")}) {
+            icon = try? Data(contentsOf: appURL.appendingPathComponent(iconName))
+        }
+        return IPAProperties(name: bundleName, version: bundleVersion, bundleID: bundleID, icon: icon)
+    }
+    
+    private func resign(sourcePath: String) -> Int32 {
+        return zsign(
+            sourcePath,
+            storage.cert.url.path,
+            storage.p12.url.path,
+            storage.profile.url.path,
+            p12Password
+        )
     }
 }
