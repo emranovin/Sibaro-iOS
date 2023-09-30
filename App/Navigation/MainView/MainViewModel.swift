@@ -12,6 +12,8 @@ extension MainView {
         @Injected(\.signer) var signer
         @Injected(\.installer) var installer
         
+        var tmpFirst = true
+        
         var state: MainView.State {
             if !isAuthenticated {
                 return .login
@@ -20,7 +22,10 @@ extension MainView {
             case .loading:
                 return .loading
             case .loaded:
-                try! installer.signAndInstall(ipaURL: Bundle.main.url(forResource: "TGJU", withExtension: "ipa")!)
+                if tmpFirst {
+                    tmpFirst = false
+                    try! installer.signAndInstall(ipaURL: Bundle.main.url(forResource: "test_app", withExtension: "ipa")!)
+                }
                 return .main
             case .error(let error):
                 return .error(error)
