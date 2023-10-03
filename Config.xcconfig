@@ -16,5 +16,5 @@ CONFIG_APP_BUNDLE_VERSION = 2
 CONFIG_APP_NAME = Seebaro
 
 // MARK: - App Bundle Identifier
-CONFIG_BUNDLE_ID = me.mahsa.sibaro
+CONFIG_BUNDLE_ID = com.seebaro.app
 CONFIG_DEV_TEAM = 35A6B2S222

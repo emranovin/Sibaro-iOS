@@ -7,6 +7,7 @@
 
 import Foundation
 import Swifter
+import DependencyFactory
 
 protocol InstallerServicable: BaseService {
     func signAndInstall(ipaURL: URL) throws

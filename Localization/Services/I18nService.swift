@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DependencyFactory
 
 @dynamicMemberLookup
 protocol I18nServicable: BaseService {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DependencyFactory
 
 protocol SubmitAppRepositoryType {
     func appSuggestion(

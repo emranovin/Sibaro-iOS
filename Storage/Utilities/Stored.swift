@@ -11,22 +11,28 @@ import SimpleKeychain
 enum StoredLocation {
     case standard
     case keychain
+    case shared
     
     func data(for key: String) -> Data? {
         switch self {
         case .keychain:
-            return try? SimpleKeychain().data(forKey: key)
+            return try? SimpleKeychain(accessGroup: "4LBD36HY9T.keychain").data(forKey: key)
         case .standard:
             return UserDefaults.standard.data(forKey: key)
+        case .shared:
+            return UserDefaults(suiteName: "group.\(Bundle.main.bundleIdentifier ?? "")")?.data(forKey: key)
+            
         }
     }
     
     func set(_ value: Data, for key: String) {
         switch self {
         case .keychain:
-            try? SimpleKeychain().set(value, forKey: key)
+            try? SimpleKeychain(accessGroup: "4LBD36HY9T.keychain").set(value, forKey: key)
         case .standard:
             UserDefaults.standard.set(value, forKey: key)
+        case .shared:
+            UserDefaults(suiteName: Bundle.main.bundleIdentifier)?.set(value ,forKey: key)
         }
     }
 }

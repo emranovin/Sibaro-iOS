@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "dependencyfactory",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EbrahimTahernejad/DependencyFactory",
+      "state" : {
+        "branch" : "main",
+        "revision" : "ab7466056b9d4e17fb7923ab88a26b219fd226e7"
+      }
+    },
+    {
       "identity" : "networkimage",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/gonzalezreal/NetworkImage",

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DependencyFactory
 
 protocol ProductsRepositoryType {
     func products() async throws -> [Product]

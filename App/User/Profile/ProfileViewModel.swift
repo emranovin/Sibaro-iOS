@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DependencyFactory
 
 extension ProfileView {
     class ViewModel: BaseViewModel {

@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import DependencyFactory
 
 class BaseViewModel: ObservableObject {
     @Injected(\.i18n) var i18n

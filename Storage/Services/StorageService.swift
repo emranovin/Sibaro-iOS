@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import DependencyFactory
 
 protocol StorageServicable: BaseService {
     var token: String? { get set }

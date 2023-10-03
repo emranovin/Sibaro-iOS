@@ -5,6 +5,7 @@
 //  Created by Cardasis, Jonathan (J.) on 7/13/16.
 //  Copyright © 2016 Cardasis, Jonathan (J.). All rights reserved.
 //
+import DependencyFactory
 
 protocol ApplicationServicable: BaseService {
     func getAppState(_ product: Product) -> InstallationState

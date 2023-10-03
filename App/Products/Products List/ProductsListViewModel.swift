@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DependencyFactory
 
 extension ProductsListView {
     @MainActor

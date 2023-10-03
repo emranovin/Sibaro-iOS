@@ -5,6 +5,7 @@
 //  Created by Ebrahim Tahernejad on 5/25/1402 AP.
 //
 import Combine
+import DependencyFactory
 
 extension MainView {
     class ViewModel: BaseViewModel {

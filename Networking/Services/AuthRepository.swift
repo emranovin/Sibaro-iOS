@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DependencyFactory
 
 protocol AuthRepositoryType: BaseService {
     func login(
