@@ -1055,11 +1055,9 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = SeebaroShareExtension/SeebaroShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4LBD36HY9T;
+				DEVELOPMENT_TEAM = 4LBD36HY9T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeebaroShareExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SeebaroShareExtension;
@@ -1074,7 +1072,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.seebaro.app.shareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Manual XC 4LBD36HY9T.* (Wildcard) Development";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1088,11 +1085,9 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = SeebaroShareExtension/SeebaroShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4LBD36HY9T;
+				DEVELOPMENT_TEAM = 4LBD36HY9T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeebaroShareExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SeebaroShareExtension;
@@ -1107,7 +1102,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.seebaro.app.shareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Manual XC 4LBD36HY9T.* (Wildcard) Development";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1243,12 +1237,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = App/Resources/Sibaro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CONFIG_APP_BUNDLE_VERSION)";
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4LBD36HY9T;
+				DEVELOPMENT_TEAM = 4LBD36HY9T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sibaro-Info.plist";
@@ -1272,7 +1264,6 @@
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.seebaro.app;
 				PRODUCT_NAME = "$(CONFIG_APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Manual 4LBD36HY9T.ir.seebaro.app (Explicit) Dev";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1293,12 +1284,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = App/Resources/Sibaro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CONFIG_APP_BUNDLE_VERSION)";
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4LBD36HY9T;
+				DEVELOPMENT_TEAM = 4LBD36HY9T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sibaro-Info.plist";
@@ -1322,7 +1311,6 @@
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.seebaro.app;
 				PRODUCT_NAME = "$(CONFIG_APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Manual 4LBD36HY9T.ir.seebaro.app (Explicit) Dev";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
