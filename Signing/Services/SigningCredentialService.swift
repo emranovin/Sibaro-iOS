@@ -22,6 +22,7 @@ protocol SignerServicable: BaseService {
     var state: SigningCredentialsState { get }
     var p12Password: String? { get }
     func getCredentials() async throws
+    func getCredentialsAndSign(sourceIPAURL: URL, signedIPAURL: URL) async -> IPAProperties?
     func resign(sourceIPAURL: URL, signedIPAURL: URL) throws -> IPAProperties
 }
 
@@ -42,6 +43,15 @@ class SignerService: BaseService, SignerServicable {
             } catch {
                 state = .error(error)
             }
+        }
+    }
+    
+    func getCredentialsAndSign(sourceIPAURL: URL, signedIPAURL: URL) async -> IPAProperties? {
+        do {
+            try await _getCredentials()
+            return try? resign(sourceIPAURL: sourceIPAURL, signedIPAURL: signedIPAURL)
+        } catch {
+            return nil
         }
     }
     

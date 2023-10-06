@@ -19,7 +19,7 @@ class ShareViewController: UIViewController, ObservableObject {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //TODO: dsign a proper view for share extension
         // https://stackoverflow.com/questions/17041669/creating-a-blurring-overlay-view/25706250
         
         // only apply the blur if the user hasn't disabled transparency effects
@@ -54,19 +54,14 @@ class ShareViewController: UIViewController, ObservableObject {
                 if let error = error {
                     print("URL-Error: \(error.localizedDescription)")
                 }
-                if let url = item as? NSURL, let urlString = url.absoluteString {
+                if let url = item as? URL {
                     if storage.token != nil {
+                        let signedURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.seebaro.app")!.appendingPathComponent(url.lastPathComponent)
+                        try? FileManager.default.copyItem(at: url, to: signedURL)
                         Task { [weak self] in
                             guard let self else { return }
-                            try await signer.getCredentials()
-                            let signed_flag = zsign(
-                                urlString,
-                                self.storage.cert.url.absoluteString,
-                                self.storage.p12.url.absoluteString,
-                                self.storage.profile.url.absoluteString,
-                                signer.p12Password
-                            )
-                            print(signed_flag)
+                            let properties = await signer.getCredentialsAndSign(sourceIPAURL: url, signedIPAURL: signedURL)
+                            self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
                         }
                     } else {
                         self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)

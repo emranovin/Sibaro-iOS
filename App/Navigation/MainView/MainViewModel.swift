@@ -6,6 +6,7 @@
 //
 import Combine
 import DependencyFactory
+import Foundation
 
 extension MainView {
     class ViewModel: BaseViewModel {
@@ -13,7 +14,7 @@ extension MainView {
         @Injected(\.signer) var signer
         @Injected(\.installer) var installer
         
-        var tmpFirst = true
+        var tmpFirst = false
         
         var state: MainView.State {
             if !isAuthenticated {

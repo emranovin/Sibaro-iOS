@@ -8,7 +8,7 @@
 	</array>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)keychain</string>
+		<string>$(AppIdentifierPrefix)com.seebaro.app.keychain</string>
 	</array>
 </dict>
 </plist>

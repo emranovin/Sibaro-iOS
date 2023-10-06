@@ -16,7 +16,7 @@ enum StoredLocation {
     func data(for key: String) -> Data? {
         switch self {
         case .keychain:
-            return try? SimpleKeychain(accessGroup: "4LBD36HY9T.keychain").data(forKey: key)
+            return try? SimpleKeychain(service: "4LBD36HY9T.com.seebaro.app.sharedKeychain", accessGroup: "4LBD36HY9T.com.seebaro.app.keychain").data(forKey: key)
         case .standard:
             return UserDefaults.standard.data(forKey: key)
         case .shared:
@@ -28,7 +28,7 @@ enum StoredLocation {
     func set(_ value: Data, for key: String) {
         switch self {
         case .keychain:
-            try? SimpleKeychain(accessGroup: "4LBD36HY9T.keychain").set(value, forKey: key)
+            try? SimpleKeychain(service: "4LBD36HY9T.com.seebaro.app.sharedKeychain", accessGroup: "4LBD36HY9T.com.seebaro.app.keychain").set(value, forKey: key)
         case .standard:
             UserDefaults.standard.set(value, forKey: key)
         case .shared:
