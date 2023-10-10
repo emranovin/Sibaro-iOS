@@ -1,4 +1,16 @@
 
+#### ❗️❗️❗️⚠️ ATTENTATION ⚠️❗️❗️❗️ 
+Dear visitors, this repo is migrated to this organization repo:
+[AppleOS](https://github.com/Seebaro/AppleOS)
+
+Pleas consider this repo will be deleted soon.
+Thanks for your attention.
+
+
+
+
+
+
 <img src="App/Resources/Assets.xcassets/AppIcon.appiconset/512x512@2x.png" width="192" align="right" hspace="20" />
 
 # Sibaro
